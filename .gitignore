@@ -3,6 +3,3 @@
 .classpath
 
 pom.xml
-
-src/model/data/
-*.dat
