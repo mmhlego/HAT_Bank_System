@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="firstPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.firstLoginController">
+   <children>
+      <ImageView fitHeight="700.0" fitWidth="1138.0" layoutX="-135.0" layoutY="102.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-135.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@pictures/image%20(1).jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="387.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to top left , #22eb72 ,#00b2ff ); -fx-background-radius: 25  25 25 25;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="67.0" prefHeight="100.0" prefWidth="94.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 25 25 25 25;" text="Login As:" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="System Bold" size="50.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="50.0" layoutY="171.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+               <children>
+                  <Group fx:id="ManagerLogin">
+                     <children>
+                        <ToggleButton fx:id="managerButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="375.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 25 25 25 25; -fx-border-radius: 25 25 25 25; -fx-border-width: 0 1 0 0;" text="Manager" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Italic" size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="50.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="16.0" offsetX="2.0" offsetY="2.0" radius="6.5" width="12.0" />
+                           </effect>
+                        </ToggleButton>
+                        <ImageView fitHeight="176.0" fitWidth="146.0" layoutX="52.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pictures/project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Group>
+                  <Group fx:id="EmployeeLogin">
+                     <children>
+                        <ToggleButton fx:id="employeeButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="375.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 25 25 25 25; -fx-border-radius: 25 25 25 25; -fx-border-width: 0 1 0 0;" text="Employee" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Italic" size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="50.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="16.0" offsetX="2.0" offsetY="2.0" radius="6.5" width="12.0" />
+                           </effect>
+                        </ToggleButton>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pictures/1869679-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Group>
+                  <Group fx:id="clientsLogin">
+                     <children>
+                        <ToggleButton fx:id="clientButton" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="375.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 25 25 25 25; -fx-border-radius: 25 25 25 25; -fx-border-width: 0 1 0 0;" text="Clients" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Italic" size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="50.0" />
+                           </padding>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow height="16.0" offsetX="2.0" offsetY="2.0" radius="6.5" width="12.0" />
+                           </effect>
+                        </ToggleButton>
+                        <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@pictures/client-icon-businessman-icon-vector-design-removebg-preview.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </Group>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
