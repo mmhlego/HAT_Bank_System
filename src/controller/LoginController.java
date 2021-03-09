@@ -26,97 +26,93 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-public class LoginController implements Initializable,Runnable{
+public class LoginController implements Initializable, Runnable {
 
-	private int duration=1800;
-    @FXML
-    private Label titleText;
-
-    @FXML
-    private Button signButton;
-
-    @FXML
-    private JFXTextArea description;
-
-    @FXML
-    private Label title;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private AnchorPane mainAnchor;
-    
-    @FXML
-    private AnchorPane sideAnchor;
-   
+	private int duration = 1400;
+	@FXML
+	private Label titleText;
 
 	@FXML
-    private ImageView pic;
+	private Button signButton;
+
+	@FXML
+	private JFXTextArea description;
+
+	@FXML
+	private Label title;
+
+	@FXML
+	private TextField usernameField;
+
+	@FXML
+	private PasswordField passwordField;
+
+	@FXML
+	private Button loginButton;
+
+	@FXML
+	private AnchorPane mainAnchor;
+
+	@FXML
+	private AnchorPane sideAnchor;
+
+	@FXML
+	private ImageView pic;
 	FXMLLoader loader;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
-	//	System.out.println(User);
-		
-		usernameField.focusedProperty().addListener(new ChangeListener<Boolean>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
-            {
-                if (newPropertyValue)
-                {
-                    usernameField.setStyle("-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
-                }
-                else
-                {
-                	  usernameField.setStyle("-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
-                }
-            }
-        });
-		passwordField.focusedProperty().addListener(new ChangeListener<Boolean>()
-        {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
-            {
-                if (newPropertyValue)
-                {
-                    passwordField.setStyle("-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
-                }
-                else
-                {
-                	  passwordField.setStyle("-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
-                }
-            }
-        });
-		
-		
+		//	System.out.println(User);
+
+		usernameField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
+					Boolean newPropertyValue) {
+				if (newPropertyValue) {
+					usernameField.setStyle(
+							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
+				} else {
+					usernameField.setStyle(
+							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
+				}
+			}
+		});
+		passwordField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
+					Boolean newPropertyValue) {
+				if (newPropertyValue) {
+					passwordField.setStyle(
+							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
+				} else {
+					passwordField.setStyle(
+							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
+				}
+			}
+		});
+
 	}
+
 	AnchorPane register;
+
 	public void changePage(int User) {
 		switch (User) {
-		case 0:
-		{
+		case 0: {
 			titleText.setText("Hi Sir!");
 			description.setText("Have A Wonderful Day");
 			title.setText("Manager Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream("src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png")));
+				pic.setImage(new Image(new FileInputStream(
+						"src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png")));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
-		break;
-		case 1:
-		{
+			break;
+		case 1: {
 			titleText.setText("Hi!");
 			description.setText("Try To Do Your Best.");
 			title.setText("Employee Login");
@@ -127,20 +123,18 @@ public class LoginController implements Initializable,Runnable{
 				e.printStackTrace();
 			}
 		}
-		break;
-		case 2:
-		{
+			break;
+		case 2: {
 			try {
-				register=loader.load();
+				register = loader.load();
 				register.toFront();
 				signButton.setOnAction(e -> {
 					Thread thread = new Thread(this);
 					thread.start();
 					move();
-				
+
 				});
-				
-				
+
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
@@ -149,23 +143,23 @@ public class LoginController implements Initializable,Runnable{
 			title.setText("Client Login");
 			signButton.setVisible(true);
 			try {
-				pic.setImage(new Image(new FileInputStream("src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png")));
+				pic.setImage(new Image(new FileInputStream(
+						"src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png")));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		}
-		break;
+			break;
+		}
 	}
-	}
+
 	boolean right = true;
 
 	private void move() {
-		
+
 		if (right) {
 			sideAnchor.toFront();
-		
 
-			
 			TranslateTransition translate1 = new TranslateTransition();
 			translate1.setByX(600);
 			translate1.setDuration(Duration.millis(duration));
@@ -199,8 +193,7 @@ public class LoginController implements Initializable,Runnable{
 			right = false;
 		} else {
 			sideAnchor.toFront();
-			
-			
+
 			TranslateTransition translate1 = new TranslateTransition();
 			translate1.setByX(-600);
 			translate1.setDuration(Duration.millis(duration));
@@ -234,13 +227,14 @@ public class LoginController implements Initializable,Runnable{
 			right = true;
 		}
 	}
+
 	@Override
 	public void run() {
-		
-    	try {
-			Thread.sleep(duration/4);
+
+		try {
+			Thread.sleep(duration / 4);
 			Platform.runLater(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					titleText.setVisible(false);
@@ -252,62 +246,57 @@ public class LoginController implements Initializable,Runnable{
 					} else {
 						signButton.setText("Sign In");
 					}
-					
+
 				}
 			});
-			Thread.sleep(duration/4);
+			Thread.sleep(duration / 4);
 			Platform.runLater(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					if (!right) {
 						mainAnchor.setStyle("-fx-background-color:white;-fx-background-radius:25 0 0 25;");
-						sideAnchor.setStyle(sideAnchor.getStyle()+"-fx-background-radius:0 25 25 0;");
+						sideAnchor.setStyle(sideAnchor.getStyle() + "-fx-background-radius:0 25 25 0;");
 						register.toFront();
 						register.setStyle("-fx-background-color:white;-fx-background-radius:25 0 0 25");
 						mainAnchor.getChildren().add(register);
 						register.toFront();
 						titleText.setText("One Of Us?");
 						description.setText("If you already have an account, just sign in. We've missed you!");
-							
-						
-					}else {
+
+					} else {
 						mainAnchor.setStyle("-fx-background-color:white;-fx-background-radius:0 25 25 0;");
-						sideAnchor.setStyle(sideAnchor.getStyle()+"-fx-background-radius:25 0 0 25;");
+						sideAnchor.setStyle(sideAnchor.getStyle() + "-fx-background-radius:25 0 0 25;");
 						mainAnchor.getChildren().remove(register);
 						titleText.setText("New Here?");
 						description.setText("Sign up and use our bank to discover a lot of features!");
 					}
-					
+
 				}
 			});
-			Thread.sleep(duration/4);
+			Thread.sleep(duration / 4);
 			Platform.runLater(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					titleText.setVisible(true);
 					description.setVisible(true);
 					signButton.setVisible(true);
-					
+
 				}
 			});
-			Thread.sleep(duration/4);
+			Thread.sleep(duration / 4);
 			Platform.runLater(new Runnable() {
-				
+
 				@Override
 				public void run() {
-					
-					
+
 				}
 			});
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		
-	}
-	
 
+	}
 
 }

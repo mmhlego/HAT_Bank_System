@@ -5,27 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
-    public firstLoginController controller ;
+	public firstLoginController controller;
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
-			
+
 			Parent root = loader.load();
-			controller =loader.getController();
+			controller = loader.getController();
 			Scene scene = new Scene(root);
-			
+
 			primaryStage.setScene(scene);
-		//primaryStage.initStyle(StageStyle.UNDECORATED);
+			primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.show();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
