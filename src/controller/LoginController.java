@@ -17,6 +17,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class LoginController implements Initializable, Runnable {
@@ -61,17 +63,20 @@ public class LoginController implements Initializable, Runnable {
 	private ImageView pic;
 	FXMLLoader loader;
 	FXMLLoader MainLoader;
-	Scene UserMainPage;
-
+	Parent UserMainPage;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 		try {
 			UserMainPage = MainLoader.load();
 		} catch (IOException e) {
 		}
 
+		loginButton.setOnAction(e->{
+					((Stage)loginButton.getScene().getWindow()).setScene(new Scene(UserMainPage));
+				});
 		// StructureController.addButton();
 
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
