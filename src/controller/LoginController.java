@@ -17,6 +17,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -59,9 +60,19 @@ public class LoginController implements Initializable, Runnable {
 	@FXML
 	private ImageView pic;
 	FXMLLoader loader;
+	FXMLLoader MainLoader;
+	Scene UserMainPage;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
+		try {
+			UserMainPage = MainLoader.load();
+		} catch (IOException e) {
+		}
+
+		// StructureController.addButton();
 
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
 		//	System.out.println(User);
