@@ -26,7 +26,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 public class LoginController implements Initializable, Runnable {
@@ -75,7 +77,12 @@ public class LoginController implements Initializable, Runnable {
 		}
 
 		loginButton.setOnAction(e->{
-					((Stage)loginButton.getScene().getWindow()).setScene(new Scene(UserMainPage));
+					((Stage)loginButton.getScene().getWindow()).close();
+					Stage stage = new Stage(StageStyle.TRANSPARENT);
+					Scene scene = new Scene(UserMainPage);
+					scene.setFill(Color.TRANSPARENT);
+					stage.setScene(scene);
+					stage.show();
 				});
 		// StructureController.addButton();
 
