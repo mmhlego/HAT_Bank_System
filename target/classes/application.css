@@ -1,0 +1,28 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.text-area .content {
+    -fx-background-color:  #EEF5F3;
+    -fx-background-radius: 20;
+    -fx-border-width:0;
+}
+.text-area{
+    -fx-background-color:  #EEF5F3;
+    -fx-background-radius: 20;
+    -fx-border-width:0;
+}
+.text-area .scrollpane{
+    -fx-background-color:  #EEF5F3;
+    -fx-background-radius: 20;
+    -fx-border-width:0;
+}
+
+.text-area .viewport{
+    -fx-background-color:  #EEF5F3;
+    -fx-background-radius: 20;
+    -fx-border-width:0;
+}
+
+.text-input{
+    -fx-background-color:  #EEF5F3;
+    -fx-background-radius: 20;
+    -fx-border-width:0;
+}

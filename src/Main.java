@@ -6,6 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.DBConnector;
+
+import java.sql.*;
 
 public class Main extends Application {
 	public firstLoginController controller;
@@ -28,6 +31,7 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) {
-		launch(args);
+		//launch(args);
+		//System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", 1));
 	}
 }
