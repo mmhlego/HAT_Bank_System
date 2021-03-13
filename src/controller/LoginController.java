@@ -1,35 +1,25 @@
 package controller;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXTextArea;
-
-import javafx.animation.ScaleTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.beans.value.*;
+import javafx.fxml.*;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.*;
 import javafx.util.Duration;
+import model.DBConnector;
+import model.User;
+import model.encoder;
 
 public class LoginController implements Initializable, Runnable {
 
@@ -66,24 +56,46 @@ public class LoginController implements Initializable, Runnable {
 	FXMLLoader loader;
 	FXMLLoader MainLoader;
 	Parent UserMainPage;
-	
+
+	int AccessLevel;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 		try {
 			UserMainPage = MainLoader.load();
 		} catch (IOException e) {
 		}
 
-		loginButton.setOnAction(e->{
-					((Stage)loginButton.getScene().getWindow()).close();
+		loginButton.setOnAction(e -> {
+			String username = usernameField.getText();
+			String password = passwordField.getText();
+			String hashPassword = encoder.encode(password);
+
+			try {
+				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
+					((Stage) loginButton.getScene().getWindow()).close();
 					Stage stage = new Stage(StageStyle.TRANSPARENT);
 					Scene scene = new Scene(UserMainPage);
 					scene.setFill(Color.TRANSPARENT);
 					stage.setScene(scene);
 					stage.show();
-				});
+				} else {
+					Alert a = new Alert(AlertType.ERROR);
+					a.setTitle("Error");
+					a.setContentText("Wrong username/password.");
+					a.show();
+				}
+			} catch (Exception err) {
+				err.printStackTrace();
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Error");
+				a.setContentText(
+						"An error accured whil trying to connect to database.\nPlease check your network connection.");
+				a.show();
+			}
+		});
 		// StructureController.addButton();
 
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
@@ -120,9 +132,11 @@ public class LoginController implements Initializable, Runnable {
 
 	AnchorPane register;
 
-	public void changePage(int User) {
-		switch (User) {
-		case 0: {
+	public void changePage(int accessLevel) {
+		AccessLevel = accessLevel;
+
+		switch (accessLevel) {
+		case User.MANAGER: {
 			titleText.setText("Hi Sir!");
 			description.setText("Have A Wonderful Day");
 			title.setText("Manager Login");
@@ -135,7 +149,7 @@ public class LoginController implements Initializable, Runnable {
 			}
 		}
 			break;
-		case 1: {
+		case User.EMPLOYEE: {
 			titleText.setText("Hi!");
 			description.setText("Try To Do Your Best.");
 			title.setText("Employee Login");
@@ -147,7 +161,7 @@ public class LoginController implements Initializable, Runnable {
 			}
 		}
 			break;
-		case 2: {
+		case User.CLIENT: {
 			try {
 				register = loader.load();
 				register.toFront();
@@ -179,7 +193,6 @@ public class LoginController implements Initializable, Runnable {
 	boolean right = true;
 
 	private void move() {
-
 		if (right) {
 			sideAnchor.toFront();
 
@@ -253,7 +266,6 @@ public class LoginController implements Initializable, Runnable {
 
 	@Override
 	public void run() {
-
 		try {
 			Thread.sleep(duration / 4);
 			Platform.runLater(new Runnable() {
@@ -321,5 +333,4 @@ public class LoginController implements Initializable, Runnable {
 		}
 
 	}
-
 }

@@ -3,6 +3,8 @@ package model;
 import java.util.*;
 
 public class User {
+    public static final int CLIENT = 0, EMPLOYEE = 1, MANAGER = 2;
+
     String FirstName, LastName, Username, Password, Address, ID, NationalCode;
     Date BirthDate;
     int AccessLevel, Theme, Language;
