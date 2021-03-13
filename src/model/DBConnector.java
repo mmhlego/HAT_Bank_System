@@ -29,16 +29,12 @@ public class DBConnector {
         return results;
     }
 
-    public static boolean checkUser(String username, String hashPassword, int AccessLevel) {
-        try {
-            ResultSet results = runCommand("select * from User WHERE Username=\'" + username + "\' AND Password=\'"
-                    + hashPassword + "\' AND AccessLevel=" + AccessLevel);
+    public static boolean checkUser(String username, String hashPassword, int AccessLevel) throws Exception {
+        ResultSet results = runCommand("select * from User WHERE Username=\'" + username + "\' AND Password=\'"
+                + hashPassword + "\' AND AccessLevel=" + AccessLevel);
 
-            if (results.next()) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (results.next()) {
+            return true;
         }
 
         return false;
@@ -51,15 +47,4 @@ public class DBConnector {
     public static void addUser() {
 
     }
-
-    /*public static boolean checkUser(User user) {
-        try {
-            connect();
-    
-            close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            return false;
-        }
-    }*/
 }
