@@ -61,13 +61,27 @@ public class firstLoginController implements Initializable{
 			controller.changePage(2);
 		});
 		
+		clientButton.setOnAction(e->{
+			 changePage() ;
+			controller.changePage(2);
+		});
+		
 		ManagerLogin.setOnMouseClicked(e->{
 			 changePage();
 			controller. changePage(0);
 		});
 		
+		managerButton.setOnAction(e->{
+			changePage();
+			controller. changePage(0);
+		});
 		EmployeeLogin.setOnMouseClicked(e->{
 			 changePage();
+			controller.changePage(1);
+		});
+		
+		employeeButton.setOnAction(e->{
+			changePage();
 			controller.changePage(1);
 		});
 			

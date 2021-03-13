@@ -1,11 +1,14 @@
 package model;
 
-import java.util.Date;
+import java.util.*;
 
 public class User {
     String FirstName, LastName, Username, Password, Address, ID, NationalCode;
     Date BirthDate;
     int AccessLevel, Theme, Language;
+
+    ArrayList<Loan> Loans = new ArrayList<Loan>();
+    ArrayList<Account> Accounts = new ArrayList<Account>();
 
     public User(String firstName, String lastName, String password, String address, String id, String nationalCode,
             Date birthDate, int accessLevel) {
@@ -17,6 +20,22 @@ public class User {
         NationalCode = nationalCode;
         BirthDate = birthDate;
         AccessLevel = accessLevel;
+    }
+
+    public void addToLoans(Loan l) {
+        Loans.add(l);
+    }
+
+    public ArrayList<Loan> getLoans() {
+        return Loans;
+    }
+
+    public void addToAccounts(Account a) {
+        Accounts.add(a);
+    }
+
+    public ArrayList<Account> getAccounts() {
+        return Accounts;
     }
 
     public static String generateID(int AccessLevel, Long SameAccessUsersCount) {

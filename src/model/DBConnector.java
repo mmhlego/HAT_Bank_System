@@ -51,15 +51,4 @@ public class DBConnector {
     public static void addUser() {
 
     }
-
-    /*public static boolean checkUser(User user) {
-        try {
-            connect();
-    
-            close();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            return false;
-        }
-    }*/
 }
