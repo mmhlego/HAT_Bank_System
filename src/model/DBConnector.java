@@ -55,7 +55,7 @@ public class DBConnector {
     //============================================================================================= CONNECTION METHODS
 
     public static boolean connect() throws SQLException {
-        con = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql639853",
+        con = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
                 "t8YnlV3Mzt");
 
         if (con != null) {
