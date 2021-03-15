@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanStatusController">
+   <children>
+      <Label alignment="CENTER" layoutX="440.0" layoutY="28.0" prefHeight="50.0" prefWidth="870.0" style="-fx-background-color: #ffffff40; -fx-background-radius: 20;" text="Loans Status" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="50.0" layoutY="102.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <content>
+            <VBox alignment="CENTER">
+               <children>
+                  <Group fx:id="pendingGroup">
+                     <children>
+                        <Group>
+                           <children>
+                              <Separator layoutY="12.0" prefHeight="3.0" prefWidth="350.0" />
+                              <Separator layoutX="470.0" layoutY="11.0" prefWidth="350.0" />
+                              <Label layoutX="377.0" text="Pending" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <VBox layoutY="34.0">
+                           <children>
+                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label layoutX="761.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ffee00; -fx-background-radius: 8;" />
+                                    <Group layoutX="14.0" layoutY="15.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="pendingLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="396.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" text="Account ID :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="pendingLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Group>
+                  <Group fx:id="acceptedGroup">
+                     <children>
+                        <Group>
+                           <children>
+                              <Separator layoutY="12.0" prefHeight="3.0" prefWidth="350.0" />
+                              <Separator layoutX="470.0" layoutY="11.0" prefWidth="350.0" />
+                              <Label layoutX="374.0" layoutY="-1.0" text="Accepted" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <VBox layoutY="34.0">
+                           <children>
+                              <AnchorPane prefHeight="225.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                                 <children>
+                                    <JFXProgressBar layoutX="20.0" layoutY="173.0" prefHeight="20.0" prefWidth="490.0" progress="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+                                    <Label layoutX="760.0" layoutY="14.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #07c3ff; -fx-background-radius: 8;" />
+                                    <Group layoutX="14.0" layoutY="16.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="acceptedLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="396.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" text="Account ID :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="acceptedLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Group>
+                  <Group fx:id="finishedGroup">
+                     <children>
+                        <Group>
+                           <children>
+                              <Separator layoutY="12.0" prefHeight="3.0" prefWidth="350.0" />
+                              <Separator layoutX="470.0" layoutY="11.0" prefWidth="350.0" />
+                              <Label layoutX="377.0" layoutY="-1.0" text="Finished" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <VBox layoutY="32.0">
+                           <children>
+                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label layoutX="764.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #00ff0a; -fx-background-radius: 8;" />
+                                    <Group layoutX="14.0" layoutY="15.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="finishedLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="396.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" text="Account ID :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="finishedLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Group>
+                  <Group fx:id="rejectedGroup">
+                     <children>
+                        <Group>
+                           <children>
+                              <Separator layoutY="12.0" prefHeight="3.0" prefWidth="350.0" />
+                              <Separator layoutX="470.0" layoutY="11.0" prefWidth="350.0" />
+                              <Label layoutX="377.0" layoutY="-1.0" text="Rejected" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <VBox layoutY="37.0">
+                           <children>
+                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                                 <children>
+                                    <Label layoutX="765.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ff0000; -fx-background-radius: 8;" />
+                                    <Group layoutX="14.0" layoutY="15.0">
+                                       <children>
+                                          <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="rejectedLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" layoutX="396.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" text="Account ID :" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="rejectedLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </Group>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Group>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
