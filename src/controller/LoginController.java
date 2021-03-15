@@ -26,31 +26,22 @@ public class LoginController implements Initializable, Runnable {
 	private int duration = 1400;
 	@FXML
 	private Label titleText;
-
 	@FXML
 	private Button signButton;
-
 	@FXML
 	private JFXTextArea description;
-
 	@FXML
 	private Label title;
-
 	@FXML
 	private TextField usernameField;
-
 	@FXML
 	private PasswordField passwordField;
-
 	@FXML
 	private Button loginButton;
-
 	@FXML
 	private AnchorPane mainAnchor;
-
 	@FXML
 	private AnchorPane sideAnchor;
-
 	@FXML
 	private ImageView pic;
 	FXMLLoader loader;
@@ -73,6 +64,8 @@ public class LoginController implements Initializable, Runnable {
 			String password = passwordField.getText();
 			String hashPassword = encoder.encode(password);
 
+			//DBConnector.showLoading();
+
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
 					((Stage) loginButton.getScene().getWindow()).close();
@@ -88,7 +81,9 @@ public class LoginController implements Initializable, Runnable {
 					a.show();
 				}
 			} catch (Exception err) {
+				DBConnector.closeLoading();
 				err.printStackTrace();
+				//System.out.println(err.toString());
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Error");
 				a.setContentText(
