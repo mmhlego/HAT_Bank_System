@@ -13,6 +13,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
+    	<groupId>org.openjfx</groupId>
+    	<artifactId>javafx-fxml</artifactId>
+    	<version>11.0.1</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -21,7 +26,7 @@
 		<dependency>
 			<groupId>com.jfoenix</groupId>
 			<artifactId>jfoenix</artifactId>
-			<version>8.0.10</version>
+			<version>9.0.10</version>
 		</dependency>
 		  <dependency>
 			<groupId>org.openjfx</groupId>
@@ -45,10 +50,6 @@
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.0.2</version>
 				</plugin>
-				<!-- <plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin> -->
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>

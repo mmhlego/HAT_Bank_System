@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="36.0" layoutY="30.0" prefHeight="419.0" prefWidth="382.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="117.0" layoutY="266.0" text="All Loans" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="460.0" layoutY="30.0" prefHeight="419.0" prefWidth="417.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="85.0" layoutY="261.0" text="Requested Loans" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
