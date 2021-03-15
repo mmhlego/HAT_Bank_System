@@ -105,7 +105,7 @@ public class firstLoginController implements Initializable {
 		transition.setInterpolator(Interpolator.EASE_OUT);
 		transition.setNode(firstPage);
 		transition.setAutoReverse(false);
-		transition.setDuration(Duration.seconds(4));
+		transition.setDuration(Duration.seconds(2));
 		transition.setCycleCount(1);
 		transition.play();
 		firstPage.setPrefWidth(2000);
