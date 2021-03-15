@@ -44,6 +44,10 @@ public class LoginController implements Initializable, Runnable {
 	private AnchorPane sideAnchor;
 	@FXML
 	private ImageView pic;
+	@FXML
+    private Group miniGroup;
+    @FXML
+    private Group exitGroup;
 	FXMLLoader loader;
 	FXMLLoader MainLoader;
 	Parent UserMainPage;
@@ -52,11 +56,16 @@ public class LoginController implements Initializable, Runnable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		exitGroup.setCursor(Cursor.HAND);
+		exitGroup.setOnMouseClicked(e->Platform.exit());
+		miniGroup.setCursor(Cursor.HAND);
+		miniGroup.setOnMouseClicked(e->((Stage)miniGroup.getScene().getWindow()).setIconified(true));
 
 		MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 		try {
 			UserMainPage = MainLoader.load();
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		loginButton.setOnAction(e -> {
