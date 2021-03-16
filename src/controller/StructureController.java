@@ -15,7 +15,7 @@ import javafx.util.Duration;
 
 public class StructureController implements Initializable, Runnable {
 
-	public static final int Accounts = 0, ClientLoans = 1, ClientsList = 2, AllLoans = 3, EmployeesList = 4;
+	public static final int MAINPAGE=0,CLIENTLOANS=1,MANAGERLOANS=2,CLIENTACCOUNTS=3,MANGERACCOUNTS=4,SETTINGS=5;
 
 	@FXML
 	private VBox sidePanel;
@@ -28,12 +28,24 @@ public class StructureController implements Initializable, Runnable {
 
 	@FXML
 	private ImageView changeImage;
-	static Parent[] root = new Parent[5];
+	
+	 @FXML
+	 private Group miniGroup;
+
+	 @FXML
+	 private Group exitGroup;
+	    
+	static Parent[] root = new Parent[6];
 	HBox box;
 	static VBox btns;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		exitGroup.setCursor(Cursor.HAND);
+		exitGroup.setOnMouseClicked(e->Platform.exit());
+		miniGroup.setCursor(Cursor.HAND);
+		miniGroup.setOnMouseClicked(e->((Stage)miniGroup.getScene().getWindow()).setIconified(true));
+		
 		changeImage.setVisible(true);
 		exSidePanel.setVisible(false);
 		changeImage.setCursor(Cursor.HAND);
@@ -44,14 +56,17 @@ public class StructureController implements Initializable, Runnable {
 			btns=new VBox();
 			box.getChildren().add(sidePanel);
 			box.getChildren().add(btns);
-			exSidePanel.getChildren().add(box);
-		 /*   try {
-		    loadPage("ClientAccounts", 0);
+			exSidePanel.getChildren().add(box);*/
+		   
+		    loadPage("mainPage", 0);
+		    loadPage("clientLoans", 1);
+		    loadPage("managerLoans", 2);
+		    loadPage("clientsAccounts", 3);
+		    loadPage("managerAccounts", 4);
+		    loadPage("settings", 5);
 		
-		} catch (Exception e) {
-		    e.printStackTrace();
+		
 		}
-		}*/}
 
 	public void loadPage(String fxml, int page) {
 		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/" + fxml + ".fxml"));

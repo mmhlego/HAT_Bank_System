@@ -14,29 +14,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
+<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
    <children>
-      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="286.0" layoutY="37.0" text="Create Account" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <TextField layoutY="2.0" prefHeight="25.0" prefWidth="0.0" style="-fx-background-color: none;">
+         <cursor>
+            <Cursor fx:constant="NONE" />
+         </cursor>
+      </TextField>
+      <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="37.0" text="Create Account" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <TextField fx:id="phoneField" focusTraversable="false" layoutX="100.0" layoutY="308.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <padding>
-            <Insets left="50.0" right="30.0" />
-         </padding>
-      </TextField>
-      <PasswordField fx:id="passwordField" focusTraversable="false" layoutX="172.0" layoutY="457.0" prefHeight="30.0" prefWidth="326.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <padding>
-            <Insets left="50.0" right="50.0" />
-         </padding>
-      </PasswordField>
       <Button fx:id="signUp" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-radius: 200 200 200 200; -fx-background-color: RGBA(0,192,213,1)RGBA(0,192,213,1);" text="Sign Up" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="500.0">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -46,7 +35,7 @@
          </cursor>
       </Button>
       <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="firstNameField" focusTraversable="false" layoutX="100.0" layoutY="158.0" prefHeight="30.0" prefWidth="369.0" promptText="First Name" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="firstNameField" layoutX="100.0" layoutY="158.0" prefHeight="30.0" prefWidth="369.0" promptText="First Name" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -54,7 +43,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextField fx:id="lastNameField" focusTraversable="false" layoutX="100.0" layoutY="196.0" prefHeight="30.0" prefWidth="225.0" promptText="Last Name" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="lastNameField" layoutX="100.0" layoutY="196.0" prefHeight="30.0" prefWidth="225.0" promptText="Last Name" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -66,7 +55,7 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></JFXTextField>
-      <TextField fx:id="codeField" focusTraversable="false" layoutX="100.0" layoutY="233.0" prefHeight="30.0" prefWidth="225.0" promptText="National Code" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="codeField" layoutX="100.0" layoutY="233.0" prefHeight="30.0" prefWidth="225.0" promptText="National Code" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -74,7 +63,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextField fx:id="birthField" focusTraversable="false" layoutX="100.0" layoutY="270.0" prefHeight="30.0" prefWidth="225.0" promptText="Birth Date" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="birthField" layoutX="100.0" layoutY="270.0" prefHeight="30.0" prefWidth="225.0" promptText="Birth Date" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -82,7 +71,8 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextField fx:id="usernameField" focusTraversable="false" layoutX="100.0" layoutY="420.0" prefHeight="30.0" prefWidth="225.0" promptText="Username" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="464.0" layoutY="273.0" prefHeight="25.0" prefWidth="30.0" />
+      <TextField fx:id="phoneField" layoutX="100.0" layoutY="308.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -90,7 +80,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextArea fx:id="addressField" focusTraversable="false" layoutX="100.0" layoutY="347.0" prefHeight="62.0" prefWidth="400.0" promptText="Address" stylesheets="@../application.css" wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextArea fx:id="addressField" layoutX="100.0" layoutY="347.0" prefHeight="62.0" prefWidth="400.0" promptText="Address" stylesheets="@../application.css" wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <padding>
             <Insets left="43.0" right="30.0" />
          </padding>
@@ -98,6 +88,22 @@
             <Font size="15.0" />
          </font>
       </TextArea>
+      <TextField fx:id="usernameField" layoutX="100.0" layoutY="420.0" prefHeight="30.0" prefWidth="225.0" promptText="Username" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" right="30.0" />
+         </padding>
+      </TextField>
+      <PasswordField fx:id="passwordField" layoutX="172.0" layoutY="457.0" prefHeight="30.0" prefWidth="326.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" right="50.0" />
+         </padding>
+      </PasswordField>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="110.0" layoutY="161.0" preserveRatio="true">
          <image>
             <Image url="@icons/names.png" />
@@ -138,6 +144,5 @@
             <Image url="@icons/password.png" />
          </image>
       </ImageView>
-      <JFXDatePicker fx:id="birthPicker" layoutX="464.0" layoutY="273.0" prefHeight="25.0" prefWidth="30.0" />
    </children>
 </AnchorPane>
