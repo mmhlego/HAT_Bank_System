@@ -38,7 +38,7 @@ public class DBConnector {
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());
             ap.getChildren().add(root);
-            AnchorPane.setTopAnchor(root, 0.0);
+            AnchorPane.setTopAnchor(root, 26.0);
             AnchorPane.setLeftAnchor(root, offsetLeft);
             stage.show();
         } catch (Exception e) {

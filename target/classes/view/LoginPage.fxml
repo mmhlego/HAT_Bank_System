@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -11,11 +12,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <ImageView fitHeight="700.0" fitWidth="1000.0" layoutX="-29.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="700.0" fitWidth="1000.0" layoutX="-29.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <image>
             <Image url="@pictures/image%20(1).jpg" />
          </image>
@@ -47,14 +49,14 @@
                   </JFXTextArea>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="mainAnchor" layoutX="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 25 25 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="mainAnchor" focusTraversable="true" layoutX="300.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 25 25 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="286.0" layoutY="37.0" text="Manager Login" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                  <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="37.0" text="Manager Login" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usernameField" focusTraversable="false" layoutX="100.0" layoutY="327.0" prefHeight="50.0" prefWidth="400.0" promptText="UserName" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="327.0">
+                  <TextField fx:id="usernameField" layoutX="100.0" layoutY="327.0" prefHeight="50.0" prefWidth="400.0" promptText="UserName" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="327.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -62,7 +64,7 @@
                         <Insets left="50.0" right="30.0" />
                      </padding>
                   </TextField>
-                  <PasswordField fx:id="passwordField" focusTraversable="false" layoutX="100.0" layoutY="405.0" prefHeight="50.0" prefWidth="400.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="405.0">
+                  <PasswordField fx:id="passwordField" layoutX="100.0" layoutY="405.0" prefHeight="50.0" prefWidth="400.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="405.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -71,7 +73,7 @@
                      </padding>
                   </PasswordField>
                   <Separator layoutX="200.0" layoutY="136.0" prefHeight="0.0" prefWidth="339.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" />
-                  <Button fx:id="loginButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-radius: 200 200 200 200; -fx-background-color: RGBA(0,192,213,1)RGBA(0,192,213,1);" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="500.0">
+                  <Button fx:id="loginButton" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-radius: 200 200 200 200; -fx-background-color: RGBA(0,192,213,1)RGBA(0,192,213,1);" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="500.0">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -80,14 +82,46 @@
                      </cursor>
                   </Button>
                   <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="pic" fitHeight="150.0" fitWidth="150.0" layoutX="225.0" layoutY="150.0" pickOnBounds="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0">
+                  <ImageView fx:id="pic" fitHeight="150.0" fitWidth="150.0" focusTraversable="true" layoutX="225.0" layoutY="150.0" pickOnBounds="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0">
                      <image>
                         <Image url="@pictures/project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="111.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/username.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="111.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/password.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
+      <HBox alignment="CENTER_RIGHT" layoutX="555.0" layoutY="-26.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #119CD390;" AnchorPane.bottomAnchor="701.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Group fx:id="miniGroup">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@icons/mini.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <Group fx:id="exitGroup">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@icons/exit.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

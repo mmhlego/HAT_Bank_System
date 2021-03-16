@@ -5,13 +5,16 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.User;
 
@@ -37,12 +40,22 @@ public class firstLoginController implements Initializable {
 
 	@FXML
 	private ToggleButton managerButton;
+	
+	 @FXML
+    private Group miniGroup;
+
+   @FXML
+    private Group exitGroup;
 
 	FXMLLoader loader;
 	AnchorPane root;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		exitGroup.setCursor(Cursor.HAND);
+		exitGroup.setOnMouseClicked(e->Platform.exit());
+		miniGroup.setCursor(Cursor.HAND);
+		miniGroup.setOnMouseClicked(e->((Stage)miniGroup.getScene().getWindow()).setIconified(true));
 		try {
 			loader = new FXMLLoader(this.getClass().getResource("../view/LoginPage.fxml"));
 			root = loader.load();
