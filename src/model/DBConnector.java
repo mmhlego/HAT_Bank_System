@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
 public class DBConnector {
 
     private static Connection con;
@@ -126,4 +127,6 @@ public class DBConnector {
                         + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
                         + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
     }
+
+    
 }

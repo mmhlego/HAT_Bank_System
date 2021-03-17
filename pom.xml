@@ -13,9 +13,19 @@
 	</properties>
 	<dependencies>
 		<dependency>
-    	<groupId>org.openjfx</groupId>
-    	<artifactId>javafx-fxml</artifactId>
-    	<version>11.0.1</version>
+    		<groupId>org.openjfx</groupId>
+    		<artifactId>javafx-fxml</artifactId>
+    		<version>11.0.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>1.4</version>
+		</dependency>
+		<dependency>
+    		<groupId>javax.activation</groupId>
+    		<artifactId>activation</artifactId>
+    		<version>1.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -24,10 +34,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.jfoenix</groupId>
-			<artifactId>jfoenix</artifactId>
-			<version>9.0.10</version>
-		</dependency>
+    		<groupId>com.jfoenix</groupId>
+    		<artifactId>jfoenix</artifactId>
+    		<version>9.0.10</version>
+			</dependency>
 		  <dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
