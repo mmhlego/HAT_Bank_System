@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
 public class DBConnector {
 
     private static Connection con;
@@ -13,7 +14,8 @@ public class DBConnector {
     private static ResultSet results;
     private static double offsetLeft = 0.0;
 
-    //============================================================================================= GETTERS & SETTERS
+    // =============================================================================================
+    // GETTERS & SETTERS
 
     public static void setOffsetLeft(Double d) {
         offsetLeft = d;
@@ -27,7 +29,8 @@ public class DBConnector {
         return results;
     }
 
-    //============================================================================================= LOADING SCREEN METHODS
+    // =============================================================================================
+    // LOADING SCREEN METHODS
 
     public static boolean showLoading() {
         try {
@@ -52,7 +55,8 @@ public class DBConnector {
         ap.getChildren().remove(len - 1);
     }
 
-    //============================================================================================= CONNECTION METHODS
+    // =============================================================================================
+    // CONNECTION METHODS
 
     public static boolean connect() throws SQLException {
         con = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
@@ -68,7 +72,8 @@ public class DBConnector {
         con.close();
     }
 
-    //============================================================================================= COMPLETE METHODS
+    // =============================================================================================
+    // COMPLETE METHODS
 
     private static ResultSet runCommand(String command) throws Exception {
         results = null;
@@ -91,21 +96,37 @@ public class DBConnector {
         return false;
     }
 
-    //============================================================================================= 
-
-    /*private static void connect() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
-                "t8YnlV3Mzt");
-    
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from Sample");
-        while (rs.next()) {
-            System.out.println(rs.getString(1));
+    public static boolean UserExist(String Username) throws Exception {
+        runCommand("select * from User WHERE Username =\'" + Username + "\'");
+        if (results == null) {
+            return false;
+        } else if (results.next()) {
+            return true;
         }
-    }*/
-
-    public static void addUser() {
-
+        return false;
     }
+
+    // =============================================================================================
+
+    /*
+     * private static void connect() throws Exception {
+     * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(
+     * "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
+     * "t8YnlV3Mzt");
+     * 
+     * Statement stmt = con.createStatement(); ResultSet rs =
+     * stmt.executeQuery("select * from Sample"); while (rs.next()) {
+     * System.out.println(rs.getString(1)); } }
+     */
+
+    public static void addUser(String firstname, String lastname, String nationalCode, String birthDate,
+            String phonenumber, String address, String Username, String Password, int AccessLevel, String id)
+            throws Exception {
+        runCommand(
+                "INSERT INTO User (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
+                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
+                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
+    }
+
+    
 }
