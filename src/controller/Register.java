@@ -7,6 +7,9 @@ import com.jfoenix.controls.JFXDatePicker;
 import javafx.beans.value.*;
 import javafx.fxml.*;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import model.DBConnector;
+import model.encoder;
 
 public class Register implements Initializable {
     @FXML
@@ -26,7 +29,7 @@ public class Register implements Initializable {
     @FXML
     private TextField birthField;
     @FXML
-    private TextField usernameField;
+    public TextField usernameField;
     @FXML
     private TextArea addressField;
     @FXML
@@ -60,6 +63,23 @@ public class Register implements Initializable {
             LocalDate date = birthPicker.getValue();
             birthField.setText(
                     String.format("%s / %s / %s ", date.getYear(), date.getMonthValue(), date.getDayOfMonth()));
+        });
+
+        signUp.setOnAction(e -> {
+            try {
+                if (DBConnector.UserExist(usernameField.getText())) {
+                    Alert Error = new Alert(AlertType.ERROR);
+                    Error.setContentText("This Username Already Exists Choose Another One");
+                    Error.setHeaderText("Error");
+                    Error.show();
+                } else {
+                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), codeField.getText(),
+                            birthField.getText(), phoneField.getText(), addressField.getText(), usernameField.getText(),
+                            encoder.encode(passwordField.getText()), 0, "Generate Specific ID");
+                }
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
         });
 
     }

@@ -9,7 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
-public class LoanStatusController implements Initializable{
+public class LoanStatusController implements Initializable {
 
     @FXML
     private AnchorPane MainPanel;
@@ -50,10 +50,8 @@ public class LoanStatusController implements Initializable{
     @FXML
     private Label rejectedLoanID;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
+    }
 }

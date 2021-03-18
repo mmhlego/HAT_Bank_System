@@ -1,72 +1,68 @@
 package controller;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class StructureController implements Initializable, Runnable {
+public class StructureController implements Initializable {
 
-	public static final int MAINPAGE=0,CLIENTLOANS=1,MANAGERLOANS=2,CLIENTACCOUNTS=3,MANGERACCOUNTS=4,SETTINGS=5;
-
-	@FXML
-	private VBox sidePanel;
+	public static final int MAINPAGE = 0, CLIENTLOANS = 1, MANAGERLOANS = 2, CLIENTACCOUNTS = 3, MANGERACCOUNTS = 4,
+			SETTINGS = 5;
 
 	@FXML
 	private AnchorPane MainPanel;
 
 	@FXML
-	private VBox exSidePanel;
+	private VBox SidePanel;
 
 	@FXML
-	private ImageView changeImage;
-	
-	 @FXML
-	 private Group miniGroup;
+	private HBox toggleSidepanel;
 
-	 @FXML
-	 private Group exitGroup;
-	    
 	static Parent[] root = new Parent[6];
 	HBox box;
-	static VBox btns;
+	private static AnchorPane Main;
+	private static VBox side;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		exitGroup.setCursor(Cursor.HAND);
-		exitGroup.setOnMouseClicked(e->Platform.exit());
-		miniGroup.setCursor(Cursor.HAND);
-		miniGroup.setOnMouseClicked(e->((Stage)miniGroup.getScene().getWindow()).setIconified(true));
-		
-		changeImage.setVisible(true);
-		exSidePanel.setVisible(false);
-		changeImage.setCursor(Cursor.HAND);
-		changeImage.toFront();
-		changeImage.setOnMouseClicked(e -> sideTransition());
-		exSidePanel.toBack();
 		/*	box=new HBox();
 			btns=new VBox();
 			box.getChildren().add(sidePanel);
 			box.getChildren().add(btns);
 			exSidePanel.getChildren().add(box);*/
-		   
-		    loadPage("mainPage", 0);
-		    loadPage("clientLoans", 1);
-		    loadPage("managerLoans", 2);
-		    loadPage("clientsAccounts", 3);
-		    loadPage("managerAccounts", 4);
-		    loadPage("settings", 5);
-		
-		
+
+		loadPage("mainPage", 0);
+		loadPage("clientLoans", 1);
+		loadPage("managerLoans", 2);
+		loadPage("clientsAccounts", 3);
+		loadPage("managerAccounts", 4);
+		loadPage("settings", 5);
+
+		Main = MainPanel;
+
+		side = SidePanel;
+		side.toBack();
+
+		sideTransition();
+
+		toggleSidepanel.setOnMouseClicked(e -> {
+			sideTransition();
+		});
+
+		try {
+			FXMLLoader loader = new FXMLLoader(new File("src/view/mainPage.fxml").toURI().toURL());
+
+			Main.getChildren().add(loader.load());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 
 	public void loadPage(String fxml, int page) {
 		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/" + fxml + ".fxml"));
@@ -78,61 +74,44 @@ public class StructureController implements Initializable, Runnable {
 	}
 
 	public static void addButton(int page) {
-		Button b = new Button();
-		btns.getChildren().add(b);
-		b.setPrefWidth(280);
-		b.setPrefHeight(80);
+		try {
+			FXMLLoader loader = new FXMLLoader(new File("src/view/components/SidePanelButtons.fxml").toURI().toURL());
 
-		b.setOnAction(e -> {
-			((Stage) b.getScene().getWindow()).setScene(new Scene(root[page]));
+			HBox button = loader.load();
 
-			//loader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
-		});
+			button.setOnMouseClicked(e -> {
+				int len = Main.getChildren().size();
+				Main.getChildren().remove(len - 1);
+				Main.getChildren().add(root[page]);
+			});
+
+			((Label) button.getChildren().get(0)).setText(Integer.toString(page));
+			((Label) button.getChildren().get(1)).setText(Integer.toString(page));
+
+			side.getChildren().add(button);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	private boolean check = true;
+	private boolean check = false;
 
 	private void sideTransition() {
-		Thread thread = new Thread(this);
-		thread.start();
 		if (check) {
-			//sidePanel.setVisible(false);
-			sidePanel.toFront();
-			exSidePanel.setVisible(true);
-			TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), exSidePanel);
+			TranslateTransition transition = new TranslateTransition(Duration.millis(500), side);
 			transition.setCycleCount(1);
-			transition.setFromX(200);
+			transition.setFromX(220);
 			transition.setToX(0);
 			transition.play();
 			check = false;
 		} else {
-
-			TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), exSidePanel);
+			TranslateTransition transition = new TranslateTransition(Duration.millis(500), side);
 			transition.setCycleCount(1);
 			transition.setFromX(0);
-			transition.setToX(200);
+			transition.setToX(220);
 			transition.play();
 			check = true;
 		}
-
-	}
-
-	@Override
-	public void run() {
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Platform.runLater(new Runnable() {
-
-			@Override
-			public void run() {
-				if (check) {
-					sidePanel.setVisible(true);
-					exSidePanel.setVisible(false);
-				}
-			}
-		});
 	}
 }

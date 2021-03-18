@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="firstPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.firstLoginController">
+<AnchorPane fx:id="firstPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="726.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.firstLoginController">
    <children>
       <ImageView fitHeight="700.0" fitWidth="1000.0" layoutX="-135.0" layoutY="102.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0">
          <image>
             <Image url="@pictures/image%20(1).jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="86.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to top left , #22eb72 ,#00b2ff ); -fx-background-radius: 25  25 25 25;" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="93.0">
+      <AnchorPane layoutX="50.0" layoutY="83.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to top left , #22eb72 ,#00b2ff ); -fx-background-radius: 25  25 25 25;" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="83.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="67.0" prefHeight="100.0" prefWidth="94.0" style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 25 25 25 25;" text="Login As:" textAlignment="CENTER" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
                <font>
