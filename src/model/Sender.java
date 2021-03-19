@@ -1,10 +1,14 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Sender {
+
+    public static String HTML;
 
     public static void SendEmail(String recepient, String Title, String Body) throws Exception {
         Properties properties = new Properties();
@@ -36,10 +40,10 @@ public class Sender {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject(Title);
-            message.setText(Body);
+            // message.setText(Body);
             message.reply(false);
             // Support HTML Version :
-            // message.setContent(Title, "text/html");
+            message.setContent(HTML, "text/html");
         } catch (Exception e) {
             e.printStackTrace();
             // Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,4 +54,27 @@ public class Sender {
         System.out.println("Message sent successfully");
     }
 
+    public static void Load() {
+        try {
+            Scanner s = new Scanner(new File(System.getProperty("user.dir") + "/model/Mail.html"));
+
+            while (s.hasNextLine()) {
+                HTML += s.nextLine();
+                HTML += "\n";
+            }
+
+            s.close();
+
+            replaceData();
+
+            System.out.println(HTML);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void replaceData() {
+        HTML = HTML.replace("{firstName}", UserController.getCurrentUser().FirstName);
+    }
 }
