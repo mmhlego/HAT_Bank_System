@@ -1,19 +1,20 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class User {
     public static final int CLIENT = 0, EMPLOYEE = 1, MANAGER = 2;
 
     public String FirstName, LastName, Username, Password, Email, PhoneNumber, Address, ID, NationalCode;
-    public Date BirthDate;
+    public LocalDate BirthDate;
     public int AccessLevel, Theme, Language;
 
     public ArrayList<Loan> Loans = new ArrayList<Loan>();
     public ArrayList<Account> Accounts = new ArrayList<Account>();
 
     public User(String firstName, String lastName, String username, String password, String email, String phone,
-            int accessLevel, String address, String id, String nationalCode, Date birthDate, int theme, int language) {
+            int accessLevel, String address, String id, String nationalCode, LocalDate birthDate, int theme, int language) {
         FirstName = firstName;
         LastName = lastName;
         Username = username;

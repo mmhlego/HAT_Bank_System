@@ -90,6 +90,9 @@ public class PasswordChangerController implements Initializable{
 	private void captchaMaker() {
 		try {
 			cap=FXMLLoader.load(this.getClass().getResource("../view/captcha.fxml"));
+			if (captchaArea.getChildren().size()!=0) {
+				captchaArea.getChildren().clear();
+			}
 			captchaArea.getChildren().add(cap);
 			AnchorPane.setTopAnchor(cap, (double) 0);
 			AnchorPane.setBottomAnchor(cap, (double) 0);
@@ -103,7 +106,7 @@ public class PasswordChangerController implements Initializable{
 	private void rotation() {
 		RotateTransition rotate = new RotateTransition();
 		rotate.setNode(recaptcha);
-		rotate.setCycleCount(5);
+		rotate.setCycleCount(1);
 		rotate.setAxis(new Point3D(0, 0, 1));
 		rotate.setByAngle(360);
 		rotate.setDuration(Duration.seconds(1));

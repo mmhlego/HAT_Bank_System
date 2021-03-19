@@ -109,7 +109,7 @@ public class Captcha implements Initializable{
 	private void getField(Label t) {
 		textRotate(t);
 		textTranslate(t);
-		fontChange(t);
+		
 	}
 	
 	private void textRotate(Label t) {
@@ -118,8 +118,8 @@ public class Captcha implements Initializable{
 	
 	private void textTranslate(Label t) {
 		//t.set
-		t.setLayoutY(t.getLayoutY()+r.nextDouble()*(40-t.getHeight()-10)-(40-t.getHeight()-10)/2);
-		t.setLayoutX(t.getLayoutX()+r.nextDouble()*(50-t.getWidth()-10)-(50-t.getWidth()-10)/2);
+		t.setLayoutY(t.getLayoutY()+r.nextDouble()*(40-t.getHeight()-6)-(40-t.getHeight()-6)/2);
+		t.setLayoutX(t.getLayoutX()+r.nextDouble()*(50-t.getWidth()-6)-(50-t.getWidth()-6)/2);
 	}
 	
 	private void drawings() {
@@ -135,9 +135,7 @@ public class Captcha implements Initializable{
 		}
 	}
 	
-	private void fontChange(Label t) {
-		t.setFont(Font.font(r.nextInt(6)+8));
-	}
+	
 	
 
 }

@@ -145,7 +145,7 @@ public class DBConnector {
             if (r.next()) {
 
                 return (new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5),
-                        r.getString(6), r.getInt(7), r.getString(8), r.getString(9), r.getString(10), r.getDate(11),
+                        r.getString(6), r.getInt(7), r.getString(8), r.getString(9), r.getString(10), r.getDate(11).toLocalDate(),
                         r.getInt(12), r.getInt(13)));
             }
         } catch (Exception e) {
