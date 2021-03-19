@@ -27,16 +27,11 @@ public class Main extends Application implements Runnable {
 		try {
 			//FXMLLoader loading = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
 
-<<<<<<< HEAD
-			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
-=======
 			DBConnector.connect();
 			UserController.setCurrentUser(DBConnector.getUser("mmhlego"));
 			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 
 			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
->>>>>>> d220e4e7a734b1c893e4ac99d999413c94501400
 			controller = loader.getController();
 
 			Parent root = loader.load();
