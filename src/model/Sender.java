@@ -1,74 +1,14 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Sender {
 
-    public static String HTML = "<!DOCTYPE html>"+
-"<html lang=\"en\">" +
-"<head>"+
-    "<meta charset=\"UTF-8\">"+
-    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">"+
-            "<title>Account Info</title>" +
-    "<style>"+
-        "fieldset{"+
-            "border: 10px double white;" +
-            "font-family:sans-serif;" +
-        "}"+
-        "h1 , h4{"+
-            "font-family: monospace;"+
-        "}"+
-        "a{" +
-            "text-decoration: none;" +
-            "text-decoration-color: black;" +
-            "cursor: text;" +
-        "}" +
-    "</style>"+
-"</head>" +
-"<body style=\"text-align: center;background-image: linear-gradient(to right, #43F061, #12E7DD);\">" +
-    "<div class=\"container\" style=\"text-align: center; display: inline-block; position: relative;\">" +
-        "<h1 style=\"color: #fff; letter-spacing: 14px; word-spacing: 10px;\"> WELCOME TO HAT BANK </h1>" +
-        "<h4 style=\"text-align: left; font-family: Times New Roman;\"> Dear  , </h4>" +
-        "<p style=\"text-align: left; font-family: fantasy;\"> Your Account Has Been Created Successfully Here Is Your Information</p>" +
-        "<fieldset style=\"padding: 30px; text-align: left; border-top-right-radius: 50px; border-bottom-left-radius: 50px;\">" +
-            "<legend align=\"center\">&nbsp; Your Account Information &nbsp;</legend>"+
-            "<label style=\"color: #0a3d62;\"><strong> Firstname : </strong></label>&nbsp;"+
-            "<span>  </span>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Lastname : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-            "<br><br>"+
-            "<label style=\"color: #0a3d62;\"><strong> Email : </strong></label>&nbsp;" +
-            "<a>  </a>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Nationalcode : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-           " <br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Birthdate : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Phonenumber : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Address : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Username : </strong></label>&nbsp;" +
-            "<span>  </span>" +
-            "<br><br>" +
-            "<label style=\"color: #0a3d62;\"><strong> Password : </strong></label>&nbsp;" + 
-            "<span>  </span>" +
-        "</fieldset>" +
-            "<br>" +
-        "<p style=\"text-align: center;font-family: fantasy;\"> This Email Has Been Generated Automatically And There Is No Need To Reply ! </p> <br>"+
-        "<h4 style=\"display: inline;\"> This Message Was Sent To </h4>" +
-        "<a style=\"font-size: 16; color: blue; \">  </a>" +
-        "<h6> &#128272; <i> Powered By HAT Bank System &#8482; </i> &#9989; </h6>" +
-    "</div>" +
-"</body>" +
-"</html>";
+    public static String HTML;
 
     public static void SendEmail(String recepient, String Title, String Body) throws Exception {
         Properties properties = new Properties();
@@ -114,4 +54,27 @@ public class Sender {
         System.out.println("Message sent successfully");
     }
 
+    public static void Load() {
+        try {
+            Scanner s = new Scanner(new File(System.getProperty("user.dir") + "/model/Mail.html"));
+
+            while (s.hasNextLine()) {
+                HTML += s.nextLine();
+                HTML += "\n";
+            }
+
+            s.close();
+
+            replaceData();
+
+            System.out.println(HTML);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void replaceData() {
+        HTML = HTML.replace("{firstName}", UserController.getCurrentUser().FirstName);
+    }
 }

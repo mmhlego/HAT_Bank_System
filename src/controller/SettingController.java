@@ -2,16 +2,12 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
-public class SettingController implements Initializable{
+public class SettingController implements Initializable {
 
     @FXML
     private AnchorPane MainPanel;
@@ -52,9 +48,8 @@ public class SettingController implements Initializable{
     @FXML
     private JFXToggleButton themeToggle;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-	
-	}
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
 
+    }
 }
