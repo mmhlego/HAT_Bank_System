@@ -3,15 +3,17 @@ package model;
 import java.util.Date;
 
 public class Loan {
-    User Client, Guarantor;
+    User Client;
+    String AccountID, GuarantorID;
     int Status, Percntage;
     long Value, TotalPay, Payed;
     Date DueDate;
 
-    public Loan(User client, int status, long value, int percentage, long totalPay, long payed, Date dueDate,
-            User guarantor) {
+    public Loan(User client, String accountID, int status, long value, int percentage, long totalPay, long payed,
+            Date dueDate, String guarantorid) {
         Client = client;
-        Guarantor = guarantor;
+        AccountID = accountID;
+        GuarantorID = guarantorid;
         Status = status;
         Percntage = percentage;
         Value = value;

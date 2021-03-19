@@ -5,23 +5,29 @@ import java.util.*;
 public class User {
     public static final int CLIENT = 0, EMPLOYEE = 1, MANAGER = 2;
 
-    String FirstName, LastName, Username, Password, Address, ID, NationalCode;
+    String FirstName, LastName, Username, Password, Email, PhoneNumber, Address, ID, NationalCode;
     Date BirthDate;
     int AccessLevel, Theme, Language;
 
     ArrayList<Loan> Loans = new ArrayList<Loan>();
     ArrayList<Account> Accounts = new ArrayList<Account>();
 
-    public User(String firstName, String lastName, String password, String address, String id, String nationalCode,
-            Date birthDate, int accessLevel) {
+    public User(String firstName, String lastName, String username, String password, String email, String phone,
+            int accessLevel, String address, String id, String nationalCode, Date birthDate, int theme, int language) {
         FirstName = firstName;
         LastName = lastName;
+        Username = username;
         Password = password;
+        Email = email;
+        PhoneNumber = phone;
+        AccessLevel = accessLevel;
+
         Address = address;
         ID = id;
         NationalCode = nationalCode;
         BirthDate = birthDate;
-        AccessLevel = accessLevel;
+        Theme = theme;
+        Language = language;
     }
 
     public void addToLoans(Loan l) {

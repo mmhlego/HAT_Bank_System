@@ -1,11 +1,11 @@
 package model;
 
 import java.io.File;
+import java.security.acl.Owner;
 import java.sql.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 
 public class DBConnector {
 
@@ -25,9 +25,9 @@ public class DBConnector {
         stage = st;
     }
 
-    private static ResultSet getResults() {
+    /*private static ResultSet getResults() {
         return results;
-    }
+    }*/
 
     // =============================================================================================
     // LOADING SCREEN METHODS
@@ -68,9 +68,9 @@ public class DBConnector {
         return false;
     }
 
-    private static void closeConnection() throws Exception {
+    /*private static void closeConnection() throws Exception {
         con.close();
-    }
+    }*/
 
     // =============================================================================================
     // COMPLETE METHODS
@@ -106,7 +106,54 @@ public class DBConnector {
         return false;
     }
 
+    // ============================================================================================= Insert methods
+
+    public static void addUser(String firstname, String lastname, String nationalCode, String birthDate,
+            String phonenumber, String address, String Username, String Password, int AccessLevel, String id)
+            throws Exception {
+        runCommand(
+                "INSERT INTO User (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
+                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
+                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
+    }
+
+    /*public static void addLoan(String OwnerID, String accountID, int status, long value, int percentage, long totalPay,
+            long payed, Date dueDate, String guarantorid) throws Exception {
+        runCommand(
+                "INSERT INTO Loan (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
+                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
+                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
+    }*/
+
     // =============================================================================================
+
+    public static ResultSet getLoans(String OwnerID) throws Exception {
+        return runCommand("select * from Loan where OwnerID=\'" + OwnerID + "\'");
+    }
+
+    public static ResultSet getAccounts(String OwnerID) throws Exception {
+        return runCommand("select * from Account where OwnerID=\'" + OwnerID + "\'");
+    }
+
+    /*public static ResultSet getTransactions(String OwnerID) throws Exception {
+        return runCommand("select * from Transaction where OwnerID=\'" + OwnerID + "\'");
+    }*/
+
+    public static User getUser(String username) {
+        try {
+            ResultSet r = runCommand("select * from User where Username=\'" + username + "\'");
+
+            if (r.next()) {
+
+                return (new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5),
+                        r.getString(6), r.getInt(7), r.getString(8), r.getString(9), r.getString(10), r.getDate(11),
+                        r.getInt(12), r.getInt(13)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /*
      * private static void connect() throws Exception {
@@ -118,15 +165,4 @@ public class DBConnector {
      * stmt.executeQuery("select * from Sample"); while (rs.next()) {
      * System.out.println(rs.getString(1)); } }
      */
-
-    public static void addUser(String firstname, String lastname, String nationalCode, String birthDate,
-            String phonenumber, String address, String Username, String Password, int AccessLevel, String id)
-            throws Exception {
-        runCommand(
-                "INSERT INTO User (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
-                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
-                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
-    }
-
-    
 }
