@@ -6,16 +6,19 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.*;
 import model.DBConnector;
+import model.Sender;
 import model.UserController;
 
 public class Main extends Application implements Runnable {
 	public firstLoginController controller;
 
 	public static void main(String[] args) throws Exception {
-		launch(args);
+		// launch(args);
 		//System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", 1));
 		// Sender.SendEmail("mmhlegoautosmssender@gmail.com");
 		//Sender.SendEmail("Recieve.tester@hi2.in", "Confirm Email", "k.tabani82@gmail.com");
+
+		Sender.Load();
 	}
 
 	@Override

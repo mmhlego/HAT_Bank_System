@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
+<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
    <children>
       <TextField layoutY="2.0" prefHeight="25.0" prefWidth="0.0" style="-fx-background-color: none;">
          <cursor>
@@ -71,7 +71,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="464.0" layoutY="273.0" prefHeight="25.0" prefWidth="30.0" />
+      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="498.0" layoutY="271.0" prefHeight="25.0" prefWidth="30.0" />
       <TextField fx:id="phoneField" layoutX="100.0" layoutY="308.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />

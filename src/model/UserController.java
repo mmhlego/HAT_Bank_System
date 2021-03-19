@@ -10,7 +10,7 @@ public class UserController {
     private static ArrayList<Loan> Loans = new ArrayList<Loan>();
     private static ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
 
-    public static User getCurrentUsr() {
+    public static User getCurrentUser() {
         return CurrentUser;
     }
 
