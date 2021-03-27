@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanStatusController">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanStatusController">
    <children>
       <Label alignment="CENTER" layoutX="440.0" layoutY="28.0" prefHeight="50.0" prefWidth="870.0" style="-fx-background-color: #ffffff40; -fx-background-radius: 20;" text="Loans Status" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -83,9 +89,9 @@
                         </Group>
                         <VBox layoutY="34.0">
                            <children>
-                              <AnchorPane prefHeight="225.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                              <AnchorPane prefHeight="180.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
                                  <children>
-                                    <JFXProgressBar layoutX="20.0" layoutY="173.0" prefHeight="20.0" prefWidth="490.0" progress="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+                                    <JFXProgressBar layoutX="36.0" layoutY="141.0" prefHeight="20.0" prefWidth="490.0" progress="0.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="14.0" />
                                     <Label layoutX="760.0" layoutY="14.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #07c3ff; -fx-background-radius: 8;" />
                                     <Group layoutX="14.0" layoutY="16.0">
                                        <children>
@@ -217,5 +223,35 @@
             </VBox>
          </content>
       </ScrollPane>
+      <AnchorPane layoutX="55.0" layoutY="624.0" prefHeight="61.0" prefWidth="816.0" style="-fx-background-color: #ffffff40; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="42.0" layoutY="12.0" text="Sort By : " textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <Group layoutX="193.0" layoutY="22.0">
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <Group />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Group>
+            <TextField fx:id="SearchTF" layoutX="522.0" layoutY="18.0" prefHeight="25.0" prefWidth="237.0" promptText="Search Here ..." style="-fx-background-radius: 20;" />
+            <ImageView fx:id="Searchbtn" fitHeight="25.0" fitWidth="37.0" layoutX="765.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/Search.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <RadioButton fx:id="ASCRB" layoutX="331.0" layoutY="22.0" mnemonicParsing="false" text="Ascending" textFill="WHITE" />
+            <RadioButton fx:id="DESCRB" layoutX="419.0" layoutY="22.0" mnemonicParsing="false" text="Descending" textFill="WHITE" />
+            <JFXComboBox fx:id="SortOptionCB" layoutX="154.0" layoutY="18.0" prefHeight="25.0" prefWidth="149.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
