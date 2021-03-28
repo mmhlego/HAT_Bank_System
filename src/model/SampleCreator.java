@@ -1,9 +1,6 @@
 package model;
 
 import java.util.Random;
-
-import com.mysql.cj.xdevapi.Client;
-
 import java.time.LocalDate;
 
 public class SampleCreator {

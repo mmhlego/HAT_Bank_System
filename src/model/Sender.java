@@ -56,7 +56,7 @@ public class Sender {
 
     public static void Load() {
         try {
-            Scanner s = new Scanner(new File(System.getProperty("user.dir") + "/model/Mail.html"));
+            Scanner s = new Scanner(new File(System.getProperty("user.dir") + "/src/model/Mail.html"));
 
             while (s.hasNextLine()) {
                 HTML += s.nextLine();

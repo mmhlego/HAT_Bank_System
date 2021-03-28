@@ -9,7 +9,6 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.DBConnector;
-import model.encoder;
 
 public class Register implements Initializable {
     @FXML

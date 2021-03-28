@@ -24,27 +24,27 @@
             </VBox>
             <VBox fx:id="rightVbox" alignment="TOP_CENTER" layoutX="150.0" layoutY="209.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="209.0">
                <children>
-                  <Label alignment="CENTER" text="ID" textFill="WHITE">
+                  <Label fx:id="idLBL" alignment="CENTER" text="ID" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="164.0" layoutY="25.0" text="First Name" textFill="WHITE">
+                  <Label fx:id="firstNameLBL" alignment="CENTER" layoutX="164.0" layoutY="25.0" text="First Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="164.0" layoutY="109.0" text="Last Name" textFill="WHITE">
+                  <Label fx:id="lastNameLBL" alignment="CENTER" layoutX="164.0" layoutY="109.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="185.0" layoutY="67.0" text="Username" textFill="WHITE">
+                  <Label fx:id="usenameLBL" alignment="CENTER" layoutX="185.0" layoutY="67.0" text="Username" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="164.0" layoutY="67.0" text="Phone Number" textFill="WHITE">
+                  <Label fx:id="phoneLBL" alignment="CENTER" layoutX="164.0" layoutY="67.0" text="Phone Number" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
