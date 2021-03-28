@@ -1,96 +1,165 @@
 <!DOCTYPE html>
-<html lang=" en ">
+<html lang="en">
+
   <head>
-    <meta charset=" UTF-8 " />
-    <meta name=" viewport " content=" width=device-width, initial-scale=1.0 " />
-    <title>Account Info</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
     <style>
-      fieldset {
-        border: 10px double white;
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .body {
+        text-align: center;
+        background: linear-gradient(to right, #43f061, #12e7dd);
+        padding: 0px 20px;
+        padding-bottom: 40px;
+      }
+
+      .container {
+        text-align: center;
+        display: inline-block;
+        position: relative;
+      }
+
+      .Main {
+        background-color: #fff;
+        padding: 30px 60px;
+        border-radius: 40px;
+      }
+
+      .Account,
+      .Personal {
         font-family: sans-serif;
+        padding: 0px;
+        text-align: left;
+        border: double 4px transparent;
+        border-radius: 35px;
+        background-image: linear-gradient(white, white), linear-gradient(to bottom right, #55FF8F, #00D1FF);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
       }
-      h1,
-      h4 {
+
+      legend {
+        background-color: #fff;
+      }
+
+      fieldset label {
+        margin: 30px 0px 0px 30px;
+      }
+
+      h1 {
         font-family: monospace;
+        color: #009FD1;
+        margin: 30px 0px;
+        letter-spacing: 14px;
+        word-spacing: 10px;
+        display: inline;
       }
+
+      h4 {
+        text-align: left;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: 1000;
+      }
+
+      .h42 {
+        display: inline;
+      }
+
       a {
         text-decoration: none;
         text-decoration-color: black;
         cursor: text;
       }
+
+      .a1 {
+        font-size: 18px;
+        color: blue;
+      }
+
+      .p1 {
+        text-align: left;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: 1000;
+      }
+
+      .p2 {
+        text-align: center;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: 1000;
+      }
+
+      label {
+        color: #0a3d62;
+      }
     </style>
   </head>
-  <body
-    style="
-      text-align: center;
-      background-image: linear-gradient(to right, #43f061, #12e7dd);
-    "
-  >
-    <div
-      class="container"
-      style="text-align: center; display: inline-block; position: relative"
-    >
-      <h1 style="color: #fff; letter-spacing: 14px; word-spacing: 10px">
-        WELCOME TO HAT BANK
-      </h1>
-      <h4 style="text-align: left; font-family: Times New Roman">
-        Dear {firstName},
-      </h4>
-      <p style="text-align: left; font-family: fantasy">
-        Your Account Has Been Created Successfully Here Is Your Information
-      </p>
-      <fieldset
-        style="
-          padding: 30px;
-          text-align: left;
-          border-top-right-radius: 50px;
-          border-bottom-left-radius: 50px;
-        "
-      >
-        <legend align=" center ">&nbsp; Your Account Information &nbsp;</legend>
-        <label style="color: #0a3d62"><strong> Firstname : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Lastname : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Email : </strong></label>&nbsp;
-        <a> </a>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Nationalcode : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Birthdate : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Phonenumber : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Address : </strong></label>&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Username : </strong></label
-        >&nbsp;
-        <span> </span>
-        <br /><br />
-        <label style="color: #0a3d62"><strong> Password : </strong></label
-        >&nbsp;
-        <span> </span>
-      </fieldset>
-      <br />
-      <p style="text-align: center; font-family: fantasy">
-        This Email Has Been Generated Automatically And There Is No Need To
-        Reply !
-      </p>
-      <br />
-      <h4 style="display: inline">This Message Was Sent To</h4>
-      <a style="font-size: 16; color: blue"> </a>
-      <h6>&#128272; <i> Powered By HAT Bank System &#8482; </i> &#9989;</h6>
+
+  <body>
+    <div class="body">
+      <br>
+      <div class="container">
+        <div style="text-align: left; display: inline;">
+          <img src="https://s17.picofile.com/file/8428966800/Team_Logo.png" alt="Logo" title="HAT Bank"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <h1> WELCOME TO HAT BANK</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="text-align: left; display: inline;">
+          <img src="https://s17.picofile.com/file/8428966800/Team_Logo.png" alt="Logo" title="HAT Bank"> 
+        </div>
+        <br><br>
+        <div class="Main">
+          <h4> Dear {userfirstname} , </h4>
+          <p class="p1"> Your Account Has Been Created Successfully Here Is Your Information</p>
+          <br><br>
+          <fieldset class="Account">
+            <br>
+            <legend align="center"">&nbsp; Your Account Information &nbsp;</legend>
+            <label><strong> Username : </strong></label>&nbsp;
+            <span> {userusername} </span>
+            <br><br>
+            <label><strong> Password : </strong></label>&nbsp;
+            <span> {userpassword} </span>
+            <br><br>
+          </fieldset>
+          <br><br>
+          <fieldset class="Personal">
+            <br>
+            <legend align="center">&nbsp; Your Personal Information &nbsp;</legend>
+            <label><strong> Firstname : </strong></label>&nbsp;
+            <span> {userfirstname} </span>
+            <br><br>
+            <label><strong> Lastname : </strong></label>&nbsp;
+            <span> {userlastname} </span>
+            <br><br>
+            <label><strong> Email : </strong></label>&nbsp;
+            <a> {useremail} </a>
+            <br><br>
+            <label><strong> Nationalcode : </strong></label>&nbsp;
+            <span> {usernationalcode} </span>
+            <br><br>
+            <label><strong> Birthdate : </strong></label>&nbsp;
+            <span> {userbirth} </span>
+            <br><br>
+            <label><strong> Phonenumber : </strong></label>&nbsp;
+            <span> {userphonenumber} </span>
+            <br><br>
+            <label><strong> Address : </strong></label>&nbsp;
+            <span> {useraddress} </span>
+            <br><br>
+          </fieldset>
+          <br>
+          <p class="p2"> This Email Has Been Generated Automatically And There Is No Need To Reply ! </p>
+          <h4 class="h42"> This Message Was Sent To </h4>
+          <a class="a1"> {useremail} </a>
+          <br><br><br>
+          <h6> &#128272; <i> Powered By HAT Bank System &#8482; </i> &#9989; </h6>
+        </div>
+      </div>
     </div>
   </body>
 </html>
