@@ -2,6 +2,8 @@ package model;
 
 import java.io.File;
 import java.sql.*;
+import java.time.LocalDate;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -58,8 +60,8 @@ public class DBConnector {
     // CONNECTION METHODS
 
     public static boolean connect() throws SQLException {
-        con = DriverManager.getConnection("jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
-                "t8YnlV3Mzt");
+        con = DriverManager.getConnection("jdbc:mysql://freedb.tech/freedbtech_hatbanksystem", "freedbtech_hatuser",
+                "hatpassword");
 
         if (con != null) {
             return true;
@@ -79,6 +81,8 @@ public class DBConnector {
 
         Statement stmt = con.createStatement();
         results = stmt.executeQuery(command);
+
+        //con.createStatement().executeUpdate(command);
 
         return results;
     }
@@ -107,16 +111,45 @@ public class DBConnector {
 
     // ============================================================================================= Insert methods
 
-    public static void addUser(String firstname, String lastname, String nationalCode, String birthDate,
-            String phonenumber, String address, String Username, String Password, int AccessLevel, String id)
-            throws Exception {
-        runCommand(
-                "INSERT INTO User (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
-                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
-                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
+    public static void addUser(String firstname, String lastname, String Username, String Password, String Email,
+            String Phone, int AccessLevel, String address, String id, String nationalCode, LocalDate birthDate,
+            int theme, int language) throws Exception {
+
+        PreparedStatement ps = con.prepareStatement(
+                "INSERT INTO `User`(`FirstName`, `LastName`, `Username`, `Password`, `AccessLevel`, `Address`, `ID`, `National Code`, `BirthDate`, `Email`, `PhoneNumber`, `Theme`, `Language`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+        ps.setString(1, firstname);
+        ps.setString(2, lastname);
+        ps.setString(3, Username);
+        ps.setString(4, Password);
+        ps.setString(5, Integer.toString(AccessLevel));
+        ps.setString(6, address);
+        ps.setString(7, id);
+        ps.setString(8, nationalCode);
+        ps.setDate(9, Date.valueOf(birthDate));
+        ps.setString(10, Email);
+        ps.setString(11, Phone);
+        ps.setString(12, Integer.toString(theme));
+        ps.setString(13, Integer.toString(language));
+
+        ps.executeUpdate();
     }
 
-    /*public static void addLoan(String OwnerID, String accountID, int status, long value, int percentage, long totalPay,
+    public static int numberOfUsers(int accessLevel) {
+        int count = 0;
+        try {
+            ResultSet r = runCommand("Select * from User where AccessLevel=" + accessLevel);
+
+            while (r.next()) {
+                count++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    /* public static void addLoan(String OwnerID, String accountID, int status, long value, int percentage, long totalPay,
             long payed, Date dueDate, String guarantorid) throws Exception {
         runCommand(
                 "INSERT INTO Loan (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
@@ -145,8 +178,8 @@ public class DBConnector {
             if (r.next()) {
 
                 return (new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5),
-                        r.getString(6), r.getInt(7), r.getString(8), r.getString(9), r.getString(10), r.getDate(11),
-                        r.getInt(12), r.getInt(13)));
+                        r.getString(6), r.getInt(7), r.getString(8), r.getString(9), r.getString(10),
+                        r.getDate(11).toLocalDate(), r.getInt(12), r.getInt(13)));
             }
         } catch (Exception e) {
             e.printStackTrace();

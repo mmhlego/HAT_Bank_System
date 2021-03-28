@@ -73,9 +73,9 @@ public class Register implements Initializable {
                     Error.setHeaderText("Error");
                     Error.show();
                 } else {
-                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), codeField.getText(),
+                    /*DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), codeField.getText(),
                             birthField.getText(), phoneField.getText(), addressField.getText(), usernameField.getText(),
-                            encoder.encode(passwordField.getText()), 0, "Generate Specific ID");
+                            encoder.encode(passwordField.getText()), 0, "Generate Specific ID");*/
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
