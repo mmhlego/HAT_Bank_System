@@ -1,4 +1,3 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "liveServer.settings.port": 5502
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -19,6 +19,7 @@ import javafx.stage.*;
 import javafx.util.Duration;
 import model.DBConnector;
 import model.User;
+import model.UserController;
 import model.encoder;
 
 public class LoginController implements Initializable, Runnable {
@@ -73,10 +74,11 @@ public class LoginController implements Initializable, Runnable {
 			String password = passwordField.getText();
 			String hashPassword = encoder.encode(password);
 
-			//DBConnector.showLoading();
-
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
+
+					UserController.setCurrentUser(DBConnector.getUser(username));
+
 					((Stage) loginButton.getScene().getWindow()).close();
 					Stage stage = new Stage(StageStyle.TRANSPARENT);
 					Scene scene = new Scene(UserMainPage);
@@ -92,7 +94,7 @@ public class LoginController implements Initializable, Runnable {
 			} catch (Exception err) {
 				DBConnector.closeLoading();
 				err.printStackTrace();
-				//System.out.println(err.toString());
+
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Error");
 				a.setContentText(
@@ -103,7 +105,6 @@ public class LoginController implements Initializable, Runnable {
 		// StructureController.addButton();
 
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
-		//	System.out.println(User);
 
 		usernameField.focusedProperty().addListener(new ChangeListener<Boolean>() {
 			@Override

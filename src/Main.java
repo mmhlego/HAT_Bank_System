@@ -18,23 +18,25 @@ public class Main extends Application implements Runnable {
 		// Sender.SendEmail("Recieve.tester@hi2.in", "Login Detected", Sender.Loginmail);
 		//Sender.Load();
 
-		// System.out.println(DBConnector.connect());
-		// SampleCreator.CreateFullData(1);
+		System.out.println(DBConnector.connect());
+		//SampleCreator.CreateFullData(100);
+		//SampleCreator.createRandomTransactions(100);
+
+		UserController.setCurrentUser(DBConnector.getUser("Client40"));
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
-
 		try {
 			// FXMLLoader loading = new FXMLLoader(new
 			// File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
 
 			DBConnector.connect();
-			UserController.setCurrentUser(DBConnector.getUser("mmhlego"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
+
+			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 			//	FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("view/changePassword.fxml"));
-			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
-			//		controller = loader.getController();
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			controller = loader.getController();
 
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
@@ -45,13 +47,15 @@ public class Main extends Application implements Runnable {
 			StructureController.addButton(StructureController.CLIENTACCOUNTS);
 			StructureController.addButton(StructureController.SETTINGS);
 
-			/*
-			 * DBConnector.setStage(primaryStage);
-			 * 
-			 * DBConnector.setOffsetLeft(0.0); DBConnector.showLoading(); Thread thread =
-			 * new Thread(this); thread.start();
-			 */
+			DBConnector.setStage(primaryStage);
+
+			DBConnector.setOffsetLeft(0.0);
+			DBConnector.showLoading();
+			Thread thread = new Thread(this);
+			thread.start();
+
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
