@@ -11,14 +11,15 @@ public class Main extends Application implements Runnable {
 	public firstLoginController controller;
 
 	public static void main(String[] args) throws Exception {
-		//launch(args);
+		// launch(args);
 		//System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", 1));
 		// Sender.SendEmail("mmhlegoautosmssender@gmail.com");
-		//Sender.SendEmail("Recieve.tester@hi2.in", "Confirm Email", "k.tabani82@gmail.com");
+		Sender.SendEmail("Recieve.tester@hi2.in", "Register Confirmed", Sender.Signupmail);
+		Sender.SendEmail("Recieve.tester@hi2.in", "Login Detected", Sender.Loginmail);
 		//Sender.Load();
 
-		System.out.println(DBConnector.connect());
-		SampleCreator.CreateFullData(1);
+		// System.out.println(DBConnector.connect());
+		// SampleCreator.CreateFullData(1);
 	}
 
 	@Override
@@ -32,7 +33,7 @@ public class Main extends Application implements Runnable {
 			UserController.setCurrentUser(DBConnector.getUser("mmhlego"));
 			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 			//	FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("view/changePassword.fxml"));
-			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			//		controller = loader.getController();
 
 			Parent root = loader.load();
