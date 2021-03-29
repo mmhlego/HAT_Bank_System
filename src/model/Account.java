@@ -1,16 +1,17 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Account {
-    String OwnerID, IBAN, CVV, CVV2, AccountID;
-    Date ExDate;
+    String OwnerID, BIC, IBAN, CVV, CVV2, AccountID;
+    LocalDate ExDate;
     int Status;
     long Value;
 
-    public Account(String ownerID, String iban, String cvv, String cvv2, Date exDate, int status, long value,
-            String accountID) {
+    public Account(String ownerID, String bic, String iban, String cvv, String cvv2, LocalDate exDate, int status,
+            long value, String accountID) {
         OwnerID = ownerID;
+        BIC = bic;
         IBAN = iban;
         CVV = cvv;
         CVV2 = cvv2;
@@ -18,5 +19,29 @@ public class Account {
         ExDate = exDate;
         Status = status;
         Value = value;
+    }
+
+    public static String generateID() {
+        int all = DBConnector.numberOfAccounts();
+
+        String ID = "A-";
+        String number = Integer.toString(all + 1);
+        for (int i = 0; i < (5 - number.length()); i++) {
+            ID += "0";
+        }
+        ID += number;
+
+        return ID;
+    }
+
+    public static String generateID(int n) {
+        String ID = "A-";
+        String number = Integer.toString(n);
+        for (int i = 0; i < (5 - number.length()); i++) {
+            ID += "0";
+        }
+        ID += number;
+
+        return ID;
     }
 }
