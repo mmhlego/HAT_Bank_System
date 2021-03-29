@@ -1,17 +1,18 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Loan {
-    User Client;
-    String AccountID, GuarantorID;
+    public static int PENDING = 0, REJECTED = 1, PAYING = 2, FINISHED = 3;
+
+    String OwnerID, AccountID, GuarantorID;
     int Status, Percntage;
     long Value, TotalPay, Payed;
-    Date DueDate;
+    LocalDate DueDate;
 
-    public Loan(User client, String accountID, int status, long value, int percentage, long totalPay, long payed,
-            Date dueDate, String guarantorid) {
-        Client = client;
+    public Loan(String ownerID, String accountID, int status, long value, int percentage, long totalPay, long payed,
+            LocalDate dueDate, String guarantorid) {
+        OwnerID = ownerID;
         AccountID = accountID;
         GuarantorID = guarantorid;
         Status = status;

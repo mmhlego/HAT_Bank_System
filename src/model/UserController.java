@@ -1,8 +1,7 @@
 package model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
 public class UserController {
     private static User CurrentUser;
@@ -23,11 +22,24 @@ public class UserController {
     public static void LoadUserDataFromDB() {
         try {
             Accounts = ConvertAccountsToArrayList(DBConnector.getAccounts(CurrentUser.ID));
-            //Loans = ConvertLoansToArrayList(DBConnector.getLoans(CurrentUser.ID));
-            //Transactions = ConvertTransactionsToArrayList(DBConnector.getTransactions(CurrentUser.ID));
+            Loans = ConvertLoansToArrayList(DBConnector.getLoans(CurrentUser.ID));
+
+            for (int i = 0; i < Accounts.size(); i++) {
+                ArrayList<Transaction> temp = ConvertTransactionsToArrayList(
+                        DBConnector.getTransactions(Accounts.get(i).AccountID));
+
+                for (Transaction t : temp) {
+                    Transactions.add(t);
+                }
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        //System.out.println(Arrays.deepToString(Accounts.toArray()));
+        //System.out.println(Arrays.deepToString(Loans.toArray()));
+        //System.out.println(Arrays.deepToString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {
@@ -36,7 +48,8 @@ public class UserController {
         try {
             while (all.next()) {
                 Account a = new Account(all.getString(1), all.getString(2), all.getString(3), all.getString(4),
-                        all.getDate(5), all.getInt(6), all.getLong(7), all.getString(8));
+                        all.getString(5), all.getDate(6).toLocalDate(), all.getInt(7), all.getLong(8),
+                        all.getString(9));
 
                 temp.add(a);
             }
@@ -51,9 +64,9 @@ public class UserController {
 
         try {
             while (all.next()) {
-                Loan l = new Loan(CurrentUser, all.getString("AccountID"), all.getInt("Status"), all.getLong("Value"),
-                        all.getInt("Percentage"), all.getLong("TotalPay"), all.getLong("Payed"), all.getDate("DueDate"),
-                        all.getString("GuarantorID"));
+                Loan l = new Loan(CurrentUser.ID, all.getString("AccountID"), all.getInt("Status"),
+                        all.getLong("Value"), all.getInt("Percentage"), all.getLong("TotalPay"), all.getLong("Payed"),
+                        all.getDate("DueDate").toLocalDate(), all.getString("GuarantorID"));
 
                 temp.add(l);
             }
@@ -69,7 +82,7 @@ public class UserController {
         try {
             while (all.next()) {
                 Transaction t = new Transaction(all.getString("FromAccountID"), all.getString("ToAccountID"),
-                        all.getLong("Value"), all.getDate("Date"), all.getString("TransactionID"));
+                        all.getLong("Value"), all.getDate("Date").toLocalDate(), all.getString("TransactionID"));
 
                 temp.add(t);
             }

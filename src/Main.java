@@ -5,33 +5,36 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.*;
-import model.DBConnector;
-import model.Sender;
-import model.UserController;
+import model.*;
 
 public class Main extends Application implements Runnable {
 	public firstLoginController controller;
 
 	public static void main(String[] args) throws Exception {
-		// launch(args);
+		//launch(args);
 		//System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", 1));
 		// Sender.SendEmail("mmhlegoautosmssender@gmail.com");
 		//Sender.SendEmail("Recieve.tester@hi2.in", "Confirm Email", "k.tabani82@gmail.com");
+		//Sender.Load();
 
-		Sender.Load();
+		System.out.println(DBConnector.connect());
+		//SampleCreator.CreateFullData(100);
+		//SampleCreator.createRandomTransactions(100);
+
+		UserController.setCurrentUser(DBConnector.getUser("Client40"));
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
-
 		try {
-			//FXMLLoader loading = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+			// FXMLLoader loading = new FXMLLoader(new
+			// File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
 
 			DBConnector.connect();
-			UserController.setCurrentUser(DBConnector.getUser("mmhlego"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 
-			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
+			//	FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("view/changePassword.fxml"));
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			controller = loader.getController();
 
 			Parent root = loader.load();
@@ -43,13 +46,15 @@ public class Main extends Application implements Runnable {
 			StructureController.addButton(StructureController.CLIENTACCOUNTS);
 			StructureController.addButton(StructureController.SETTINGS);
 
-			/*DBConnector.setStage(primaryStage);
-			
+			DBConnector.setStage(primaryStage);
+
 			DBConnector.setOffsetLeft(0.0);
 			DBConnector.showLoading();
 			Thread thread = new Thread(this);
-			thread.start();*/
+			thread.start();
+
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

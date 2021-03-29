@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import model.User;
+import model.UserController;
 
 public class MainPageController implements Initializable{
 
@@ -24,6 +26,21 @@ public class MainPageController implements Initializable{
     private VBox rightVbox;
 
     @FXML
+    private Label idLBL;
+
+    @FXML
+    private Label firstNameLBL;
+
+    @FXML
+    private Label lastNameLBL;
+
+    @FXML
+    private Label usenameLBL;
+
+    @FXML
+    private Label phoneLBL;
+
+    @FXML
     private Label topLabel;
 
     @FXML
@@ -37,7 +54,13 @@ public class MainPageController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		User currentUser=UserController.getCurrentUser();
+		// img set 
+		firstNameLBL.setText(currentUser.FirstName);
+		lastNameLBL.setText(currentUser.LastName);
+		idLBL.setText(currentUser.ID);
+		usenameLBL.setText(currentUser.Username);
+		phoneLBL.setText(currentUser.PhoneNumber);
 		
 	}
 

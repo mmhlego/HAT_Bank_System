@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Transaction">
+   <children>
+      <AnchorPane layoutX="493.0" layoutY="26.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20px;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label alignment="CENTER" layoutX="369.0" layoutY="42.0" text="Transaction Page" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="System Bold Italic" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ScrollPane layoutX="50.0" layoutY="175.0" style="-fx-background-color: none; -fx-background: none;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+         <content>
+            <VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="805.0" spacing="40.0">
+               <children>
+                  <TextField fx:id="fromTXF" prefHeight="75.0" promptText="From Card" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                     <padding>
+                        <Insets left="50.0" right="25.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="toTXF" prefHeight="75.0" promptText="To Card" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                     <padding>
+                        <Insets left="50.0" right="25.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="amountTXF" prefHeight="75.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                     <padding>
+                        <Insets left="50.0" right="25.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <JFXButton fx:id="nextBTN" prefHeight="75.0" prefWidth="770.0" ripplerFill="#e01f1f" style="-fx-background-color: #4E61B1; -fx-background-radius: 200;" text="Next Step" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="25.0" right="25.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
