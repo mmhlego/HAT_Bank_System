@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -283,6 +284,17 @@ public class DBConnector {
         return count;
     }
 
+    public static ArrayList<User> getAllUsers() throws Exception {
+		ResultSet r=runCommand("SELECT * FROM user");
+		ArrayList<User> allUsers=new ArrayList<>();
+		while (r.next()) {
+			User user =new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
+                    r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
+                    r.getString(11), r.getInt(12), r.getInt(13));
+			allUsers.add(user);
+		}
+		return allUsers;
+	}
     /*
      * private static void connect() throws Exception {
      * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(

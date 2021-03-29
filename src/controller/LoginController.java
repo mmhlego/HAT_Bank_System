@@ -52,7 +52,7 @@ public class LoginController implements Initializable, Runnable {
 	FXMLLoader loader;
 	FXMLLoader MainLoader;
 	Parent UserMainPage;
-
+	MainPageController controller;
 	int AccessLevel;
 
 	@Override
@@ -62,12 +62,7 @@ public class LoginController implements Initializable, Runnable {
 		miniGroup.setCursor(Cursor.HAND);
 		miniGroup.setOnMouseClicked(e -> ((Stage) miniGroup.getScene().getWindow()).setIconified(true));
 
-		MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
-		try {
-			UserMainPage = MainLoader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
 
 		loginButton.setOnAction(e -> {
 			String username = usernameField.getText();
@@ -76,9 +71,16 @@ public class LoginController implements Initializable, Runnable {
 
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
-
+					//controller.init();
+					
 					UserController.setCurrentUser(DBConnector.getUser(username));
-
+					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
+					try {
+						UserMainPage = MainLoader.load();
+						controller=new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml")).getController();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
 					((Stage) loginButton.getScene().getWindow()).close();
 					Stage stage = new Stage(StageStyle.TRANSPARENT);
 					Scene scene = new Scene(UserMainPage);

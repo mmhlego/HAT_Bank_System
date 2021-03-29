@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="accceptedAnchor" prefHeight="180.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXProgressBar layoutX="36.0" layoutY="141.0" prefHeight="20.0" prefWidth="490.0" progress="0.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="14.0" />
+      <Label layoutX="760.0" layoutY="14.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #07c3ff; -fx-background-radius: 8;" />
+      <Group layoutX="14.0" layoutY="16.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="acceptedLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="396.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" text="Account ID :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="acceptedLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>

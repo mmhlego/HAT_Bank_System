@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanStatusController">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanStatusController">
    <children>
       <Label alignment="CENTER" layoutX="440.0" layoutY="28.0" prefHeight="50.0" prefWidth="870.0" style="-fx-background-color: #ffffff40; -fx-background-radius: 20;" text="Loans Status" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -39,9 +39,9 @@
                               </Label>
                            </children>
                         </Group>
-                        <VBox layoutY="34.0">
+                        <VBox fx:id="pendingBox" layoutY="34.0">
                            <children>
-                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                              <AnchorPane fx:id="pendingAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
                                  <children>
                                     <Label layoutX="761.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ffee00; -fx-background-radius: 8;" />
                                     <Group layoutX="14.0" layoutY="15.0">
@@ -87,9 +87,9 @@
                               </Label>
                            </children>
                         </Group>
-                        <VBox layoutY="34.0">
+                        <VBox fx:id="acceptedBox" layoutY="34.0">
                            <children>
-                              <AnchorPane prefHeight="180.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                              <AnchorPane fx:id="accceptedAnchor" prefHeight="180.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
                                  <children>
                                     <JFXProgressBar layoutX="36.0" layoutY="141.0" prefHeight="20.0" prefWidth="490.0" progress="0.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="14.0" />
                                     <Label layoutX="760.0" layoutY="14.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #07c3ff; -fx-background-radius: 8;" />
@@ -136,9 +136,9 @@
                               </Label>
                            </children>
                         </Group>
-                        <VBox layoutY="32.0">
+                        <VBox fx:id="finishedBox" layoutY="32.0">
                            <children>
-                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                              <AnchorPane fx:id="finishedAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
                                  <children>
                                     <Label layoutX="764.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #00ff0a; -fx-background-radius: 8;" />
                                     <Group layoutX="14.0" layoutY="15.0">
@@ -184,9 +184,9 @@
                               </Label>
                            </children>
                         </Group>
-                        <VBox layoutY="37.0">
+                        <VBox fx:id="rejectedBox" layoutY="37.0">
                            <children>
-                              <AnchorPane prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E328190; -fx-background-radius: 20;">
+                              <AnchorPane fx:id="rejectedAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
                                  <children>
                                     <Label layoutX="765.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ff0000; -fx-background-radius: 8;" />
                                     <Group layoutX="14.0" layoutY="15.0">
