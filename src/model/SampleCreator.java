@@ -225,4 +225,41 @@ public class SampleCreator {
             }
         }
     }
+
+    //===================================================================================================================================
+    //===================================================================================================================================
+    //===================================================================================================================================
+    //===================================================================================================================================
+
+    public static void createEmployees() {
+        try {
+            DBConnector.addUser("Mohammad Mahdi", "Hejazi", "mmhlego",
+                    "bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", "mmhlego@gmail.com",
+                    "09146501380", User.EMPLOYEE, "El Goli - sahand", User.generateID(User.EMPLOYEE), "1111111111",
+                    LocalDate.parse("2001-12-21"), 0, 0);
+
+            DBConnector.addUser("Kamyab", "Tabani", "CyberGhost",
+                    "61a9d5b22a1bb8a19cee3598859d0d9b74d286b9658aa0c0e7dc40db7e67e2c1", "K.tabani82@gmail.com",
+                    "09146559128", User.EMPLOYEE, "Zafaranie", User.generateID(User.EMPLOYEE), "1111111112",
+                    LocalDate.parse("2002-01-01"), 0, 0);
+
+            DBConnector.addUser("Pouya", "Afraz", "Pouya",
+                    "e5be8dd717c3958b82f0f83c4e0fcb53ea893c632a306e4991d76259e788159d", "pouyaafraz@gmail.com",
+                    "09222855759", User.EMPLOYEE, "Tabriz - Unknown", User.generateID(User.EMPLOYEE), "1111111113",
+                    LocalDate.parse("2002-01-01"), 0, 0);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createManager() {
+        try {
+            DBConnector.addUser("Dr J.", "Tanha", "JTanha", encoder.encode("jtanha"), "jtanha@gmail.com", "09127983569",
+                    User.MANAGER, "Tabriz university", User.generateID(User.MANAGER), "1111111110",
+                    LocalDate.parse("2001-12-21"), 0, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -110,12 +110,21 @@ public class DBConnector {
     }
 
     public static void UpdateUser(User u) throws Exception {
-        runCommand("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'" + u.LastName + "\' , Address=\'"
-                + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'" + u.PhoneNumber + "WHERE ID=\'" + u.ID);
+        PreparedStatement ps = con.prepareStatement("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'"
+                + u.LastName + "\' , Address=\'" + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'"
+                + u.PhoneNumber + "\' WHERE ID=\'" + u.ID + "\'");
+        ps.executeUpdate();
+        System.out.println("Updated");
     }
 
     public static void UpdateAccount(Account a) throws Exception {
-        runCommand("UPDATE Account Set CVV=\'" + a.CVV + "\' , Value=\'" + a.Value);
+        PreparedStatement ps = con.prepareStatement("UPDATE Account Set CVV=\'" + a.CVV + "\' , Value=" + a.Value
+                + " WHERE AccountID=\'" + a.AccountID + "\'");
+        ps.executeUpdate();
+    }
+
+    public static void Withdraw() {
+
     }
 
     // =============================================================================================
@@ -143,6 +152,7 @@ public class DBConnector {
         ps.setString(13, Integer.toString(language));
 
         ps.executeUpdate();
+        System.out.println("Wrote");
     }
 
     public static void addAccount(String ownerID, String bic, String iban, String cvv, String cvv2, LocalDate exDate,
@@ -297,16 +307,16 @@ public class DBConnector {
     }
 
     public static ArrayList<User> getAllUsers() throws Exception {
-		ResultSet r=runCommand("SELECT * FROM user");
-		ArrayList<User> allUsers=new ArrayList<>();
-		while (r.next()) {
-			User user =new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
+        ResultSet r = runCommand("SELECT * FROM User");
+        ArrayList<User> allUsers = new ArrayList<>();
+        while (r.next()) {
+            User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
                     r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
                     r.getString(11), r.getInt(12), r.getInt(13));
-			allUsers.add(user);
-		}
-		return allUsers;
-	}
+            allUsers.add(user);
+        }
+        return allUsers;
+    }
     /*
      * private static void connect() throws Exception {
      * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(
