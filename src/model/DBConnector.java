@@ -109,12 +109,12 @@ public class DBConnector {
     }
 
     public static void UpdateUser(User u) throws Exception {
-        runCommand("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'" + u.LastName + "\' , Address=\'"
+        runCommand("UPDATE `User` Set FirstName=\'" + u.FirstName + "\' , Lastname=\'" + u.LastName + "\' , Address=\'"
                 + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'" + u.PhoneNumber + "WHERE ID=\'" + u.ID);
     }
 
     public static void UpdateAccount(Account a) throws Exception {
-        runCommand("UPDATE Account Set CVV=\'" + a.CVV + "\' , Value=\'" + a.Value);
+        runCommand("UPDATE `Account` Set CVV=\'" + a.CVV + "\' , Value=\'" + a.Value + "WHERE OwnerID=\'" + a.OwnerID);
     }
 
     // =============================================================================================
