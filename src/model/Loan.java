@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Loan {
     public static int PENDING = 0, REJECTED = 1, PAYING = 2, FINISHED = 3;
 
-    public  String OwnerID, AccountID, GuarantorID;
+    public String OwnerID, AccountID, GuarantorID;
     public int Status, Percntage;
     public long Value, TotalPay, Payed;
     public LocalDate DueDate;

@@ -12,7 +12,6 @@ public class Main extends Application implements Runnable {
 
 	public static void main(String[] args) throws Exception {
 		launch(args);
-
 		//UserController.setCurrentUser(DBConnector.getUser("Client40"));
 	}
 
