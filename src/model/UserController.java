@@ -38,7 +38,9 @@ public class UserController {
         }
 
         //System.out.println(Arrays.deepToString(Accounts.toArray()));
-        //System.out.println(Arrays.deepToString(Loans.toArray()));
+        System.out.println(Arrays.deepToString(Loans.toArray()));
+        getCurrentUser().setLoans(Loans);
+        System.out.println(Loans.size());
         //System.out.println(Arrays.deepToString(Transactions.toArray()));
     }
 

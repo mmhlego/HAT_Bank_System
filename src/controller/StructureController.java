@@ -5,15 +5,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.*;
-import javafx.scene.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import model.UserController;
 
 public class StructureController implements Initializable {
-
-	public static final int MAINPAGE = 0, CLIENTLOANS = 1, MANAGERLOANS = 2, CLIENTACCOUNTS = 3, MANGERACCOUNTS = 4,
-			SETTINGS = 5;
 
 	@FXML
 	private AnchorPane MainPanel;
@@ -24,7 +21,6 @@ public class StructureController implements Initializable {
 	@FXML
 	private HBox toggleSidepanel;
 
-	static Parent[] root = new Parent[6];
 	HBox box;
 	private static AnchorPane Main;
 	private static VBox side;
@@ -36,13 +32,7 @@ public class StructureController implements Initializable {
 			box.getChildren().add(sidePanel);
 			box.getChildren().add(btns);
 			exSidePanel.getChildren().add(box);*/
-
-		loadPage("mainPage", 0);
-		loadPage("clientLoans", 1);
-		loadPage("managerLoans", 2);
-		loadPage("clientsAccounts", 3);
-		loadPage("managerAccounts", 4);
-		loadPage("settings", 5);
+		System.out.println(UserController.getCurrentUser().AccessLevel);
 
 		Main = MainPanel;
 
@@ -50,7 +40,23 @@ public class StructureController implements Initializable {
 		side.toBack();
 
 		sideTransition();
+		switch (UserController.getCurrentUser().AccessLevel) {
+		case 0:
+			System.out.println("StructureController.initialize()");
+			addButton("depositPage");
+			addButton("withdrawPage");
+			addButton("Transactions");
+			addButton("loanStatusPage");
+			addButton("settings");
+			break;
+		case 1:
 
+			break;
+		case 2:
+			addButton("loanStatusPage");
+			break;
+
+		}
 		toggleSidepanel.setOnMouseClicked(e -> {
 			sideTransition();
 		});
@@ -64,28 +70,24 @@ public class StructureController implements Initializable {
 		}
 	}
 
-	public void loadPage(String fxml, int page) {
-		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/" + fxml + ".fxml"));
-		try {
-			root[page] = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void addButton(int page) {
+	public static void addButton(String fxml) {
 		try {
 			FXMLLoader loader = new FXMLLoader(new File("src/view/components/SidePanelButtons.fxml").toURI().toURL());
 
 			HBox button = loader.load();
+			((Label) button.getChildren().get(1)).setText(fxml);
 
 			button.setOnMouseClicked(e -> {
 				int len = Main.getChildren().size();
 				Main.getChildren().remove(len - 1);
-				Main.getChildren().add(root[page]);
-			});
+				try {
+					FXMLLoader load = new FXMLLoader(new File("src/view/" + fxml + ".fxml").toURI().toURL());
+					Main.getChildren().add(load.load());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 
-			((Label) button.getChildren().get(1)).setText(Integer.toString(page));
+			});
 
 			//ImageView x = ((ImageView) button.getChildren().get(0)); ==================================side panel image ----*****
 
