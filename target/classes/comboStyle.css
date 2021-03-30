@@ -1,0 +1,20 @@
+.combo-box{
+    -fx-background-color: #2E3281;
+    -fx-background-radius:200;
+    -fx-text-fill:white;
+    -fx-font-size:15px;
+}
+
+.combo-box .text-field{
+    -fx-background-color: #2E3281;
+    -fx-background-radius:200;
+    -fx-text-fill:white;
+     -fx-font-size:15px;
+}
+
+.combo-box .arrow-button{
+    -fx-background-color:transparent;
+    -fx-background-radius:200;
+    -fx-text-fill:white;
+     -fx-font-size:15px;
+}
