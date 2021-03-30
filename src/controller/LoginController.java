@@ -62,8 +62,6 @@ public class LoginController implements Initializable, Runnable {
 		miniGroup.setCursor(Cursor.HAND);
 		miniGroup.setOnMouseClicked(e -> ((Stage) miniGroup.getScene().getWindow()).setIconified(true));
 
-		
-
 		loginButton.setOnAction(e -> {
 			String username = usernameField.getText();
 			String password = passwordField.getText();
@@ -71,13 +69,20 @@ public class LoginController implements Initializable, Runnable {
 
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
-					//controller.init();
-					
+
+					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
+					try {
+						UserMainPage = MainLoader.load();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+
 					UserController.setCurrentUser(DBConnector.getUser(username));
 					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 					try {
 						UserMainPage = MainLoader.load();
-						controller=new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml")).getController();
+						controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml"))
+								.getController();
 					} catch (IOException ex) {
 						ex.printStackTrace();
 					}

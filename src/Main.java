@@ -31,10 +31,10 @@ public class Main extends Application implements Runnable {
 
 			DBConnector.setStage(primaryStage);
 
-			DBConnector.setOffsetLeft(0.0);
-			DBConnector.showLoading();
-			Thread thread = new Thread(this);
-			thread.start();
+			// DBConnector.setOffsetLeft(0.0);
+			// DBConnector.showLoading();
+			// Thread thread = new Thread(this);
+			// thread.start();
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -239,7 +240,7 @@
                   </AnchorPane>
                </children>
             </Group>
-            <TextField fx:id="SearchTF" layoutX="522.0" layoutY="18.0" prefHeight="25.0" prefWidth="237.0" promptText="Search Here ..." style="-fx-background-radius: 20;" />
+            <TextField fx:id="SearchTF" layoutX="570.0" layoutY="18.0" prefHeight="25.0" prefWidth="189.0" promptText="Search Here ..." style="-fx-background-radius: 20;" />
             <ImageView fx:id="Searchbtn" fitHeight="25.0" fitWidth="37.0" layoutX="765.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/Search.png" />
@@ -248,8 +249,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <RadioButton fx:id="ASCRB" layoutX="331.0" layoutY="22.0" mnemonicParsing="false" text="Ascending" textFill="WHITE" />
-            <RadioButton fx:id="DESCRB" layoutX="419.0" layoutY="22.0" mnemonicParsing="false" text="Descending" textFill="WHITE" />
+            <RadioButton fx:id="ASCRB" layoutX="362.0" layoutY="22.0" mnemonicParsing="false" text="Ascending" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="Radiobtns" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="DESCRB" layoutX="464.0" layoutY="22.0" mnemonicParsing="false" text="Descending" textFill="WHITE" toggleGroup="$Radiobtns" />
             <JFXComboBox fx:id="SortOptionCB" layoutX="154.0" layoutY="18.0" prefHeight="25.0" prefWidth="149.0" />
          </children>
       </AnchorPane>
