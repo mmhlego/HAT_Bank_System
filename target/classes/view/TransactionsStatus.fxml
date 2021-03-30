@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TransactionsHistory">
    <children>
@@ -24,65 +22,92 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <HBox layoutX="50.0" layoutY="175.0" prefHeight="475.0" prefWidth="831.0" spacing="15.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+      <HBox layoutX="50.0" layoutY="223.0" prefHeight="427.0" prefWidth="820.0" spacing="15.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="223.0">
          <children>
-            <ScrollPane style="-fx-background: none; -fx-background-color: none;">
-               <content>
-                  <VBox alignment="CENTER" prefHeight="461.0" prefWidth="628.0">
-                     <children>
-                        <JFXTextField alignment="CENTER" editable="false" focusColor="WHITE" focusTraversable="false" style="-fx-text-fill: #4E61B1;" text="Successful Transactions" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="20.0" />
-                           </font>
-                        </JFXTextField>
-                        <VBox fx:id="successVbox" prefHeight="200.0" prefWidth="100.0" />
-                        <JFXTextField alignment="CENTER" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="10.0" style="-fx-text-fill: #BC335B;" text="Failed Transitions" unFocusColor="WHITE">
-                           <font>
-                              <Font name="System Bold Italic" size="20.0" />
-                           </font>
-                        </JFXTextField>
-                        <VBox fx:id="failedVbox" layoutX="10.0" layoutY="54.0" prefHeight="200.0" prefWidth="100.0" />
-                     </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
-            <AnchorPane prefHeight="475.0" prefWidth="175.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;">
+            <VBox alignment="CENTER" prefHeight="471.0" prefWidth="816.0">
                <children>
-                  <Label alignment="CENTER" layoutX="74.0" layoutY="41.0" prefHeight="50.0" prefWidth="175.0" style="-fx-text-fill: white;" text="Sort By:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                  <JFXTextField alignment="CENTER" editable="false" focusColor="WHITE" focusTraversable="false" style="-fx-text-fill: #4E61B1;" text="Successful Transactions" unFocusColor="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
-                  </Label>
-                  <ChoiceBox fx:id="sortBox" layoutX="13.0" layoutY="79.0" prefWidth="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                  <RadioButton fx:id="desRadioBTN" layoutX="12.0" layoutY="120.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="155.0" selected="true" style="-fx-text-fill: white;" text="Descending" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                  </JFXTextField>
+                  <VBox fx:id="successVbox" prefHeight="200.0" prefWidth="100.0" />
+                  <JFXTextField alignment="CENTER" editable="false" focusColor="WHITE" focusTraversable="false" layoutX="10.0" layoutY="10.0" style="-fx-text-fill: #BC335B;" text="Failed Transitions" unFocusColor="WHITE">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font name="System Bold Italic" size="20.0" />
                      </font>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="A" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="ascRadioBTN" layoutX="8.0" layoutY="156.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="155.0" style="-fx-text-fill: white;" text="Ascending" toggleGroup="$A" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </RadioButton>
-                  <TextField fx:id="searchTXF" layoutX="13.0" layoutY="259.0" prefHeight="37.0" prefWidth="155.0" promptText="Search" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                     <padding>
-                        <Insets left="5.0" right="40.0" />
-                     </padding>
-                  </TextField>
-                  <ImageView fx:id="searchBTN" fitHeight="30.0" fitWidth="30.0" layoutX="129.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@icons/search.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
+                  </JFXTextField>
+                  <VBox fx:id="failedVbox" layoutX="10.0" layoutY="54.0" prefHeight="200.0" prefWidth="100.0" />
                </children>
-            </AnchorPane>
+            </VBox>
          </children>
       </HBox>
+      <AnchorPane layoutX="505.0" layoutY="140.0" prefHeight="62.0" prefWidth="820.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="517.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Group>
+                     <children>
+                        <TextField fx:id="searchTXF" focusTraversable="false" layoutX="74.0" layoutY="3.0" prefHeight="37.0" prefWidth="275.0" promptText="Search here ..." style="-fx-background-color: white; -fx-background-radius: 20;">
+                           <padding>
+                              <Insets left="5.0" right="40.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fx:id="searchBTN" fitHeight="30.0" fitWidth="30.0" layoutX="317.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/search.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children>
+                  </Group>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="519.0" spacing="15.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" AnchorPane.leftAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="61.0" text="Sort By:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="65.0" prefWidth="100.0">
+                     <children>
+                        <ComboBox fx:id="firstCMB" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefWidth="100.0">
+                     <children>
+                        <ComboBox fx:id="secondCMB" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefWidth="100.0">
+                     <children>
+                        <ComboBox fx:id="thirdCMB" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" />
+                     </children>
+                  </VBox>
+                  <JFXButton fx:id="sortBTN" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #BC335B; -fx-background-radius: 200;" text="Sort">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets left="12.0" right="12.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

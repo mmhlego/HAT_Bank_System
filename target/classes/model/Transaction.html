@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css" type="text/css">
+    <title>Transaction</title>
+    <style>
+        * {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  text-align: center;
+  background-image: linear-gradient(to right, #43f061, #12e7dd);
+  align-content: center;
+  padding-bottom: 0;
+}
+
+p {
+  text-align: left;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+h1 {
+  margin-top: 1em;
+  color: #b33771;
+}
+
+fieldset {
+  font-family: sans-serif;
+  padding: 0px;
+  text-align: left;
+  border: double 4px transparent;
+  border-radius: 35px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to bottom right, #55ff8f, #00d1ff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.body {
+  text-align: center;
+  background: linear-gradient(to right, #43f061, #12e7dd);
+  padding: 0px 20px;
+  padding-bottom: 40px;
+}
+
+.container {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+}
+
+.Main {
+  background-color: #fff;
+  border-radius: 35px;
+  padding: 30px 60px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <div class="body">
+        <h1> Your Transfer Has Been Successful ! </h1>
+        <br><br>
+        <div class="container">
+            <div class="Main">
+                <p class="p header"> Dear {userName} {Event} ! </p><br><br>
+                <p> Your Money Has Been Successfully Transfered To Target Card ! Here Is The Reciept </p>
+                <br><br>
+                <fieldset>
+                    <br>
+                    <legend style="text-align: center; background-color: white;">&nbsp;&nbsp;Reciept&nbsp;&nbsp;</legend>
+                    <span style="margin: 30px 30px 30px 30px;"> Sender Card :  </span>&nbsp;
+                    <span> {SenderCard} </span>
+                    <br><br>
+                    <span style="margin: 30px;"> Reciever Card :</span>
+                    <span> {RecieverCard} </span>
+                    <br><br>
+                    <span style="margin: 30px;"> Amount :</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span> {Amount} </span>
+                    <br><br>
+                    <span style="margin: 30px;"> Date :</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span> {Date} </span>
+                    <br><br>
+                    <span style="margin: 30px;"> To Sir / Madam :</span>
+                    <span> {recievername} </span>
+                    <br><br>
+                </fieldset>
+                <br><br><br>
+                <h6> &#128272; <i> Secured By HAT Bank System &#8482; </i> &#9989; </h6>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,49 +2,47 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class TransactionsHistory implements Initializable {
 
-    @FXML
-    private AnchorPane MainPanel;
+	@FXML
+	private AnchorPane MainPanel;
 
-    @FXML
-    private VBox successVbox;
+	@FXML
+	private VBox successVbox;
 
-    @FXML
-    private VBox failedVbox;
+	@FXML
+	private VBox failedVbox;
 
-    @FXML
-    private ChoiceBox<?> sortBox;
+	@FXML
+	private TextField searchTXF;
 
-    @FXML
-    private RadioButton desRadioBTN;
+	@FXML
+	private ImageView searchBTN;
 
-    @FXML
-    private ToggleGroup A;
+	@FXML
+	private ComboBox<?> firstCMB;
 
-    @FXML
-    private RadioButton ascRadioBTN;
+	@FXML
+	private ComboBox<?> secondCMB;
 
-    @FXML
-    private TextField searchTXF;
+	@FXML
+	private ComboBox<?> thirdCMB;
 
-    @FXML
-    private ImageView searchBTN;
+	@FXML
+	private JFXButton sortBTN;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
 
-    }
+	}
 
 }

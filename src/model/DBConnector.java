@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -25,9 +26,9 @@ public class DBConnector {
         stage = st;
     }
 
-    /*private static ResultSet getResults() {
-        return results;
-    }*/
+    /*
+     * private static ResultSet getResults() { return results; }
+     */
 
     // =============================================================================================
     // LOADING SCREEN METHODS
@@ -68,9 +69,9 @@ public class DBConnector {
         return false;
     }
 
-    /*private static void closeConnection() throws Exception {
-        con.close();
-    }*/
+    /*
+     * private static void closeConnection() throws Exception { con.close(); }
+     */
 
     // =============================================================================================
     // COMPLETE METHODS
@@ -81,7 +82,7 @@ public class DBConnector {
         Statement stmt = con.createStatement();
         results = stmt.executeQuery(command);
 
-        //con.createStatement().executeUpdate(command);
+        // con.createStatement().executeUpdate(command);
 
         return results;
     }
@@ -108,7 +109,17 @@ public class DBConnector {
         return false;
     }
 
-    // ============================================================================================= Insert methods
+    public static void UpdateUser(User u) throws Exception {
+        runCommand("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'" + u.LastName + "\' , Address=\'"
+                + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'" + u.PhoneNumber + "WHERE ID=\'" + u.ID);
+    }
+
+    public static void UpdateAccount(Account a) throws Exception {
+        runCommand("UPDATE Account Set CVV=\'" + a.CVV + "\' , Value=\'" + a.Value);
+    }
+
+    // =============================================================================================
+    // Insert methods
 
     public static void addUser(String firstname, String lastname, String Username, String Password, String Email,
             String Phone, int AccessLevel, String address, String id, String nationalCode, LocalDate birthDate,
@@ -229,13 +240,15 @@ public class DBConnector {
         return count;
     }
 
-    /* public static void addLoan(String OwnerID, String accountID, int status, long value, int percentage, long totalPay,
-            long payed, Date dueDate, String guarantorid) throws Exception {
-        runCommand(
-                "INSERT INTO Loan (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
-                        + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" + Password + "\'"
-                        + AccessLevel + "\'" + address + "\'" + id + "\'" + nationalCode + "\'" + birthDate);
-    }*/
+    /*
+     * public static void addLoan(String OwnerID, String accountID, int status, long
+     * value, int percentage, long totalPay, long payed, Date dueDate, String
+     * guarantorid) throws Exception { runCommand(
+     * "INSERT INTO Loan (FirstName LastName Username Password AccessLevel Address ID NationalCode BirthDate) Values (\'"
+     * + firstname + "\'" + "\'" + lastname + "\'" + "\'" + Username + "\'" + "\'" +
+     * Password + "\'" + AccessLevel + "\'" + address + "\'" + id + "\'" +
+     * nationalCode + "\'" + birthDate); }
+     */
 
     // =============================================================================================
 
@@ -283,6 +296,17 @@ public class DBConnector {
         return count;
     }
 
+    public static ArrayList<User> getAllUsers() throws Exception {
+		ResultSet r=runCommand("SELECT * FROM user");
+		ArrayList<User> allUsers=new ArrayList<>();
+		while (r.next()) {
+			User user =new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
+                    r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
+                    r.getString(11), r.getInt(12), r.getInt(13));
+			allUsers.add(user);
+		}
+		return allUsers;
+	}
     /*
      * private static void connect() throws Exception {
      * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(
