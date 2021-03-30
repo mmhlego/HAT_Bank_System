@@ -21,7 +21,7 @@ public class Main extends Application implements Runnable {
 		//SampleCreator.CreateFullData(100);
 		//SampleCreator.createRandomTransactions(100);
 
-		UserController.setCurrentUser(DBConnector.getUser("Client40"));
+	//	UserController.setCurrentUser(DBConnector.getUser("Client40"));
 	}
 
 	@Override
