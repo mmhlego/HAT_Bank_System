@@ -11,18 +11,17 @@ public class Main extends Application implements Runnable {
 	public firstLoginController controller;
 
 	public static void main(String[] args) throws Exception {
-		launch(args);
-		//System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a", 1));
+
+		// System.out.println(DBConnector.checkUser("mmhlego","bab8f06012c8bd59f3e79b36b559c648574f13608a45e0644e1503d1eb76847a",
+		// 1));
 		// Sender.SendEmail("mmhlegoautosmssender@gmail.com");
-		// Sender.SendEmail("Recieve.tester@hi2.in", "Register Confirmed", Sender.Signupmail);
-		// Sender.SendEmail("Recieve.tester@hi2.in", "Login Detected", Sender.Loginmail);
-		//Sender.Load();
 
 		System.out.println(DBConnector.connect());
-		//SampleCreator.CreateFullData(100);
-		//SampleCreator.createRandomTransactions(100);
+		// SampleCreator.CreateFullData(100);
+		// SampleCreator.createRandomTransactions(100);
 
 		UserController.setCurrentUser(DBConnector.getUser("Client40"));
+		launch(args);
 	}
 
 	@Override
@@ -31,11 +30,14 @@ public class Main extends Application implements Runnable {
 			// FXMLLoader loading = new FXMLLoader(new
 			// File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
 
-			DBConnector.connect();
+			// DBConnector.connect();
 
-			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
-			//	FXMLLoader loader  = new FXMLLoader(this.getClass().getResource("view/changePassword.fxml"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
+			// FXMLLoader loader = new
+			// FXMLLoader(this.getClass().getResource("view/changePassword.fxml"));
+			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/loanPage.fxml"));
+			StructureController.addButton(1);
 			controller = loader.getController();
 
 			Parent root = loader.load();
@@ -44,15 +46,15 @@ public class Main extends Application implements Runnable {
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.show();
 
-			StructureController.addButton(StructureController.CLIENTACCOUNTS);
-			StructureController.addButton(StructureController.SETTINGS);
+			// StructureController.addButton(StructureController.CLIENTACCOUNTS);
+			// StructureController.addButton(StructureController.SETTINGS);
 
-			DBConnector.setStage(primaryStage);
+			// DBConnector.setStage(primaryStage);
 
-			DBConnector.setOffsetLeft(0.0);
-			DBConnector.showLoading();
-			Thread thread = new Thread(this);
-			thread.start();
+			// DBConnector.setOffsetLeft(0.0);
+			// DBConnector.showLoading();
+			// Thread thread = new Thread(this);
+			// thread.start();
 
 		} catch (Exception e) {
 			e.printStackTrace();
