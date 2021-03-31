@@ -1,9 +1,7 @@
 package controller;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import model.DBConnector;
 import model.PassToNext;
 
-public class deposit implements Initializable{
+public class deposit implements Initializable {
 
     @FXML
     private AnchorPane MainPanel;
@@ -40,21 +38,22 @@ public class deposit implements Initializable{
     @FXML
     private JFXButton submit;
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		LimitandNext();
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        LimitandNext();
         submit.setOnAction((e) -> {
-            if (IsAllFieldsComplete()) {
-                try {
-                    DBConnector.Deposit();
-                } catch (SQLException e1) {
-                    
-                }
-            } else {
+            if (!IsAllFieldsComplete()) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Some Fields Are Empty !");
+                alert.show();
+            } else if (!DBConnector.containsBIC(cardTXF.getText())) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setContentText("Wrong Credentials !");
                 alert.show();
+            } else{
+                DBConnector.changeValue(Long.parseLong(AmountTXF.getText()),cardTXF.getText());
             }
         });
     }
@@ -77,5 +76,4 @@ public class deposit implements Initializable{
             return false;
         }
     }
-
 }

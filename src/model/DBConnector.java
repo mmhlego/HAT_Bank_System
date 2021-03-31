@@ -109,6 +109,20 @@ public class DBConnector {
         return false;
     }
 
+    public static boolean IsMoneyEnough(long Value, String card) {
+        try {
+            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
+            r.next();
+            long currentvalue = r.getLong(1);
+            if (Value <= currentvalue) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void UpdateUser(User u) throws Exception {
         PreparedStatement ps = con.prepareStatement("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'"
                 + u.LastName + "\' , Address=\'" + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'"
@@ -123,17 +137,20 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
-<<<<<<< HEAD
-    public static void Withdraw() throws SQLException {
-        DBConnector.connect();
+    public static boolean CheckCardInfo() {
+        return false;
     }
 
-    public static void Deposit() throws SQLException {
-        DBConnector.connect();
-=======
-    public static void Withdraw() {
-
->>>>>>> 1c7dbdfed18cce61b139366416ef7e36d85fbcd9
+    public static void changeValue(long value , String card){
+        try {
+            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
+            r.next();
+            long currentvalue =r.getLong(1); 
+            long finalvalue = currentvalue + value;
+            con.prepareStatement("UPDATE Account Set Value=" + finalvalue + " WHERE BIC=\'" + card + "\'").executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
     }
 
     // =============================================================================================

@@ -12,8 +12,6 @@ public class Main extends Application implements Runnable {
 
 	public static void main(String[] args) throws Exception {
 		launch(args);
-<<<<<<< HEAD
-
 		// LocalDate date = LocalDate.of(1990, 2, 25);
 		// UserController.setCurrentUser(DBConnector.getUser("Client40"));
 		// User u = new User("Kamyab", "Tabani", "K..T", encoder.encode("CyberPunk"), 2, "Maralan", "C-1000", "123456789",
@@ -23,9 +21,8 @@ public class Main extends Application implements Runnable {
 		// "CyberPunk@gmail.com", "0914566478", 2, "Maralan",
 		// "C-1000", "123456789", date, 0, 0);
 		// DBConnector.UpdateUser(u);
-		
-=======
->>>>>>> 1c7dbdfed18cce61b139366416ef7e36d85fbcd9
+		DBConnector.connect();
+		launch(args);
 	}
 
 	@Override
@@ -34,6 +31,7 @@ public class Main extends Application implements Runnable {
 			// FXMLLoader loader = new
 			// FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/settings.fxml"));
+			DBConnector.connect();
 			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			Parent root = loader.load();
 			// controller = loader.getController();

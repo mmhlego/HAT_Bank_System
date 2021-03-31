@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingController">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingController">
    <children>
       <HBox alignment="CENTER" layoutY="68.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
@@ -46,7 +46,7 @@
                   <JFXTextField fx:id="phoneTXF" editable="false" focusColor="#0d0f48" focusTraversable="false" labelFloat="true" layoutX="30.0" layoutY="80.0" promptText="Phone" style="-fx-prompt-text-fill: #0d0f48; -fx-text-fill: white;" text="Phone" unFocusColor="#0d0f48" />
                   <JFXTextField fx:id="birthTXF" editable="false" focusColor="#0d0f48" focusTraversable="false" labelFloat="true" layoutX="30.0" layoutY="195.0" promptText="Birth" style="-fx-prompt-text-fill: #0d0f48; -fx-text-fill: white;" text="Birth" unFocusColor="#0d0f48" />
                   <JFXTextArea fx:id="addressTXA" editable="false" focusColor="#0d0f48" focusTraversable="false" labelFloat="true" prefHeight="61.0" prefWidth="310.0" promptText="Address" style="-fx-text-fill: white; -fx-prompt-text-fill: #0d0f48;" text="Address" unFocusColor="#0d0f48" />
-                  <JFXButton fx:id="changeInformationBTN" focusTraversable="false" prefHeight="25.0" prefWidth="433.0" ripplerFill="#970092" style="-fx-background-color: #2e3281; -fx-background-radius: 10;" text="Change Information" textFill="WHITE" />
+                  <JFXButton fx:id="changeInformationBTN" focusTraversable="false" onAction="#ChangeSave" prefHeight="25.0" prefWidth="433.0" ripplerFill="#970092" style="-fx-background-color: #2e3281; -fx-background-radius: 10;" text="Change Information" textFill="WHITE" />
                </children>
             </VBox>
          </children>
