@@ -13,6 +13,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
@@ -62,7 +63,47 @@ public class LoginController implements Initializable, Runnable {
 		miniGroup.setCursor(Cursor.HAND);
 		miniGroup.setOnMouseClicked(e -> ((Stage) miniGroup.getScene().getWindow()).setIconified(true));
 
-		loginButton.setOnAction(e -> {
+		loginButton.setOnAction(e ->login() );
+		loginButton.getParent().setOnKeyPressed(e->{
+			if (e.getCode()==KeyCode.ENTER) {
+				login();
+			}
+		});
+		
+		// StructureController.addButton();
+
+		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
+
+		usernameField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
+					Boolean newPropertyValue) {
+				if (newPropertyValue) {
+					usernameField.setStyle(
+							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
+				} else {
+					usernameField.setStyle(
+							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
+				}
+			}
+		});
+		passwordField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+			@Override
+			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
+					Boolean newPropertyValue) {
+				if (newPropertyValue) {
+					passwordField.setStyle(
+							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
+				} else {
+					passwordField.setStyle(
+							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
+				}
+			}
+		});
+
+	}
+	private void login() 
+		{
 			String username = usernameField.getText();
 			String password = passwordField.getText();
 			String hashPassword = encoder.encode(password);
@@ -101,40 +142,8 @@ public class LoginController implements Initializable, Runnable {
 						"An error accured whil trying to connect to database.\nPlease check your network connection.");
 				a.show();
 			}
-		});
-		// StructureController.addButton();
-
-		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
-
-		usernameField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-			@Override
-			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
-					Boolean newPropertyValue) {
-				if (newPropertyValue) {
-					usernameField.setStyle(
-							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
-				} else {
-					usernameField.setStyle(
-							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
-				}
-			}
-		});
-		passwordField.focusedProperty().addListener(new ChangeListener<Boolean>() {
-			@Override
-			public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
-					Boolean newPropertyValue) {
-				if (newPropertyValue) {
-					passwordField.setStyle(
-							"-fx-background-color:white;-fx-border-width:2px;-fx-border-color: #999e9d;-fx-border-radius: 200 200 200 200;");
-				} else {
-					passwordField.setStyle(
-							"-fx-background-color:#EEF5F3;-fx-border-width:0px;-fx-background-radius: 200 200 200 200;");
-				}
-			}
-		});
-
-	}
-
+		}
+	
 	AnchorPane register;
 
 	public void changePage(int accessLevel) {
@@ -148,7 +157,7 @@ public class LoginController implements Initializable, Runnable {
 			signButton.setVisible(false);
 			try {
 				pic.setImage(new Image(new FileInputStream(new File(
-						"view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
+						"src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -160,7 +169,7 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Employee Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream(new File("view/pictures/1869679-removebg-preview.png"))));
+				pic.setImage(new Image(new FileInputStream(new File("src/view/pictures/1869679-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -186,7 +195,7 @@ public class LoginController implements Initializable, Runnable {
 			signButton.setVisible(true);
 			try {
 				pic.setImage(new Image(new FileInputStream(
-						new File("view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
+						new File("src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

@@ -14,7 +14,7 @@
       </Label>
       <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="175.0" prefHeight="476.0" prefWidth="840.0" style="-fx-background-color: none; -fx-background: none;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="175.0">
          <content>
-            <AnchorPane fx:id="cardAnchor" prefHeight="475.0" prefWidth="820.0" style="-fx-background-color: red;" />
+            <AnchorPane fx:id="cardAnchor" prefHeight="475.0" prefWidth="820.0" />
          </content>
       </ScrollPane>
    </children>

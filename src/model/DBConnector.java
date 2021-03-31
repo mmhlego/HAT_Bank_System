@@ -35,7 +35,7 @@ public class DBConnector {
 
     public static boolean showLoading() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
             AnchorPane root = loader.load();
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());

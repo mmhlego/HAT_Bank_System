@@ -11,7 +11,7 @@ public class Main extends Application implements Runnable {
 	public firstLoginController controller;
 
 	public static void main(String[] args) throws Exception {
-		launch(args);
+	//	launch(args);
 		// LocalDate date = LocalDate.of(1990, 2, 25);
 		// UserController.setCurrentUser(DBConnector.getUser("Client40"));
 		// User u = new User("Kamyab", "Tabani", "K..T", encoder.encode("CyberPunk"), 2, "Maralan", "C-1000", "123456789",
