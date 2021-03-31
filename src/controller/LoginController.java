@@ -70,14 +70,8 @@ public class LoginController implements Initializable, Runnable {
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
 
-					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
-					try {
-						UserMainPage = MainLoader.load();
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					}
-
 					UserController.setCurrentUser(DBConnector.getUser(username));
+
 					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 					try {
 						UserMainPage = MainLoader.load();
@@ -154,8 +148,8 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Manager Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream(
-						"src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png")));
+				pic.setImage(new Image(new FileInputStream(new File(
+						"view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -167,7 +161,7 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Employee Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream("src/view/pictures/1869679-removebg-preview.png")));
+				pic.setImage(new Image(new FileInputStream(new File("view/pictures/1869679-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -193,7 +187,7 @@ public class LoginController implements Initializable, Runnable {
 			signButton.setVisible(true);
 			try {
 				pic.setImage(new Image(new FileInputStream(
-						"src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png")));
+						new File("view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}

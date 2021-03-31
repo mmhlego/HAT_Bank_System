@@ -20,28 +20,32 @@ public class UserController {
     }
 
     public static void LoadUserDataFromDB() {
-        try {
-            Accounts = ConvertAccountsToArrayList(DBConnector.getAccounts(CurrentUser.ID));
-            Loans = ConvertLoansToArrayList(DBConnector.getLoans(CurrentUser.ID));
+        if (CurrentUser.AccessLevel == User.CLIENT) {
+            try {
+                Accounts = ConvertAccountsToArrayList(DBConnector.getAccounts(CurrentUser.ID));
+                Loans = ConvertLoansToArrayList(DBConnector.getLoans(CurrentUser.ID));
 
-            for (int i = 0; i < Accounts.size(); i++) {
-                ArrayList<Transaction> temp = ConvertTransactionsToArrayList(
-                        DBConnector.getTransactions(Accounts.get(i).AccountID));
+                for (int i = 0; i < Accounts.size(); i++) {
+                    ArrayList<Transaction> temp = ConvertTransactionsToArrayList(
+                            DBConnector.getTransactions(Accounts.get(i).AccountID));
 
-                for (Transaction t : temp) {
-                    Transactions.add(t);
+                    for (Transaction t : temp) {
+                        Transactions.add(t);
+                    }
                 }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+            try {
+                Accounts = ConvertAccountsToArrayList(DBConnector.getAllAccounts());
+                Loans = ConvertLoansToArrayList(DBConnector.getAllLoans());
+                Transactions = ConvertTransactionsToArrayList(DBConnector.getAllTransactions());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
-        //System.out.println(Arrays.deepToString(Accounts.toArray()));
-        System.out.println(Arrays.deepToString(Loans.toArray()));
-        getCurrentUser().setLoans(Loans);
-        System.out.println(Loans.size());
-        //System.out.println(Arrays.deepToString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {
@@ -92,5 +96,9 @@ public class UserController {
             e.printStackTrace();
         }
         return temp;
+    }
+
+    public static ArrayList<Loan> getLoans() {
+        return Loans;
     }
 }

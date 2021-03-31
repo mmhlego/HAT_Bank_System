@@ -35,7 +35,7 @@ public class DBConnector {
 
     public static boolean showLoading() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(new File("view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
             AnchorPane root = loader.load();
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());
@@ -280,7 +280,6 @@ public class DBConnector {
             ResultSet r = runCommand("select * from User where Username=\'" + username + "\'");
 
             if (r.next()) {
-
                 return (new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
                         r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
                         r.getString(11), r.getInt(12), r.getInt(13)));
@@ -327,4 +326,16 @@ public class DBConnector {
      * stmt.executeQuery("select * from Sample"); while (rs.next()) {
      * System.out.println(rs.getString(1)); } }
      */
+
+    public static ResultSet getAllAccounts() throws Exception {
+        return runCommand("Select * from Account");
+    }
+
+    public static ResultSet getAllLoans() throws Exception {
+        return runCommand("Select * from Loan");
+    }
+
+    public static ResultSet getAllTransactions() throws Exception {
+        return runCommand("Select * from Transaction");
+    }
 }

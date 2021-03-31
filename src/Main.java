@@ -17,10 +17,9 @@ public class Main extends Application implements Runnable {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// FXMLLoader loader = new
-			// FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/withdrawPage.fxml"));
-			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
+			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/withdrawPage.fxml"));
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			Parent root = loader.load();
 			// controller = loader.getController();
 
@@ -30,11 +29,10 @@ public class Main extends Application implements Runnable {
 			primaryStage.show();
 
 			DBConnector.setStage(primaryStage);
-
-			/*DBConnector.setOffsetLeft(0.0);
+			DBConnector.setOffsetLeft(0.0);
 			DBConnector.showLoading();
 			Thread thread = new Thread(this);
-			thread.start();*/
+			thread.start();
 
 		} catch (Exception e) {
 			e.printStackTrace();

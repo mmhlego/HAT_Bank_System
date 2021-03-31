@@ -8,6 +8,7 @@ import javafx.fxml.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import model.User;
 import model.UserController;
 
 public class StructureController implements Initializable {
@@ -32,7 +33,6 @@ public class StructureController implements Initializable {
 			box.getChildren().add(sidePanel);
 			box.getChildren().add(btns);
 			exSidePanel.getChildren().add(box);*/
-		System.out.println(UserController.getCurrentUser().AccessLevel);
 
 		Main = MainPanel;
 
@@ -41,7 +41,7 @@ public class StructureController implements Initializable {
 
 		sideTransition();
 		switch (UserController.getCurrentUser().AccessLevel) {
-		case 0:
+		case User.CLIENT:
 			System.out.println("StructureController.initialize()");
 			addButton("depositPage");
 			addButton("withdrawPage");
@@ -49,10 +49,8 @@ public class StructureController implements Initializable {
 			addButton("loanStatusPage");
 			addButton("settings");
 			break;
-		case 1:
-
-			break;
-		case 2:
+		case User.EMPLOYEE:
+		case User.MANAGER:
 			addButton("loanStatusPage");
 			break;
 
@@ -62,7 +60,7 @@ public class StructureController implements Initializable {
 		});
 
 		try {
-			FXMLLoader loader = new FXMLLoader(new File("src/view/mainPage.fxml").toURI().toURL());
+			FXMLLoader loader = new FXMLLoader(new File("view/mainPage.fxml").toURI().toURL());
 
 			Main.getChildren().add(loader.load());
 		} catch (Exception e) {
@@ -72,7 +70,7 @@ public class StructureController implements Initializable {
 
 	public static void addButton(String fxml) {
 		try {
-			FXMLLoader loader = new FXMLLoader(new File("src/view/components/SidePanelButtons.fxml").toURI().toURL());
+			FXMLLoader loader = new FXMLLoader(new File("view/components/SidePanelButtons.fxml").toURI().toURL());
 
 			HBox button = loader.load();
 			((Label) button.getChildren().get(1)).setText(fxml);
@@ -81,7 +79,7 @@ public class StructureController implements Initializable {
 				int len = Main.getChildren().size();
 				Main.getChildren().remove(len - 1);
 				try {
-					FXMLLoader load = new FXMLLoader(new File("src/view/" + fxml + ".fxml").toURI().toURL());
+					FXMLLoader load = new FXMLLoader(new File("view/" + fxml + ".fxml").toURI().toURL());
 					Main.getChildren().add(load.load());
 				} catch (IOException e1) {
 					e1.printStackTrace();
