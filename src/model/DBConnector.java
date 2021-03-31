@@ -123,8 +123,12 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
-    public static void Withdraw() {
-        
+    public static void Withdraw() throws SQLException {
+        DBConnector.connect();
+    }
+
+    public static void Deposit() throws SQLException {
+        DBConnector.connect();
     }
 
     // =============================================================================================

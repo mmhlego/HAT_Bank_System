@@ -9,6 +9,8 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.DBConnector;
+import model.User;
+import model.encoder;
 
 public class Register implements Initializable {
     @FXML
@@ -72,9 +74,9 @@ public class Register implements Initializable {
                     Error.setHeaderText("Error");
                     Error.show();
                 } else {
-                    /*DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), codeField.getText(),
-                            birthField.getText(), phoneField.getText(), addressField.getText(), usernameField.getText(),
-                            encoder.encode(passwordField.getText()), 0, "Generate Specific ID");*/
+                    DBConnector.connect();
+                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), 
+                            usernameField.getText(), encoder.encode(passwordField.getText()), "Email" , phoneField.getText(), 0 , addressField.getText() , User.generateID(User.CLIENT), codeField.getText(), birthPicker.getValue() , 0, 0);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();

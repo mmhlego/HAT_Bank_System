@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
@@ -42,8 +43,11 @@ public class Withdraw implements Initializable {
         LimitandNext();
         submit.setOnAction((e) -> {
             if (IsAllFieldsComplete()) {
-                DBConnector.Withdraw();
-                //Update Data
+                try {
+                    DBConnector.Withdraw();
+                } catch (SQLException e1) {
+
+                } 
             }else{
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText(null);
