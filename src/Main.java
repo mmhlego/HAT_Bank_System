@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 import controller.*;
 import javafx.application.*;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +12,7 @@ public class Main extends Application implements Runnable {
 
 	public static void main(String[] args) throws Exception {
 		launch(args);
+<<<<<<< HEAD
 
 		// LocalDate date = LocalDate.of(1990, 2, 25);
 		// UserController.setCurrentUser(DBConnector.getUser("Client40"));
@@ -25,6 +24,8 @@ public class Main extends Application implements Runnable {
 		// "C-1000", "123456789", date, 0, 0);
 		// DBConnector.UpdateUser(u);
 		
+=======
+>>>>>>> 1c7dbdfed18cce61b139366416ef7e36d85fbcd9
 	}
 
 	@Override
@@ -44,10 +45,10 @@ public class Main extends Application implements Runnable {
 
 			DBConnector.setStage(primaryStage);
 
-			// DBConnector.setOffsetLeft(0.0);
-			// DBConnector.showLoading();
-			// Thread thread = new Thread(this);
-			// thread.start();
+			/*DBConnector.setOffsetLeft(0.0);
+			DBConnector.showLoading();
+			Thread thread = new Thread(this);
+			thread.start();*/
 
 		} catch (Exception e) {
 			e.printStackTrace();

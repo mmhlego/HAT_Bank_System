@@ -123,12 +123,17 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
+<<<<<<< HEAD
     public static void Withdraw() throws SQLException {
         DBConnector.connect();
     }
 
     public static void Deposit() throws SQLException {
         DBConnector.connect();
+=======
+    public static void Withdraw() {
+
+>>>>>>> 1c7dbdfed18cce61b139366416ef7e36d85fbcd9
     }
 
     // =============================================================================================
@@ -311,7 +316,7 @@ public class DBConnector {
     }
 
     public static ArrayList<User> getAllUsers() throws Exception {
-        ResultSet r = runCommand("SELECT * FROM user");
+        ResultSet r = runCommand("SELECT * FROM User");
         ArrayList<User> allUsers = new ArrayList<>();
         while (r.next()) {
             User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
