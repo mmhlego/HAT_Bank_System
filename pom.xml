@@ -12,15 +12,15 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 	<dependencies>
-		<!--<dependency>
-    		<groupId>org.openjfx</groupId>
-    		<artifactId>javafx-fxml</artifactId>
-    		<version>9.0.1</version>
-		</dependency>-->
 		<dependency>
     		<groupId>javax.mail</groupId>
     		<artifactId>mail</artifactId>
     		<version>1.4</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.openjfx</groupId>
+    		<artifactId>javafx-fxml</artifactId>
+    		<version>9.0.1</version>
 		</dependency>
 		<dependency>
     		<groupId>javax.activation</groupId>
@@ -36,7 +36,7 @@
 		<dependency>
     		<groupId>com.jfoenix</groupId>
     		<artifactId>jfoenix</artifactId>
-    		<version>8.0.10</version>
+    		<version>9.0.10</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
