@@ -20,6 +20,7 @@ public class Main extends Application implements Runnable {
 			// FXMLLoader loader = new
 			// FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
 		//	FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/withdrawPage.fxml"));
+			DBConnector.connect();
 			 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			Parent root = loader.load();
 			// controller = loader.getController();

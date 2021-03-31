@@ -43,6 +43,7 @@ public class StructureController implements Initializable {
 		switch (UserController.getCurrentUser().AccessLevel) {
 		case 0:
 			System.out.println("StructureController.initialize()");
+			addButton("accountsPage");
 			addButton("depositPage");
 			addButton("withdrawPage");
 			addButton("Transactions");

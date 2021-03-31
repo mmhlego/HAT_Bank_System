@@ -3,10 +3,10 @@ package model;
 import java.time.LocalDate;
 
 public class Account {
-    String OwnerID, BIC, IBAN, CVV, CVV2, AccountID;
-    LocalDate ExDate;
-    int Status;
-    long Value;
+	public String OwnerID, BIC, IBAN, CVV, CVV2, AccountID;
+    public LocalDate ExDate;
+    public int Status;
+    public long Value;
 
     public Account(String ownerID, String bic, String iban, String cvv, String cvv2, LocalDate exDate, int status,
             long value, String accountID) {
