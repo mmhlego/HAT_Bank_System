@@ -9,30 +9,45 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.DBConnector;
+import model.User;
+import model.encoder;
 
 public class Register implements Initializable {
-    @FXML
+       @FXML
     private Label title;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private PasswordField passwordField;
+
     @FXML
     private Button signUp;
+
     @FXML
     private TextField firstNameField;
+
     @FXML
     private TextField lastNameField;
+
     @FXML
     private TextField codeField;
+
     @FXML
     private TextField birthField;
-    @FXML
-    public TextField usernameField;
-    @FXML
-    private TextArea addressField;
+
     @FXML
     private JFXDatePicker birthPicker;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private TextArea addressField;
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private TextField emailField;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -72,9 +87,9 @@ public class Register implements Initializable {
                     Error.setHeaderText("Error");
                     Error.show();
                 } else {
-                    /*DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), codeField.getText(),
-                            birthField.getText(), phoneField.getText(), addressField.getText(), usernameField.getText(),
-                            encoder.encode(passwordField.getText()), 0, "Generate Specific ID");*/
+                    DBConnector.connect();
+                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), 
+                            usernameField.getText(), encoder.encode(passwordField.getText()), "Email" , phoneField.getText(), 0 , addressField.getText() , User.generateID(User.CLIENT), codeField.getText(), birthPicker.getValue() , 0, 0);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();

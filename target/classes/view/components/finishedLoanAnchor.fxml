@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="finishedAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="finishedAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="764.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #00ff0a; -fx-background-radius: 8;" />
       <Group layoutX="14.0" layoutY="15.0">
@@ -15,7 +15,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="finishedLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+            <Label fx:id="finishedLoanValue" layoutX="130.0" prefHeight="30.0" prefWidth="250.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -25,7 +25,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="finishedLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+            <Label fx:id="finishedLoanID" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="200.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

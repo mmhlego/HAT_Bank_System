@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="62.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SortAndSearch">
+<AnchorPane prefHeight="62.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SortAndSearch">
    <children>
       <VBox alignment="CENTER" layoutX="517.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Group>
                <children>
-                  <TextField fx:id="searchTXF" focusTraversable="false" layoutX="74.0" layoutY="3.0" prefHeight="37.0" prefWidth="275.0" promptText="Search here ..." style="-fx-background-color: white; -fx-background-radius: 20;">
+                  <TextField fx:id="searchTXF" focusTraversable="false" layoutX="100.0" layoutY="4.0" prefHeight="37.0" prefWidth="269.0" promptText="Search here ..." style="-fx-background-color: white; -fx-background-radius: 15;">
                      <padding>
                         <Insets left="5.0" right="40.0" />
                      </padding>
@@ -28,7 +28,7 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fx:id="searchBTN" fitHeight="30.0" fitWidth="30.0" layoutX="317.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="searchBTN" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/search.png" />
                      </image>

@@ -35,7 +35,7 @@ public class DBConnector {
 
     public static boolean showLoading() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(new File("view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
             AnchorPane root = loader.load();
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());
@@ -109,6 +109,20 @@ public class DBConnector {
         return false;
     }
 
+    public static boolean IsMoneyEnough(long Value, String card) {
+        try {
+            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
+            r.next();
+            long currentvalue = r.getLong(1);
+            if (Value <= currentvalue) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void UpdateUser(User u) throws Exception {
         PreparedStatement ps = con.prepareStatement("UPDATE User Set FirstName=\'" + u.FirstName + "\' , Lastname=\'"
                 + u.LastName + "\' , Address=\'" + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'"
@@ -123,8 +137,20 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
-    public static void Withdraw() {
+    public static boolean CheckCardInfo() {
+        return false;
+    }
 
+    public static void changeValue(long value , String card){
+        try {
+            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
+            r.next();
+            long currentvalue =r.getLong(1); 
+            long finalvalue = currentvalue + value;
+            con.prepareStatement("UPDATE Account Set Value=" + finalvalue + " WHERE BIC=\'" + card + "\'").executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
     }
 
     // =============================================================================================
@@ -280,7 +306,6 @@ public class DBConnector {
             ResultSet r = runCommand("select * from User where Username=\'" + username + "\'");
 
             if (r.next()) {
-
                 return (new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
                         r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
                         r.getString(11), r.getInt(12), r.getInt(13)));
@@ -327,4 +352,16 @@ public class DBConnector {
      * stmt.executeQuery("select * from Sample"); while (rs.next()) {
      * System.out.println(rs.getString(1)); } }
      */
+
+    public static ResultSet getAllAccounts() throws Exception {
+        return runCommand("Select * from Account");
+    }
+
+    public static ResultSet getAllLoans() throws Exception {
+        return runCommand("Select * from Loan");
+    }
+
+    public static ResultSet getAllTransactions() throws Exception {
+        return runCommand("Select * from Transaction");
+    }
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pendingAnchor" prefHeight="60.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="pendingAnchor" prefHeight="120.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="761.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ffee00; -fx-background-radius: 8;" />
+      <Label layoutX="765.0" layoutY="13.0" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #ffee00; -fx-background-radius: 8;" />
       <Group layoutX="14.0" layoutY="15.0">
          <children>
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="130.0" text="Value :" textFill="WHITE">
@@ -15,7 +16,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="pendingLoanValue" alignment="CENTER" layoutX="130.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+            <Label fx:id="pendingLoanValue" layoutX="130.0" prefHeight="30.0" prefWidth="250.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -25,12 +26,19 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="pendingLoanID" alignment="CENTER" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="130.0" textFill="WHITE">
+            <Label fx:id="pendingLoanID" layoutX="526.0" layoutY="1.0" prefHeight="30.0" prefWidth="200.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </Group>
+      <JFXButton layoutX="14.0" layoutY="60.0" prefHeight="40.0" prefWidth="380.0" style="-fx-background-color: #34eb6e; -fx-background-radius: 20px;" text="Accept" visible="false" />
+      <JFXButton layoutX="420.0" layoutY="60.0" prefHeight="40.0" prefWidth="380.0" style="-fx-background-color: red; -fx-background-radius: 20px;" text="Reject" visible="false" />
+      <Label alignment="CENTER" layoutX="17.0" layoutY="65.0" prefHeight="30.0" prefWidth="786.0" text="Please wait for manager/employee to accept or reject this loan." textFill="WHITE" visible="false">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

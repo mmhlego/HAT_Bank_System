@@ -41,14 +41,24 @@ public class Withdraw implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         LimitandNext();
         submit.setOnAction((e) -> {
-            if (IsAllFieldsComplete()) {
-                DBConnector.Withdraw();
-                //Update Data
-            }else{
+            if (!IsAllFieldsComplete()) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Some Fields Are Empty !");
+                alert.show();
+            } else if (!DBConnector.containsBIC(cardTXF.getText())) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText(null);
                 alert.setContentText("Wrong Credentials !");
                 alert.show();
+            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Money In Card Is Not Enough ! !");
+                alert.show();
+            } else {
+                DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
+                System.out.println("Withdraw!");
             }
         });
     }
