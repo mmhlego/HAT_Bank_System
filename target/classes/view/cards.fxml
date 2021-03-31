@@ -35,18 +35,18 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: #FFFFFF80; -fx-background-radius: 0 10 0 10;" AnchorPane.leftAnchor="0.0">
+            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #FFFFFF80; -fx-background-radius: 0 10 0 10;" AnchorPane.leftAnchor="0.0">
                <children>
-                  <Label fx:id="exp" prefHeight="26.0" prefWidth="104.0" text="Expiration Date" AnchorPane.leftAnchor="20.0">
+                  <Label fx:id="exp" layoutX="6.0" prefHeight="26.0" prefWidth="121.0" text="Expiration Date" AnchorPane.leftAnchor="6.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="299.0" layoutY="172.0" prefHeight="21.0" prefWidth="41.0" style="-fx-background-color: #ffffff70; -fx-background-radius: 500;" AnchorPane.rightAnchor="10.0">
+            <AnchorPane layoutX="299.0" layoutY="172.0" prefHeight="21.0" prefWidth="63.0" style="-fx-background-color: #ffffff70; -fx-background-radius: 500;" AnchorPane.rightAnchor="10.0">
                <children>
-                  <Label fx:id="cvv2" alignment="CENTER" prefHeight="21.0" prefWidth="41.0" text="CVV">
+                  <Label fx:id="cvv2" alignment="CENTER" prefHeight="21.0" prefWidth="63.0" text="CVV">
                      <font>
                         <Font size="15.0" />
                      </font>

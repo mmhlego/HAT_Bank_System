@@ -13,6 +13,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
@@ -62,46 +63,13 @@ public class LoginController implements Initializable, Runnable {
 		miniGroup.setCursor(Cursor.HAND);
 		miniGroup.setOnMouseClicked(e -> ((Stage) miniGroup.getScene().getWindow()).setIconified(true));
 
-		loginButton.setOnAction(e -> {
-			String username = usernameField.getText();
-			String password = passwordField.getText();
-			String hashPassword = encoder.encode(password);
-
-			try {
-				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
-					UserController.setCurrentUser(DBConnector.getUser(username));
-
-					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
-					try {
-						UserMainPage = MainLoader.load();
-						controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml"))
-								.getController();
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					}
-					((Stage) loginButton.getScene().getWindow()).close();
-					Stage stage = new Stage(StageStyle.TRANSPARENT);
-					Scene scene = new Scene(UserMainPage);
-					scene.setFill(Color.TRANSPARENT);
-					stage.setScene(scene);
-					stage.show();
-				} else {
-					Alert a = new Alert(AlertType.ERROR);
-					a.setTitle("Error");
-					a.setContentText("Wrong username/password.");
-					a.show();
-				}
-			} catch (Exception err) {
-				DBConnector.closeLoading();
-				err.printStackTrace();
-
-				Alert a = new Alert(AlertType.ERROR);
-				a.setTitle("Error");
-				a.setContentText(
-						"An error accured whil trying to connect to database.\nPlease check your network connection.");
-				a.show();
+		loginButton.setOnAction(e -> login());
+		loginButton.getParent().setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ENTER) {
+				login();
 			}
 		});
+
 		// StructureController.addButton();
 
 		loader = new FXMLLoader(this.getClass().getResource("../view/RegisterPage.fxml"));
@@ -135,6 +103,46 @@ public class LoginController implements Initializable, Runnable {
 
 	}
 
+	private void login() {
+		String username = usernameField.getText();
+		String password = passwordField.getText();
+		String hashPassword = encoder.encode(password);
+
+		try {
+			if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
+				UserController.setCurrentUser(DBConnector.getUser(username));
+
+				MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
+				try {
+					UserMainPage = MainLoader.load();
+					controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml")).getController();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+				((Stage) loginButton.getScene().getWindow()).close();
+				Stage stage = new Stage(StageStyle.TRANSPARENT);
+				Scene scene = new Scene(UserMainPage);
+				scene.setFill(Color.TRANSPARENT);
+				stage.setScene(scene);
+				stage.show();
+			} else {
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Error");
+				a.setContentText("Wrong username/password.");
+				a.show();
+			}
+		} catch (Exception err) {
+			DBConnector.closeLoading();
+			err.printStackTrace();
+
+			Alert a = new Alert(AlertType.ERROR);
+			a.setTitle("Error");
+			a.setContentText(
+					"An error accured whil trying to connect to database.\nPlease check your network connection.");
+			a.show();
+		}
+	}
+
 	AnchorPane register;
 
 	public void changePage(int accessLevel) {
@@ -148,7 +156,7 @@ public class LoginController implements Initializable, Runnable {
 			signButton.setVisible(false);
 			try {
 				pic.setImage(new Image(new FileInputStream(new File(
-						"view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
+						"src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
