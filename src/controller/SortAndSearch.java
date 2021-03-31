@@ -19,13 +19,61 @@ public class SortAndSearch implements Initializable {
     private ImageView searchBTN;
 
     @FXML
-    private ComboBox<?> firstCMB;
+    private ComboBox<String> firstCMB;
 
     @FXML
-    private ComboBox<?> secondCMB;
+    private ComboBox<String> secondCMB;
 
-    @FXML
-    private ComboBox<?> thirdCMB;
+    public TextField getSearchTXF() {
+		return searchTXF;
+	}
+
+	public void setSearchTXF(TextField searchTXF) {
+		this.searchTXF = searchTXF;
+	}
+
+	public ImageView getSearchBTN() {
+		return searchBTN;
+	}
+
+	public void setSearchBTN(ImageView searchBTN) {
+		this.searchBTN = searchBTN;
+	}
+
+	public ComboBox<String> getFirstCMB() {
+		return firstCMB;
+	}
+
+	public void setFirstCMB(ComboBox<String> firstCMB) {
+		this.firstCMB = firstCMB;
+	}
+
+	public ComboBox<String> getSecondCMB() {
+		return secondCMB;
+	}
+
+	public void setSecondCMB(ComboBox<String> secondCMB) {
+		this.secondCMB = secondCMB;
+	}
+
+	public ComboBox<String> getThirdCMB() {
+		return thirdCMB;
+	}
+
+	public void setThirdCMB(ComboBox<String> thirdCMB) {
+		this.thirdCMB = thirdCMB;
+	}
+
+	public JFXButton getSortBTN() {
+		return sortBTN;
+	}
+
+	public void setSortBTN(JFXButton sortBTN) {
+		this.sortBTN = sortBTN;
+	}
+
+	@FXML
+    private ComboBox<String> thirdCMB;
 
     @FXML
     private JFXButton sortBTN;

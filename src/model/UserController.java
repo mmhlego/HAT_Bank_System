@@ -46,6 +46,13 @@ public class UserController {
                 e.printStackTrace();
             }
         }
+
+        //System.out.println(Arrays.deepToString(Accounts.toArray()));
+        System.out.println(Arrays.deepToString(Loans.toArray()));
+        getCurrentUser().setLoans(Loans);
+        getCurrentUser().setAccounts(Accounts);
+        System.out.println(Loans.size());
+        //System.out.println(Arrays.deepToString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {

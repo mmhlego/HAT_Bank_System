@@ -11,28 +11,41 @@ import javafx.scene.control.Alert.AlertType;
 import model.DBConnector;
 
 public class Register implements Initializable {
-    @FXML
+       @FXML
     private Label title;
-    @FXML
-    private TextField phoneField;
-    @FXML
-    private PasswordField passwordField;
+
     @FXML
     private Button signUp;
+
     @FXML
     private TextField firstNameField;
+
     @FXML
     private TextField lastNameField;
+
     @FXML
     private TextField codeField;
+
     @FXML
     private TextField birthField;
-    @FXML
-    public TextField usernameField;
-    @FXML
-    private TextArea addressField;
+
     @FXML
     private JFXDatePicker birthPicker;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private TextArea addressField;
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private TextField emailField;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
