@@ -35,16 +35,24 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="169.0" prefHeight="26.0" prefWidth="104.0" text="Expiration Date">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="308.0" layoutY="169.0" text="CVV">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
+            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="104.0" text="Expiration Date" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="299.0" layoutY="172.0" prefHeight="21.0" prefWidth="41.0" style="-fx-background-color: black;" AnchorPane.rightAnchor="10.0">
+               <children>
+                  <Label text="CVV">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

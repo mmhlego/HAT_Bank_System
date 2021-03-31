@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loanRequest">
+   <children>
+      <Label alignment="CENTER" layoutX="446.0" layoutY="33.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" text="Loan Request" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <VBox layoutX="427.0" layoutY="187.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+         <children>
+            <TextField fx:id="cardNumber" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="cvv" layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="755.0" promptText="CVV" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="nationalCode" layoutX="10.0" layoutY="124.0" prefHeight="57.0" prefWidth="755.0" promptText="National Code" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="guarantorID" layoutX="10.0" layoutY="181.0" prefHeight="57.0" prefWidth="755.0" promptText="Guarantor ID" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="guarantorPassword" layoutX="10.0" layoutY="211.0" prefHeight="57.0" prefWidth="755.0" promptText="Guarantor Password" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="dueDate" layoutX="10.0" layoutY="238.0" prefHeight="57.0" prefWidth="755.0" promptText="Due Date" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+               <padding>
+                  <Insets left="50.0" right="25.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+            <HBox spacing="5.0">
+               <children>
+                  <TextField fx:id="securityCode" prefHeight="57.0" prefWidth="755.0" promptText="Security Code" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                     <padding>
+                        <Insets left="50.0" right="25.0" />
+                     </padding>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <JFXButton fx:id="requestBTN" prefHeight="55.0" prefWidth="116.0" ripplerFill="RED" style="-fx-background-color: #4E61B1; -fx-background-radius: 20;" text="Request" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <JFXButton fx:id="confirmBTN" prefHeight="57.0" prefWidth="869.0" style="-fx-background-color: #4E61B1; -fx-background-radius: 200;" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

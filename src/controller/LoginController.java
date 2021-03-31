@@ -69,14 +69,6 @@ public class LoginController implements Initializable, Runnable {
 
 			try {
 				if (DBConnector.checkUser(username, hashPassword, AccessLevel)) {
-
-					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
-					try {
-						UserMainPage = MainLoader.load();
-					} catch (IOException ex) {
-						ex.printStackTrace();
-					}
-
 					UserController.setCurrentUser(DBConnector.getUser(username));
 					MainLoader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
 					try {

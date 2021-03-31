@@ -19,8 +19,8 @@ public class Main extends Application implements Runnable {
 		try {
 			// FXMLLoader loader = new
 			// FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/withdrawPage.fxml"));
-			// FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+		//	FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/withdrawPage.fxml"));
+			 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			Parent root = loader.load();
 			// controller = loader.getController();
 

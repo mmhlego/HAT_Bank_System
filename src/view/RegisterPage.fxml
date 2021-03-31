@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
+<AnchorPane focusTraversable="true" prefHeight="600.0" prefWidth="600.0" style="-fx-background-radius: 0 25 25 0; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Register">
    <children>
       <TextField layoutY="2.0" prefHeight="25.0" prefWidth="0.0" style="-fx-background-color: none;">
          <cursor>
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <Button fx:id="signUp" layoutX="100.0" layoutY="500.0" mnemonicParsing="false" style="-fx-background-radius: 200 200 200 200; -fx-background-color: RGBA(0,192,213,1)RGBA(0,192,213,1);" text="Sign Up" textFill="WHITE" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="500.0">
+      <Button fx:id="signUp" layoutX="105.0" layoutY="531.0" mnemonicParsing="false" prefWidth="400.0" style="-fx-background-radius: 200 200 200 200; -fx-background-color: RGBA(0,192,213,1)RGBA(0,192,213,1);" text="Sign Up" textFill="WHITE" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="95.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -63,7 +63,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextField fx:id="birthField" layoutX="100.0" layoutY="270.0" prefHeight="30.0" prefWidth="225.0" promptText="Birth Date" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="birthField" layoutX="110.0" layoutY="271.0" prefHeight="30.0" prefWidth="225.0" promptText="Birth Date" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -71,7 +71,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="498.0" layoutY="271.0" prefHeight="25.0" prefWidth="30.0" />
+      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="474.0" layoutY="273.0" prefHeight="25.0" prefWidth="30.0" />
       <TextField fx:id="phoneField" layoutX="100.0" layoutY="308.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
@@ -80,7 +80,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <TextArea fx:id="addressField" layoutX="100.0" layoutY="347.0" prefHeight="62.0" prefWidth="400.0" promptText="Address" stylesheets="@../application.css" wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextArea fx:id="addressField" layoutX="105.0" layoutY="380.0" prefHeight="62.0" prefWidth="400.0" promptText="Address" stylesheets="@../application.css" wrapText="true" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="95.0">
          <padding>
             <Insets left="43.0" right="30.0" />
          </padding>
@@ -88,7 +88,7 @@
             <Font size="15.0" />
          </font>
       </TextArea>
-      <TextField fx:id="usernameField" layoutX="100.0" layoutY="420.0" prefHeight="30.0" prefWidth="225.0" promptText="Username" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <TextField fx:id="usernameField" layoutX="100.0" layoutY="449.0" prefHeight="30.0" prefWidth="225.0" promptText="Username" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -96,7 +96,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="172.0" layoutY="457.0" prefHeight="30.0" prefWidth="326.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <PasswordField fx:id="passwordField" layoutX="100.0" layoutY="486.0" prefHeight="30.0" prefWidth="326.0" promptText="Password" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -129,19 +129,32 @@
             <Image url="@icons/phoneNumber.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" layoutX="107.0" layoutY="366.0" preserveRatio="true">
+      <ImageView fitHeight="25.0" layoutX="110.0" layoutY="399.0" preserveRatio="true">
          <image>
             <Image url="@icons/address.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" layoutX="110.0" layoutY="423.0" preserveRatio="true">
+      <ImageView fitHeight="25.0" layoutX="110.0" layoutY="452.0" preserveRatio="true">
          <image>
             <Image url="@icons/username.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" layoutX="110.0" layoutY="460.0" preserveRatio="true">
+      <ImageView fitHeight="25.0" layoutX="110.0" layoutY="489.0" preserveRatio="true">
          <image>
             <Image url="@icons/password.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="emailField" layoutX="100.0" layoutY="345.0" prefHeight="30.0" prefWidth="225.0" promptText="Email" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <padding>
+            <Insets left="50.0" right="30.0" />
+         </padding>
+      </TextField>
+      <ImageView fitHeight="25.0" layoutX="109.0" layoutY="347.0" preserveRatio="true">
+         <image>
+            <Image url="@icons/email.png" />
          </image>
       </ImageView>
    </children>
