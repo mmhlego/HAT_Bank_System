@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import model.Account;
 import model.User;
@@ -40,6 +42,26 @@ public class AccountsShow implements Initializable {
 				creator.getIban().setText(account.IBAN);
 				card.setLayoutX((25 + (i % 2) * 420));
 				card.setLayoutY((25 + i / 2 * 225));
+				card.setCursor(Cursor.HAND);
+				card.setOnMouseClicked(e->{
+					FXMLLoader load = new FXMLLoader(getClass().getResource("../view/AccountInformation.fxml"));
+					Parent parent;
+					try {
+						parent = load.load();
+						AccountInformation control = load.getController();
+						control.getCardPlace().getChildren().clear();
+						control.getCardPlace().getChildren().add(card);
+						control.getCardNumberTXF().setText(account.BIC);
+						control.getCvv2TXF().setText(account.CVV2);
+						control.getCvvTXF().setText(account.CVV);
+						control.getExpTXF().setText(account.ExDate.getYear() + "/" + account.ExDate.getMonthValue());
+						MainPanel.getChildren().add(parent);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					
+				});
 				cardAnchor.getChildren().add(card);
 				i++;
 
