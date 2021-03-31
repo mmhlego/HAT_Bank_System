@@ -47,12 +47,8 @@ public class UserController {
             }
         }
 
-        //System.out.println(Arrays.deepToString(Accounts.toArray()));
-        System.out.println(Arrays.deepToString(Loans.toArray()));
         getCurrentUser().setLoans(Loans);
         getCurrentUser().setAccounts(Accounts);
-        System.out.println(Loans.size());
-        //System.out.println(Arrays.deepToString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {
@@ -72,12 +68,12 @@ public class UserController {
         return temp;
     }
 
-    private static ArrayList<Loan> ConvertLoansToArrayList(ResultSet all) {
+    public static ArrayList<Loan> ConvertLoansToArrayList(ResultSet all) {
         ArrayList<Loan> temp = new ArrayList<Loan>();
 
         try {
             while (all.next()) {
-                Loan l = new Loan(CurrentUser.ID, all.getString("AccountID"), all.getInt("Status"),
+                Loan l = new Loan(all.getString("OwnerID"), all.getString("AccountID"), all.getInt("Status"),
                         all.getLong("Value"), all.getInt("Percentage"), all.getLong("TotalPay"), all.getLong("Payed"),
                         all.getDate("DueDate").toLocalDate(), all.getString("GuarantorID"));
 

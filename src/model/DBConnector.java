@@ -35,7 +35,7 @@ public class DBConnector {
 
     public static boolean showLoading() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(new File("src\\view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
             AnchorPane root = loader.load();
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());
@@ -76,7 +76,7 @@ public class DBConnector {
     // =============================================================================================
     // COMPLETE METHODS
 
-    private static ResultSet runCommand(String command) throws Exception {
+    public static ResultSet runCommand(String command) throws Exception {
         results = null;
 
         Statement stmt = con.createStatement();
@@ -141,16 +141,17 @@ public class DBConnector {
         return false;
     }
 
-    public static void changeValue(long value , String card){
+    public static void changeValue(long value, String card) {
         try {
             ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
             r.next();
-            long currentvalue =r.getLong(1); 
+            long currentvalue = r.getLong(1);
             long finalvalue = currentvalue + value;
-            con.prepareStatement("UPDATE Account Set Value=" + finalvalue + " WHERE BIC=\'" + card + "\'").executeUpdate();
+            con.prepareStatement("UPDATE Account Set Value=" + finalvalue + " WHERE BIC=\'" + card + "\'")
+                    .executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        }
     }
 
     // =============================================================================================
@@ -363,5 +364,15 @@ public class DBConnector {
 
     public static ResultSet getAllTransactions() throws Exception {
         return runCommand("Select * from Transaction");
+    }
+
+    public static void updateLoan(String accountID, int status) {
+        try {
+            con.prepareStatement(
+                    "UPDATE `Loan` SET Status=" + status + " WHERE Status=0 AND AccountID=\'" + accountID + "\'")
+                    .executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

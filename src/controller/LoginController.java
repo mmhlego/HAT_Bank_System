@@ -160,7 +160,8 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Employee Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream(new File("view/pictures/1869679-removebg-preview.png"))));
+				pic.setImage(
+						new Image(new FileInputStream(new File("src/view/pictures/1869679-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -185,8 +186,8 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Client Login");
 			signButton.setVisible(true);
 			try {
-				pic.setImage(new Image(new FileInputStream(
-						new File("view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
+				pic.setImage(new Image(new FileInputStream(new File(
+						"src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
