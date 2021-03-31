@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.deposit">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.deposit">
    <children>
       <AnchorPane layoutX="493.0" layoutY="26.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20px;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -30,7 +30,7 @@
                <children>
                   <Group>
                      <children>
-                        <TextField fx:id="cardTXF" editable="false" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                        <TextField fx:id="cardTXF" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                            <padding>
                               <Insets left="50.0" right="25.0" />
                            </padding>
@@ -47,7 +47,7 @@
                   </Group>
                   <Group>
                      <children>
-                        <TextField fx:id="AmountTXF" editable="false" prefHeight="57.0" prefWidth="755.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                        <TextField fx:id="AmountTXF" prefHeight="57.0" prefWidth="755.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                            <padding>
                               <Insets left="50.0" right="25.0" />
                            </padding>
