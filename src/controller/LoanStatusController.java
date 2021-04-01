@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -57,11 +58,7 @@ public class LoanStatusController implements Initializable {
 
 	private void addAllLoans() {
 		if (allLoans.size() == 0) {
-			//========================================================================
-
-			System.out.println("Empty");
-
-			//========================================================================
+			noResults();
 		}
 
 		loansBoard.getChildren().clear();
@@ -247,6 +244,19 @@ public class LoanStatusController implements Initializable {
 					e1.printStackTrace();
 				}
 			}
+		}
+
+		if (index == 0) {
+			noResults();
+		}
+	}
+
+	private void noResults() {
+		try {
+			loansBoard.getChildren().add(
+					(AnchorPane) FXMLLoader.load(this.getClass().getResource("../view/components/emptyField.fxml")));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 

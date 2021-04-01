@@ -43,7 +43,7 @@ public class AccountsShow implements Initializable {
 				card.setLayoutX((25 + (i % 2) * 420));
 				card.setLayoutY((25 + i / 2 * 225));
 				card.setCursor(Cursor.HAND);
-				card.setOnMouseClicked(e->{
+				card.setOnMouseClicked(e -> {
 					FXMLLoader load = new FXMLLoader(getClass().getResource("../view/AccountInformation.fxml"));
 					Parent parent;
 					try {
@@ -59,8 +59,6 @@ public class AccountsShow implements Initializable {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-					
-					
 				});
 				cardAnchor.getChildren().add(card);
 				i++;
@@ -69,6 +67,18 @@ public class AccountsShow implements Initializable {
 				e.printStackTrace();
 			}
 		}
+
+		if (i == 0) {
+			noResults();
+		}
 	}
 
+	private void noResults() {
+		try {
+			cardAnchor.getChildren().add(
+					(AnchorPane) FXMLLoader.load(this.getClass().getResource("../view/components/emptyField.fxml")));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

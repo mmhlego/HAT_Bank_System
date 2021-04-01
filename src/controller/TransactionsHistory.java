@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,8 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.DBConnector;
 import model.Transaction;
 import model.User;
@@ -43,18 +47,18 @@ public class TransactionsHistory implements Initializable {
 			AnchorPane.setTopAnchor(searchBox, (double) 100);
 			AnchorPane.setLeftAnchor(searchBox, (double) 50);
 			MainPanel.getChildren().add(searchBox);
+
+			addAllTransactions();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void addAllTransactions() {
+		System.out.println(allTransactions.size());
+
 		if (allTransactions.size() == 0) {
-			//========================================================================
-
-			System.out.println("Empty");
-
-			//========================================================================
+			noResults();
 		}
 
 		TransactionsBoard.getChildren().clear();
@@ -70,14 +74,20 @@ public class TransactionsHistory implements Initializable {
 	}
 
 	private void addTransaction(int index, Transaction transaction) throws Exception {
-		AnchorPane pane = FXMLLoader
-				.load(this.getClass().getResource("../view/components/finishedTransactionAnchor.fxml"));
+		AnchorPane pane = FXMLLoader.load(this.getClass().getResource("../view/components/eachTransaction.fxml"));
 
-		//Group group = (Group) pane.getChildren().get(1);
-		//((Label) group.getChildren().get(1)).setText(String.valueOf(Transaction.Value) + currency);
-		//((Label) group.getChildren().get(3)).setText(Transaction.AccountID);
+		HBox hbox = (HBox) pane.getChildren().get(0);
+		((Label) pane.getChildren().get(1)).setText(transaction.TransactionID);
 
-		AnchorPane.setTopAnchor(pane, (double) (index * 80));
+		((Label) ((VBox) hbox.getChildren().get(1)).getChildren().get(0)).setText(transaction.FromAccountID);
+		((Label) ((VBox) hbox.getChildren().get(1)).getChildren().get(1)).setText(transaction.ToAccountID);
+
+		((Label) ((VBox) hbox.getChildren().get(3)).getChildren().get(0))
+				.setText(Long.toString(transaction.Value) + currency);
+		((Label) ((VBox) hbox.getChildren().get(3)).getChildren().get(1))
+				.setText(transaction.CompletionDate.toString());
+
+		AnchorPane.setTopAnchor(pane, (double) (index * 145));
 		TransactionsBoard.getChildren().add(pane);
 	}
 
@@ -117,19 +127,18 @@ public class TransactionsHistory implements Initializable {
 
 		if (currentUser.AccessLevel == User.CLIENT) {
 			switch (controller.getThirdCMB().getValue()) {
-			case "-":
-				statement += " WHERE FromAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
-						+ "\') OR  ToAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
-						+ "\')";
-				break;
 			case "Received":
-				statement += " Where ToAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
+				statement += " WHERE ToAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
 						+ "\')";
 				break;
 			case "Sent":
-				statement += " Where FromAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
+				statement += " WHERE FromAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
 						+ "\')";
 				break;
+			default:
+				statement += " WHERE FromAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
+						+ "\') OR  ToAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID=\'" + currentUser.ID
+						+ "\')";
 			}
 		}
 
@@ -146,10 +155,11 @@ public class TransactionsHistory implements Initializable {
 			return;
 		}
 
-		System.out.println(statement);
-
 		try {
-			//allTransactions = UserController.ConvertTransactionsToArrayList(DBConnector.runCommand(statement));
+			System.out.println(statement);
+
+			allTransactions = UserController.ConvertTransactionsToArrayList(DBConnector.runCommand(statement));
+
 			addAllTransactions();
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -167,13 +177,26 @@ public class TransactionsHistory implements Initializable {
 			Transaction t = allTransactions.get(i);
 
 			if (t.FromAccountID.contains(search) || t.ToAccountID.contains(search) || t.TransactionID.contains(search)
-					|| Long.toString(t.Value).contains(search)) {
+					|| t.CompletionDate.toString().contains(search) || Long.toString(t.Value).contains(search)) {
 				try {
 					addTransaction(index++, allTransactions.get(i));
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
+		}
+
+		if (index == 0) {
+			noResults();
+		}
+	}
+
+	private void noResults() {
+		try {
+			TransactionsBoard.getChildren().add(
+					(AnchorPane) FXMLLoader.load(this.getClass().getResource("../view/components/emptyField.fxml")));
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
