@@ -57,5 +57,75 @@ public class Transaction implements Initializable{
 		MainPanel.getChildren().add(next);
 
 	}
+
+
+	public AnchorPane getMainPanel() {
+		return MainPanel;
+	}
+
+
+	public void setMainPanel(AnchorPane mainPanel) {
+		MainPanel = mainPanel;
+	}
+
+
+	public TextField getFromTXF() {
+		return fromTXF;
+	}
+
+
+	public void setFromTXF(TextField fromTXF) {
+		this.fromTXF = fromTXF;
+	}
+
+
+	public TextField getToTXF() {
+		return toTXF;
+	}
+
+
+	public void setToTXF(TextField toTXF) {
+		this.toTXF = toTXF;
+	}
+
+
+	public TextField getAmountTXF() {
+		return amountTXF;
+	}
+
+
+	public void setAmountTXF(TextField amountTXF) {
+		this.amountTXF = amountTXF;
+	}
+
+
+	public JFXButton getNextBTN() {
+		return nextBTN;
+	}
+
+
+	public void setNextBTN(JFXButton nextBTN) {
+		this.nextBTN = nextBTN;
+	}
+
+
+	public Parent getNext() {
+		return next;
+	}
+
+
+	public void setNext(Parent next) {
+		this.next = next;
+	}
+
+
+	public boolean isCheck() {
+		return check;
+	}
+
+
+	public void setCheck(boolean check) {
+		this.check = check;
+	}
 	
 }
