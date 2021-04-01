@@ -104,4 +104,100 @@ public class CVVChange implements Initializable{
 		rotate.setDuration(Duration.seconds(1));
 		rotate.play();
 	}
+
+	public AnchorPane getMainPanel() {
+		return MainPanel;
+	}
+
+	public void setMainPanel(AnchorPane mainPanel) {
+		MainPanel = mainPanel;
+	}
+
+	public JFXTextField getCardNumberTXF() {
+		return cardNumberTXF;
+	}
+
+	public void setCardNumberTXF(JFXTextField cardNumberTXF) {
+		this.cardNumberTXF = cardNumberTXF;
+	}
+
+	public JFXPasswordField getCurrentCvvTXF() {
+		return currentCvvTXF;
+	}
+
+	public void setCurrentCvvTXF(JFXPasswordField currentCvvTXF) {
+		this.currentCvvTXF = currentCvvTXF;
+	}
+
+	public JFXPasswordField getNewCvvTXF() {
+		return newCvvTXF;
+	}
+
+	public void setNewCvvTXF(JFXPasswordField newCvvTXF) {
+		this.newCvvTXF = newCvvTXF;
+	}
+
+	public JFXPasswordField getRNewCvvTXF() {
+		return RNewCvvTXF;
+	}
+
+	public void setRNewCvvTXF(JFXPasswordField rNewCvvTXF) {
+		RNewCvvTXF = rNewCvvTXF;
+	}
+
+	public JFXTextField getCaptchaTXF() {
+		return captchaTXF;
+	}
+
+	public void setCaptchaTXF(JFXTextField captchaTXF) {
+		this.captchaTXF = captchaTXF;
+	}
+
+	public AnchorPane getCaptchaArea() {
+		return captchaArea;
+	}
+
+	public void setCaptchaArea(AnchorPane captchaArea) {
+		this.captchaArea = captchaArea;
+	}
+
+	public ImageView getRecaptcha() {
+		return recaptcha;
+	}
+
+	public void setRecaptcha(ImageView recaptcha) {
+		this.recaptcha = recaptcha;
+	}
+
+	public JFXTextField getCodeTXF() {
+		return codeTXF;
+	}
+
+	public void setCodeTXF(JFXTextField codeTXF) {
+		this.codeTXF = codeTXF;
+	}
+
+	public JFXButton getRequestBTN() {
+		return requestBTN;
+	}
+
+	public void setRequestBTN(JFXButton requestBTN) {
+		this.requestBTN = requestBTN;
+	}
+
+	public JFXButton getSaveBTN() {
+		return saveBTN;
+	}
+
+	public void setSaveBTN(JFXButton saveBTN) {
+		this.saveBTN = saveBTN;
+	}
+
+	public AnchorPane getCap() {
+		return cap;
+	}
+
+	public void setCap(AnchorPane cap) {
+		this.cap = cap;
+	}
 }

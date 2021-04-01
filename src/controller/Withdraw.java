@@ -53,8 +53,7 @@ public class Withdraw implements Initializable {
             } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
                     Integer.parseInt(MonthTXF.getText()))) {
                 alert("Card Is Expired !");
-            }
-            else {
+            } else {
                 DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setHeaderText(null);
@@ -98,6 +97,70 @@ public class Withdraw implements Initializable {
         CVV2TXF.setText("");
         YearTXF.setText("");
         MonthTXF.setText("");
+    }
+
+    public AnchorPane getMainPanel() {
+        return MainPanel;
+    }
+
+    public void setMainPanel(AnchorPane mainPanel) {
+        MainPanel = mainPanel;
+    }
+
+    public TextField getCardTXF() {
+        return cardTXF;
+    }
+
+    public void setCardTXF(TextField cardTXF) {
+        this.cardTXF = cardTXF;
+    }
+
+    public TextField getAmountTXF() {
+        return AmountTXF;
+    }
+
+    public void setAmountTXF(TextField amountTXF) {
+        AmountTXF = amountTXF;
+    }
+
+    public TextField getPinTXF() {
+        return pinTXF;
+    }
+
+    public void setPinTXF(TextField pinTXF) {
+        this.pinTXF = pinTXF;
+    }
+
+    public TextField getCVV2TXF() {
+        return CVV2TXF;
+    }
+
+    public void setCVV2TXF(TextField cVV2TXF) {
+        CVV2TXF = cVV2TXF;
+    }
+
+    public TextField getYearTXF() {
+        return YearTXF;
+    }
+
+    public void setYearTXF(TextField yearTXF) {
+        YearTXF = yearTXF;
+    }
+
+    public TextField getMonthTXF() {
+        return MonthTXF;
+    }
+
+    public void setMonthTXF(TextField monthTXF) {
+        MonthTXF = monthTXF;
+    }
+
+    public JFXButton getSubmit() {
+        return submit;
+    }
+
+    public void setSubmit(JFXButton submit) {
+        this.submit = submit;
     }
 
 }

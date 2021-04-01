@@ -42,7 +42,7 @@ public class PasswordChangerController implements Initializable {
 	private ImageView recaptcha;
 
 	AnchorPane cap;
-	private static int Code;
+	public static int Code;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -71,7 +71,12 @@ public class PasswordChangerController implements Initializable {
 		});
 
 		requestBTN.setOnAction((e) -> {
-			alert("" + CreatOTP());
+			CreatOTP();
+			try {
+				Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber, Sender.SMSMail);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
 		});
 
 		saveBTN.setOnAction((e) -> {
@@ -100,6 +105,7 @@ public class PasswordChangerController implements Initializable {
 					alert.setContentText("Password Changed Successfully !");
 					alert.show();
 					ClearData();
+					UserController.updatePersonalData();
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/settings.fxml"));
 					try {
 						MainPanel.getChildren().add(loader.load());
@@ -107,7 +113,7 @@ public class PasswordChangerController implements Initializable {
 						e1.printStackTrace();
 					}
 				} catch (Exception e1) {
-					// e1.printStackTrace();
+					e1.printStackTrace();
 				}
 			}
 		});

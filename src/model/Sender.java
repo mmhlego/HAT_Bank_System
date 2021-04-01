@@ -6,36 +6,30 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
-public class Sender {
+import controller.PasswordChangerController;
 
-    public static final int Signupmail = 0;
-    public static final int Loginmail = 1;
+public class Sender {
+    public static final int Signupmail = 0, Loginmail = 1,SMSMail=2;
     private static String HTML;
     public static String ip;
 
     public static void SendEmail(String recepient, String Title, int MailType) throws Exception {
-        if (MailType == Signupmail) {
+        /*if (MailType == Signupmail) {
             LoadSignUpMail();
         } else if (MailType == Loginmail) {
             LoadLoginMail();
-        }
-        // LoadSignUpMail();
-        // LoadLoginMail();
+        }*/
+
         Properties properties = new Properties();
 
-        // Enable authentication :
         properties.put("mail.smtp.auth", "true");
-        // Set TLS encryption enabled :
         properties.put("mail.smtp.starttls.enable", "true");
-        // Set SMTP host :
         properties.put("mail.smtp.host", "smtp.gmail.com");
-        // Set smtp port :
         properties.put("mail.smtp.port", "587");
 
         String myAccountEmail = "HAT.Sender.Service@gmail.com";
         String password = "HAT_Logo_Ghost_VLB_80_81_81";
 
-        // Create a session with account credentials :
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -43,17 +37,28 @@ public class Sender {
             }
         });
 
-        // Prepare email message :
         Message message = new MimeMessage(session);
-
+     
         try {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject(Title);
-            // message.setText(Body);
             message.reply(false);
-            // Support HTML Version :
-            message.setContent(HTML, "text/html");
+
+            switch(MailType){
+                case Signupmail:
+                    LoadSignUpMail();
+                    message.setContent(HTML, "text/html");
+                    break;
+                case Loginmail:
+                    LoadLoginMail();
+                    message.setContent(HTML, "text/html");
+                    break;
+                case SMSMail:
+                    LoadSMS();
+                    message.setText(HTML);
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             // Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,6 +67,10 @@ public class Sender {
         // Send mail
         Transport.send(message);
         System.out.println("Message sent successfully");
+    }
+
+    private static void LoadSMS(){
+        HTML="Your OTP Password is : \n"+PasswordChangerController.Code;
     }
 
     public static void LoadSignUpMail() {
