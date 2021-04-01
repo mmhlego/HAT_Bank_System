@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -145,12 +146,40 @@ public class AccountInformation implements Initializable{
 		changeCvvBTN.setOnAction(e->loadPage("changeCvvPage"));
 		withdrawBTN.setOnAction(e->loadPage("withdrawPage"));
 		depositBTn.setOnAction(e->loadPage("depositPage"));
+		historyBTN.setOnAction(e->loadPage("Transactions"));
 	}
 	
 	private void loadPage(String fxml) {
 		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/"+fxml+".fxml"));
 		try {
 			MainPanel.getChildren().add(loader.load());
+			AnchorPane card=(AnchorPane) cardPlace.getChildren().get(0);
+			switch (fxml) {
+			case "changeCvvPage":
+				CVVChange control1=loader.getController();
+				control1.getCardNumberTXF().setText(((Label)card.getChildren().get(2)).getText());
+				control1.getCardNumberTXF().setEditable(false);
+				break;
+			case "withdrawPage":
+					Withdraw control2=loader.getController();
+					control2.getCardTXF().setText(((Label)card.getChildren().get(2)).getText());
+					control2.getCVV2TXF().setText(((Label)((AnchorPane)card.getChildren().get(4)).getChildren().get(0)).getText());
+					control2.getCardTXF().setEditable(false);
+					control2.getCVV2TXF().setEditable(false);
+							break;
+			case "depositPage":
+				deposit control3=loader.getController();
+				control3.getCardTXF().setText(((Label)card.getChildren().get(2)).getText());
+				control3.getCVV2TXF().setText(((Label)((AnchorPane)card.getChildren().get(4)).getChildren().get(0)).getText());
+				control3.getCardTXF().setEditable(false);
+				control3.getCVV2TXF().setEditable(false);
+				break;
+			case "Transactions":
+				Transaction control4=loader.getController();
+				control4.getFromTXF().setText(((Label)card.getChildren().get(2)).getText());
+				control4.getFromTXF().setEditable(false);
+				break;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
