@@ -42,23 +42,25 @@ public class Withdraw implements Initializable {
         LimitandNext();
         submit.setOnAction((e) -> {
             if (!IsAllFieldsComplete()) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Some Fields Are Empty !");
-                alert.show();
+                alert("Some Fields Are Empty !");
             } else if (!DBConnector.containsBIC(cardTXF.getText())) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Wrong Credentials !");
-                alert.show();
+                alert("Card Is Inavalid !");
             } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Money In Card Is Not Enough ! !");
-                alert.show();
-            } else {
+                alert("Money In Card Is Not Enough !");
+            } else if (!DBConnector.CheckCardInfo(cardTXF.getText(), pinTXF.getText(), CVV2TXF.getText(),
+                    Integer.parseInt(YearTXF.getText()), Integer.parseInt(MonthTXF.getText()))) {
+                alert("Wrong Credentials !");
+            } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
+                    Integer.parseInt(MonthTXF.getText()))) {
+                alert("Card Is Expired !");
+            }
+            else {
                 DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
-                System.out.println("Withdraw!");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Transaction Was Successful !");
+                alert.show();
+                ClearData();
             }
         });
     }
@@ -80,6 +82,22 @@ public class Withdraw implements Initializable {
         } else {
             return false;
         }
+    }
+
+    private void alert(String Content) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(Content);
+        alert.show();
+    }
+
+    private void ClearData() {
+        cardTXF.setText("");
+        AmountTXF.setText("");
+        pinTXF.setText("");
+        CVV2TXF.setText("");
+        YearTXF.setText("");
+        MonthTXF.setText("");
     }
 
 }

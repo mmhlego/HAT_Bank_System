@@ -95,15 +95,16 @@ public class Sender {
     }
 
     private static void replaceSignupData() {
-        HTML = HTML.replace("{userfirstname}", "Mattew");
-        HTML = HTML.replace("{userlastname}", "Sebasyup");
-        HTML = HTML.replace("{useremail}", "Sebasman@gmail.com");
-        HTML = HTML.replace("{usernationalcode}", "547-459-451");
-        HTML = HTML.replace("{userbirth}", "1993-06-26");
-        HTML = HTML.replace("{userphonenumber}", "5147-647-153");
-        HTML = HTML.replace("{useraddress}", "New York  - Manher St.2 Ave25");
-        HTML = HTML.replace("{userusername}", "Mater");
-        HTML = HTML.replace("{userpassword}", "Seb12as54");
+        User currentuser = UserController.getCurrentUser();
+        HTML = HTML.replace("{userfirstname}", currentuser.FirstName);
+        HTML = HTML.replace("{userlastname}", currentuser.LastName);
+        HTML = HTML.replace("{useremail}", currentuser.Email);
+        HTML = HTML.replace("{usernationalcode}", currentuser.NationalCode);
+        HTML = HTML.replace("{userbirth}", currentuser.BirthDate.toString());
+        HTML = HTML.replace("{userphonenumber}", currentuser.PhoneNumber);
+        HTML = HTML.replace("{useraddress}", currentuser.Address);
+        HTML = HTML.replace("{userusername}", currentuser.Username);
+        HTML = HTML.replace("{userpassword}", currentuser.Password);
     }
 
     private static void replaceLoginData() throws IOException {

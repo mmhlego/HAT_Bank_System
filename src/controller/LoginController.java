@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.util.Duration;
 import model.DBConnector;
+import model.Sender;
 import model.User;
 import model.UserController;
 import model.encoder;
@@ -116,6 +117,9 @@ public class LoginController implements Initializable, Runnable {
 				try {
 					UserMainPage = MainLoader.load();
 					controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml")).getController();
+
+					User currentuser = UserController.getCurrentUser();
+					Sender.SendEmail(currentuser.Email, "Login Detected", Sender.Loginmail);
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
@@ -290,7 +294,7 @@ public class LoginController implements Initializable, Runnable {
 					description.setVisible(false);
 					signButton.setVisible(false);
 					if (signButton.getText().equals("Sign In")) {
-						//	mainGroup.getChildren().add(signInGroup);
+						// mainGroup.getChildren().add(signInGroup);
 						signButton.setText("Sign Up");
 					} else {
 						signButton.setText("Sign In");

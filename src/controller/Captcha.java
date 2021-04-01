@@ -52,15 +52,7 @@ public class Captcha implements Initializable {
 	@FXML
 	private AnchorPane root;
 
-	String captchaResult;
-
-	public String getCaptchaResult() {
-		return captchaResult;
-	}
-
-	public void setCaptchaResult(String captchaResult) {
-		this.captchaResult = captchaResult;
-	}
+	public static String captchaResult;
 
 	Random r;
 
@@ -81,7 +73,7 @@ public class Captcha implements Initializable {
 		String t4 = cs[r.nextInt(cs.length)];
 		String t5 = cs[r.nextInt(cs.length)];
 		String t6 = cs[r.nextInt(cs.length)];
-		setCaptchaResult(t1 + t2 + t3 + t4 + t5 + t6);
+		captchaResult = (t1 + t2 + t3 + t4 + t5 + t6);
 
 		text1.setText(t1);
 		text2.setText(t2);
