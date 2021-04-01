@@ -45,7 +45,7 @@ public class deposit implements Initializable {
             if (!IsAllFieldsComplete()) {
                 alert("Some Fields Are Empty !");
             } else if (!DBConnector.containsBIC(cardTXF.getText())) {
-                alert("Invalid Card!");
+                alert("Card Is Inavalid !");
             } else if (!DBConnector.CheckCardInfo(cardTXF.getText(), pinTXF.getText(), CVV2TXF.getText(),
                     Integer.parseInt(YearTXF.getText()), Integer.parseInt(MonthTXF.getText()))) {
                 alert("Wrong Credentials !");
@@ -53,23 +53,32 @@ public class deposit implements Initializable {
                     Integer.parseInt(MonthTXF.getText()))) {
                 alert("Card Is Expired !");
             } else {
-                DBConnector.changeValue(Long.parseLong(AmountTXF.getText()), cardTXF.getText());
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Transaction Was Successful !");
-                alert.show();
-                ClearData();
+                try {
+                    DBConnector.changeValue(Long.parseLong(AmountTXF.getText()), cardTXF.getText());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Transaction Was Successful !");
+                    alert.show();
+                    ClearData();
+                } catch (Exception exp) {
+                    DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Transaction Was Successful !");
+                    alert.show();
+                    ClearData();
+                }
             }
         });
     }
 
     private void LimitandNext() {
-        PassToNext.NextField(cardTXF, 16);
-        PassToNext.NextField(pinTXF, 4);
-        PassToNext.NextField(AmountTXF, 18);
-        PassToNext.NextField(CVV2TXF, 6);
-        PassToNext.NextField(YearTXF, 2);
-        PassToNext.NextField(MonthTXF, 2);
+        PassToNext.NextField(cardTXF, 16, true);
+        PassToNext.NextField(pinTXF, 4, true);
+        PassToNext.NextField(AmountTXF, 18, true);
+        PassToNext.NextField(CVV2TXF, 6, true);
+        PassToNext.NextField(YearTXF, 2, true);
+        PassToNext.NextField(MonthTXF, 2, true);
     }
 
     private boolean IsAllFieldsComplete() {

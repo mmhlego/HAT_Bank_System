@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.*;
 
 public class loanRequest implements Initializable{
 
@@ -42,8 +43,18 @@ public class loanRequest implements Initializable{
     private JFXButton confirmBTN;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
+    public void initialize(URL location, ResourceBundle resources) {
+        LimitAndNext();
+    }
+    
+    private void LimitAndNext() {
+        PassToNext.NextField(cardNumber, 16 , true);
+        PassToNext.NextField(cvv, 4, true);
+        PassToNext.NextField(nationalCode, 10, true);
+        PassToNext.NextField(guarantorID, 7, false);
+        PassToNext.NextField(guarantorPassword, 20 , true);
+        // PassToNext.NextField(dueDate, 16 , true);
+        PassToNext.NextField(securityCode, 6 , true);
+    }
 
 }

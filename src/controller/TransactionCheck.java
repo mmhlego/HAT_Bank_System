@@ -1,17 +1,22 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
+import java.security.*;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXSpinner;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import model.*;
 
-public class TransactionCheck implements Initializable{
+public class TransactionCheck implements Initializable {
 
     @FXML
     private AnchorPane MainPanel;
@@ -21,9 +26,6 @@ public class TransactionCheck implements Initializable{
 
     @FXML
     private TextField CVVTXF;
-
-    @FXML
-    private JFXSpinner remainSpinner;
 
     @FXML
     private Label requestBTN;
@@ -40,9 +42,102 @@ public class TransactionCheck implements Initializable{
     @FXML
     private JFXButton submit;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-	}
+    @FXML
+    private Label Recievernamelbl;
 
+    public static int Code;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        Recievernamelbl.setText(DBConnector.GetFullName(Transaction.RecieveCard));
+        cardTXF.setText(Transaction.SendCard);
+        LimitandNext();
+        requestBTN.setOnMouseClicked((e) -> {
+            alert(String.format("%s", CreatOTP()));
+        });
+
+        submit.setOnAction((e) -> {
+            if (!IsAllFieldsComplete()) {
+                alert("Some Fields Are Not Complete !");
+            } else if (!DBConnector.CheckTransferCardInfo(cardTXF.getText(), CVV2TXF.getText(),
+                    Integer.parseInt(YearTXF.getText()), Integer.parseInt(MonthTXF.getText()))) {
+                alert("Wrong Credentials !");
+            } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
+                    Integer.parseInt(MonthTXF.getText()))) {
+                alert("Card Is Expired !");
+            } else if (!CVVTXF.getText().equals(String.format("%s", Code))) {
+                alert("Wrong OTP");
+            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(Transaction.Amount), cardTXF.getText())) {
+                alert("Money In Card Is Not Enough !");
+            } else {
+                try {
+                    DBConnector.changeValue(-Long.parseLong(Transaction.Amount), cardTXF.getText());
+                    DBConnector.changeValue(Long.parseLong(Transaction.Amount), Transaction.RecieveCard);
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Transaction Was Successful !");
+                    alert.show();
+                    ClearData();
+                    UserController.updatePersonalData();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/accountsPage.fxml"));
+                    try {
+                        MainPanel.getChildren().add(loader.load());
+                    } catch (IOException e1) {
+                        Alert alert1 = new Alert(AlertType.ERROR);
+                        alert1.setHeaderText(null);
+                        alert1.setContentText("Check Your Internet Connection !");
+                        alert1.show();
+                    }
+                } catch (Exception exp) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Check Your Internet Connection !");
+                    alert.show();
+                }
+            }
+        });
+
+    }
+
+    private static int CreatOTP() {
+        SecureRandom r = new SecureRandom();
+        Code = r.nextInt(1000) + r.nextInt(1000);
+        if (Code >= 1000 && Code <= 9999) {
+            return Code;
+        } else {
+            return CreatOTP();
+        }
+    }
+
+    private void ClearData() {
+        cardTXF.setText("");
+        CVVTXF.setText("");
+        CVV2TXF.setText("");
+        YearTXF.setText("");
+        MonthTXF.setText("");
+    }
+
+    private void alert(String content) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.show();
+    }
+
+    private void LimitandNext() {
+        PassToNext.NextField(cardTXF, 16, true);
+        PassToNext.NextField(CVVTXF, 4, true);
+        PassToNext.NextField(CVV2TXF, 6, true);
+        PassToNext.NextField(YearTXF, 2, true);
+        PassToNext.NextField(MonthTXF, 2, true);
+    }
+
+    private boolean IsAllFieldsComplete() {
+        if (cardTXF.getText().length() == 16 && CVVTXF.getText().length() == 4 && CVV2TXF.getText().length() == 6
+                && YearTXF.getText().length() == 2 && MonthTXF.getText().length() == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

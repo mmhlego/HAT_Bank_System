@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
@@ -63,7 +62,7 @@ public class StructureController implements Initializable {
 		sideTransition();
 		switch (UserController.getCurrentUser().AccessLevel) {
 		case User.CLIENT:
-			addButton("TransactoinStatus","Transactions History");
+			addButton("TransactionStatus","Transactions History");
 			addButton("accountsPage","My Accounts");
 			addButton("depositPage","Deposit");
 			addButton("withdrawPage","Withdraw");
@@ -75,7 +74,7 @@ public class StructureController implements Initializable {
 		case User.MANAGER:
 			addButton("loanStatusPage","All Loans");
 			addButton("accountsPage","All Accounts");
-			addButton("TransactoinStatus","All Transactions");
+			addButton("TransactionStatus","All Transactions");
 			addButton("settings","Settings");
 			
 			break;

@@ -161,11 +161,43 @@ public class DBConnector {
         return false;
     }
 
+     public static boolean CheckTransferCardInfo(String BIC, String CVV2, int Year, int Month) {
+        try {
+            ResultSet r = runCommand("SELECT CVV2 , EXDate from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            String cvv2 = r.getString(1);
+            int year = r.getDate(2).toLocalDate().getYear() % 100;
+            int month = r.getDate(2).toLocalDate().getMonthValue();
+            if (cvv2.equals(CVV2) && year == Year && month == Month) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static boolean IsCardAlive(int Year, int Month) {
         int monthnow = LocalDate.now().getMonthValue();
-        int yearnow = LocalDate.now().getYear();
-        if (Year >= yearnow && Month >= monthnow) {
+        int yearnow = LocalDate.now().getYear() % 100;
+        if (Year > yearnow) {
             return true;
+        } else if (Year == yearnow && Month >= monthnow) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean IsDestinationCardAlive(String BIC){
+        try {
+            ResultSet r = runCommand("Select ExDate from Account WHERE BIC=\'" + BIC + "\'");
+            int year = r.getDate(1).toLocalDate().getYear() % 100;
+            int month = r.getDate(1).toLocalDate().getMonthValue();
+            if (IsCardAlive(year, month)) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -202,6 +234,21 @@ public class DBConnector {
             return true;
         }
         return false;
+    }
+
+    public static String GetFullName(String BIC) {
+        try {
+            ResultSet r = runCommand(
+                    "SELECT FirstName,LastName FROM `User` WHERE ID=(SELECT OwnerID FROM Account WHERE BIC='" + BIC
+                            + "')");
+            r.next();
+            String FirstName = r.getString(1);
+            String LastName = r.getString(2);
+            return FirstName + " " + LastName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     // =============================================================================================

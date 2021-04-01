@@ -110,10 +110,16 @@ public class PasswordChangerController implements Initializable {
 					try {
 						MainPanel.getChildren().add(loader.load());
 					} catch (IOException e1) {
-						e1.printStackTrace();
+						Alert alert1 = new Alert(AlertType.ERROR);
+						alert1.setHeaderText(null);
+						alert1.setContentText("Check Your Internet Connection !");
+						alert1.show();
 					}
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setHeaderText(null);
+					alert.setContentText("Check Your Internet Connection !");
+					alert.show();
 				}
 			}
 		});

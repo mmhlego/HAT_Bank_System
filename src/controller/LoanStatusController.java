@@ -225,7 +225,10 @@ public class LoanStatusController implements Initializable {
 			allLoans = UserController.ConvertLoansToArrayList(DBConnector.runCommand(statement));
 			addAllLoans();
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setContentText("Check Your Internet Connection !");
+			alert.show();
 		}
 	}
 

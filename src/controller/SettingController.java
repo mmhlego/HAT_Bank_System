@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import model.DBConnector;
 import model.User;
@@ -91,10 +93,7 @@ public class SettingController implements Initializable {
         User currentUser = UserController.getCurrentUser();
         if (changeInformationBTN.getText().equals("Change Information")) {
             changeInformationBTN.setText("Save Information");
-            firstNameTXF.setEditable(true);
-            lastNameTXF.setEditable(true);
-            phoneTXF.setEditable(true);
-            addressTXA.setEditable(true);
+            FieldStatus(true);
         } else {
             User u = new User(firstNameTXF.getText(), lastNameTXF.getText(), currentUser.Username, currentUser.Password,
                     currentUser.AccessLevel, addressTXA.getText(), currentUser.ID, currentUser.NationalCode,
@@ -103,9 +102,25 @@ public class SettingController implements Initializable {
             try {
                 DBConnector.UpdateUser(u);
                 UserController.updatePersonalData();
+                changeInformationBTN.setText("Change Information");
+                FieldStatus(false);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Information Updated Successfully !");
+                alert.show();
             } catch (Exception e) {
-                e.printStackTrace();
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Check Your Internet Connection !");
+                alert.show();
             }
         }
+    }
+
+    private void FieldStatus(boolean Value) {
+        firstNameTXF.setEditable(Value);
+        lastNameTXF.setEditable(Value);
+        phoneTXF.setEditable(Value);
+        addressTXA.setEditable(Value);
     }
 }
