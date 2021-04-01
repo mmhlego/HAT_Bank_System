@@ -62,23 +62,21 @@ public class StructureController implements Initializable {
 		sideTransition();
 		switch (UserController.getCurrentUser().AccessLevel) {
 		case User.CLIENT:
-			addButton("TransactionStatus", "Transactions History");
 			addButton("accountsPage", "My Accounts");
+			addButton("loanStatusPage", "My Loans");
+			addButton("TransactionStatus", "Transactions History");
+			addButton("Transactions", "Transfer");
 			addButton("depositPage", "Deposit");
 			addButton("withdrawPage", "Withdraw");
-			addButton("Transactions", "Transfer");
-			addButton("loanStatusPage", "My Loans");
 			addButton("settings", "Settings");
 			break;
 		case User.EMPLOYEE:
 		case User.MANAGER:
-			addButton("loanStatusPage", "All Loans");
 			addButton("accountsPage", "All Accounts");
-			addButton("TransactoinStatus", "All Transactions");
+			addButton("loanStatusPage", "All Loans");
+			addButton("TransactionStatus", "All Transactions");
 			addButton("settings", "Settings");
-
 			break;
-
 		}
 		System.out.println((((ImageView) toggleSidepanel.getChildren().get(0)).getImage()));
 		toggleSidepanel.setOnMouseClicked(e -> {

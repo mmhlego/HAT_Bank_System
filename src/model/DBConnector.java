@@ -347,9 +347,11 @@ public class DBConnector {
         return runCommand("select * from Account where OwnerID=\'" + OwnerID + "\'");
     }
 
-    public static ResultSet getTransactions(String accountID) throws Exception {
-        return runCommand("select * from Transaction where  FromAccountID=\'" + accountID + "\' OR ToAccountID=\'"
-                + accountID + "\'");
+    public static ResultSet getTransactions(String OwnerID) throws Exception {
+        return runCommand(
+                "SELECT * FROM Transaction WHERE FromAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID='"
+                        + OwnerID + "') OR  ToAccountID= ANY(SELECT AccountID FROM Account WHERE OwnerID='" + OwnerID
+                        + "')");
     }
 
     public static User getUser(String username) {

@@ -14,7 +14,7 @@
       </Label>
       <ScrollPane hbarPolicy="NEVER" layoutX="60.0" layoutY="112.0" style="-fx-background-color: transparent; -fx-background: transparent;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="200.0">
          <content>
-            <AnchorPane fx:id="loansBoard" prefHeight="435.0" prefWidth="847.0" />
+            <AnchorPane fx:id="TransactionsBoard" prefHeight="435.0" prefWidth="847.0" />
          </content>
       </ScrollPane>
    </children>

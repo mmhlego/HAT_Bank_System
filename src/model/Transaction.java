@@ -3,9 +3,9 @@ package model;
 import java.time.LocalDate;
 
 public class Transaction {
-    String FromAccountID, ToAccountID, TransactionID;
-    long Value;
-    LocalDate CompletionDate;
+    public String FromAccountID, ToAccountID, TransactionID;
+    public long Value;
+    public LocalDate CompletionDate;
 
     public Transaction(String fromID, String toID, long value, LocalDate date, String transactionID) {
         FromAccountID = fromID;

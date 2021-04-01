@@ -185,7 +185,6 @@ public class LoanStatusController implements Initializable {
 		String statement = "Select * From Loan";
 
 		switch (controller.getThirdCMB().getValue()) {
-
 		case "Pending":
 			statement += " Where Status=" + Loan.PENDING;
 			break;
