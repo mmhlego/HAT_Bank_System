@@ -19,6 +19,10 @@ public class UserController {
         LoadUserDataFromDB();
     }
 
+    public static void updatePersonalData(){
+        setCurrentUser(DBConnector.getUser(CurrentUser.Username));
+    }
+
     public static void LoadUserDataFromDB() {
         if (CurrentUser.AccessLevel == User.CLIENT) {
             try {

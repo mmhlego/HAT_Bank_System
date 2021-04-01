@@ -76,7 +76,7 @@ public class SettingController implements Initializable {
         }
         addressTXA.setText(currentUser.Address);
 
-        changePasswordTXf.setOnAction((e) ->{
+        changePasswordTXf.setOnAction((e) -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/changePassword.fxml"));
             try {
                 MainPanel.getChildren().add(loader.load());
@@ -102,6 +102,7 @@ public class SettingController implements Initializable {
                     currentUser.Language);
             try {
                 DBConnector.UpdateUser(u);
+                UserController.updatePersonalData();
             } catch (Exception e) {
                 e.printStackTrace();
             }
