@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loansMainPage">
+   <children>
+      <AnchorPane fx:id="allLoans" layoutX="78.0" layoutY="60.0" prefHeight="471.0" prefWidth="390.0" style="-fx-background-color: #2E3281; -fx-background-radius: 25;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <ImageView fx:id="allLoansImage" fitHeight="281.0" fitWidth="340.0" layoutX="81.0" layoutY="39.0" pickOnBounds="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+               <image>
+                  <Image url="@pictures/loans.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="132.0" layoutY="403.0" text="All Loans" textFill="WHITE" AnchorPane.topAnchor="403.0">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="loanRequest" layoutX="60.0" layoutY="60.0" prefHeight="471.0" prefWidth="390.0" style="-fx-background-color: #2E3281; -fx-background-radius: 25;" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <ImageView fx:id="loanRequestImage" fitHeight="280.0" fitWidth="340.0" pickOnBounds="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+               <image>
+                  <Image url="@pictures/loanRequest.jpg" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="104.0" layoutY="403.0" text="Loans Request" textFill="WHITE" AnchorPane.topAnchor="403.0">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+   </children>
+</AnchorPane>

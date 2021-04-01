@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +17,7 @@
             <Font name="System Bold Italic" size="25.0" />
          </font>
       </Label>
-      <VBox layoutX="427.0" layoutY="187.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+      <VBox layoutX="427.0" layoutY="187.0" prefHeight="328.0" prefWidth="409.0" spacing="10.0" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="175.0">
          <children>
             <TextField fx:id="cardNumber" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                <padding>
@@ -58,7 +59,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="dueDate" layoutX="10.0" layoutY="238.0" prefHeight="57.0" prefWidth="755.0" promptText="Due Date" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+         </children>
+      </VBox>
+      <HBox layoutX="435.0" layoutY="513.0" spacing="5.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+         <children>
+            <TextField fx:id="securityCode" prefHeight="57.0" prefWidth="730.0" promptText="Security Code" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                <padding>
                   <Insets left="50.0" right="25.0" />
                </padding>
@@ -66,29 +71,45 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <HBox spacing="5.0">
-               <children>
-                  <TextField fx:id="securityCode" prefHeight="57.0" prefWidth="755.0" promptText="Security Code" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
-                     <padding>
-                        <Insets left="50.0" right="25.0" />
-                     </padding>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </TextField>
-                  <JFXButton fx:id="requestBTN" prefHeight="55.0" prefWidth="116.0" ripplerFill="RED" style="-fx-background-color: #4E61B1; -fx-background-radius: 20;" text="Request" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold Italic" size="15.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-            </HBox>
-            <JFXButton fx:id="confirmBTN" prefHeight="57.0" prefWidth="869.0" style="-fx-background-color: #4E61B1; -fx-background-radius: 200;" text="Confirm" textFill="WHITE">
+            <JFXButton fx:id="requestBTN" prefHeight="55.0" prefWidth="113.0" ripplerFill="RED" style="-fx-background-color: #4E61B1; -fx-background-radius: 20;" text="Request" textFill="WHITE">
                <font>
-                  <Font name="System Bold Italic" size="20.0" />
+                  <Font name="System Bold Italic" size="15.0" />
                </font>
             </JFXButton>
          </children>
-      </VBox>
+      </HBox>
+      <JFXButton fx:id="confirmBTN" layoutX="26.0" layoutY="582.0" prefHeight="57.0" prefWidth="869.0" style="-fx-background-color: #4E61B1; -fx-background-radius: 200;" text="Confirm" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="amount" layoutX="475.0" layoutY="175.0" prefHeight="57.0" prefWidth="395.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+         <padding>
+            <Insets left="50.0" right="25.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </TextField>
+      <ComboBox fx:id="mode" editable="true" layoutX="475.0" layoutY="242.0" prefHeight="57.0" prefWidth="396.0" promptText="Mode" stylesheets="@../comboStyle2.css" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="240.0">
+         <padding>
+            <Insets left="45.0" right="25.0" />
+         </padding>
+      </ComboBox>
+      <Label fx:id="maxValue" alignment="CENTER" layoutX="475.0" layoutY="311.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Max Value" textFill="#b2b2b2" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="308.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="status" alignment="CENTER" layoutX="475.0" layoutY="374.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Account Status" textFill="#b2b2b2" AnchorPane.topAnchor="376.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="installment" alignment="CENTER" layoutX="475.0" layoutY="434.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Amount Per Installment" textFill="#b2b2b2" AnchorPane.topAnchor="442.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
