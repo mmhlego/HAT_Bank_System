@@ -17,19 +17,24 @@ public class Main extends Application implements Runnable {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
-			Parent root = loader.load();
+			System.out.println(DBConnector.connect());
 
+			//FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
+
+			UserController.setCurrentUser(DBConnector.getUser("Client40"));
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));
+
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.initStyle(StageStyle.UNDECORATED);
 			primaryStage.show();
 
-			DBConnector.setStage(primaryStage);
+			/*DBConnector.setStage(primaryStage);
 			DBConnector.setOffsetLeft(0.0);
-			// DBConnector.showLoading();
+			DBConnector.showLoading();
 			Thread thread = new Thread(this);
-			thread.start();
+			thread.start();*/
 
 		} catch (Exception e) {
 			e.printStackTrace();
