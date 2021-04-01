@@ -22,6 +22,24 @@ public class AccountInformation implements Initializable {
 	private JFXTextField cvvTXF;
 	@FXML
 	private JFXTextField expTXF;
+   @FXML
+    private JFXTextField mode;
+	public JFXTextField getMode() {
+	return mode;
+}
+
+public void setMode(JFXTextField mode) {
+	this.mode = mode;
+}
+
+public ImageView getCardImage() {
+	return cardImage;
+}
+
+public void setCardImage(ImageView cardImage) {
+	this.cardImage = cardImage;
+}
+
 	@FXML
 	private JFXTextField cvv2TXF;
 	@FXML

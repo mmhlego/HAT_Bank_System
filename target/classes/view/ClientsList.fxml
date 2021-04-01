@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClientList">
+   <children>
+      <Label alignment="CENTER" layoutX="432.0" layoutY="44.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" text="Clients List" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font>
+      </Label>
+      <ScrollPane hbarPolicy="NEVER" layoutX="50.0" layoutY="175.0" prefHeight="476.0" prefWidth="840.0" style="-fx-background-color: none; -fx-background: none;" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="175.0">
+         <content>
+            <AnchorPane fx:id="cardAnchor" prefHeight="475.0" prefWidth="820.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
