@@ -1,5 +1,6 @@
 package controller;
 
+import java.security.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,9 +10,12 @@ import javafx.application.Platform;
 import javafx.fxml.*;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point3D;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import model.*;
 
 public class PasswordChangerController implements Initializable {
 	@FXML
@@ -38,9 +42,11 @@ public class PasswordChangerController implements Initializable {
 	private ImageView recaptcha;
 
 	AnchorPane cap;
+	private static int Code;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		captchaMaker();
 		recaptcha.setOnMouseClicked(e -> {
 			rotation();
@@ -63,6 +69,49 @@ public class PasswordChangerController implements Initializable {
 			});
 			thread.start();
 		});
+
+		requestBTN.setOnAction((e) -> {
+			alert("" + CreatOTP());
+		});
+
+		saveBTN.setOnAction((e) -> {
+			if (!DBConnector.CheckCurrentData(usernameTXF.getText(), currentPassTXF.getText())) {
+				alert("Wrong Username / Password");
+			} else if (newPassTXF.getText().equals("") || RNewPassTXF.getText().equals("")) {
+				alert("Password Field Is Empty !");
+			} else if (!DBConnector.IsPasswordMatches(newPassTXF, RNewPassTXF)) {
+				alert("Passwords Don't Match !");
+			} else if (!Captcha.captchaResult.equals(captchaTXF.getText())) {
+				alert("Captcha Is Wrong !");
+				captchaMaker();
+			} else if (!codeTXF.getText().equals(String.format("%s", Code))) {
+				alert("Wrong OTP");
+			} else {
+				User currentuser = UserController.getCurrentUser();
+				User u = new User(currentuser.FirstName, currentuser.LastName, currentuser.Username, encoder.encode(
+						newPassTXF.getText()),
+						currentuser.AccessLevel, currentuser.Address, currentuser.ID, currentuser.NationalCode,
+						currentuser.BirthDate, currentuser.Email, currentuser.PhoneNumber, currentuser.Theme,
+						currentuser.Language);
+				try {
+					DBConnector.UpdatePassword(u);
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setHeaderText(null);
+					alert.setContentText("Password Changed Successfully !");
+					alert.show();
+					ClearData();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/settings.fxml"));
+					try {
+						MainPanel.getChildren().add(loader.load());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				} catch (Exception e1) {
+					// e1.printStackTrace();
+				}
+			}
+		});
+
 	}
 
 	private void captchaMaker() {
@@ -90,4 +139,31 @@ public class PasswordChangerController implements Initializable {
 		rotate.setDuration(Duration.seconds(1));
 		rotate.play();
 	}
+
+	private static int CreatOTP() {
+		SecureRandom r = new SecureRandom();
+		Code = r.nextInt(100000) + r.nextInt(100000);
+		if (Code >= 100000 && Code <= 999999) {
+			return Code;
+		} else {
+			return CreatOTP();
+		}
+	}
+
+	private void alert(String Content) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setHeaderText(null);
+		alert.setContentText(Content);
+		alert.show();
+	}
+
+	private void ClearData() {
+		usernameTXF.setText("");
+		currentPassTXF.setText("");
+		newPassTXF.setText("");
+		RNewPassTXF.setText("");
+		captchaTXF.setText("");
+		codeTXF.setText("");
+	}
+
 }

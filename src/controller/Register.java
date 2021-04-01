@@ -9,11 +9,12 @@ import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.DBConnector;
+import model.Sender;
 import model.User;
 import model.encoder;
 
 public class Register implements Initializable {
-       @FXML
+    @FXML
     private Label title;
 
     @FXML
@@ -86,10 +87,15 @@ public class Register implements Initializable {
                     Error.setContentText("This Username Already Exists Choose Another One");
                     Error.setHeaderText("Error");
                     Error.show();
+
                 } else {
                     DBConnector.connect();
-                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), 
-                            usernameField.getText(), encoder.encode(passwordField.getText()), "Email" , phoneField.getText(), 0 , addressField.getText() , User.generateID(User.CLIENT), codeField.getText(), birthPicker.getValue() , 0, 0);
+                    DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), usernameField.getText(),
+                            encoder.encode(passwordField.getText()), 
+                            emailField.getText(), phoneField.getText(), 0,
+                            addressField.getText(), User.generateID(User.CLIENT), codeField.getText(),
+                            birthPicker.getValue(), 0, 0);
+                            Sender.SendEmail(emailField.getText(), "Registration Was Successful !", Sender.Signupmail);
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();
