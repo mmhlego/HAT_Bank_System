@@ -6,12 +6,13 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class loanRequest implements Initializable{
-
-    @FXML
+@FXML
     private AnchorPane MainPanel;
 
     @FXML
@@ -30,9 +31,6 @@ public class loanRequest implements Initializable{
     private TextField guarantorPassword;
 
     @FXML
-    private TextField dueDate;
-
-    @FXML
     private TextField securityCode;
 
     @FXML
@@ -40,6 +38,21 @@ public class loanRequest implements Initializable{
 
     @FXML
     private JFXButton confirmBTN;
+
+    @FXML
+    private TextField amount;
+
+    @FXML
+    private ComboBox<?> mode;
+
+    @FXML
+    private Label maxValue;
+
+    @FXML
+    private Label status;
+
+    @FXML
+    private Label installment;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

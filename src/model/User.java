@@ -13,6 +13,7 @@ public class User {
 
     private ArrayList<Loan> Loans = new ArrayList<Loan>();
     private ArrayList<Account> Accounts = new ArrayList<Account>();
+    private ArrayList<Transaction> Transactions = new ArrayList<Transaction>();
 
     public void setLoans(ArrayList<Loan> loans) {
         Loans = loans;
@@ -20,6 +21,10 @@ public class User {
 
     public void setAccounts(ArrayList<Account> accounts) {
         Accounts = accounts;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        Transactions = transactions;
     }
 
     public User(String firstName, String lastName, String username, String password, int accessLevel, String address,
@@ -54,6 +59,14 @@ public class User {
 
     public ArrayList<Account> getAccounts() {
         return Accounts;
+    }
+
+    public void addToTransactions(Transaction t) {
+        Transactions.add(t);
+    }
+
+    public ArrayList<Transaction> getTransactions() {
+        return Transactions;
     }
 
     public static String generateID(int AccessLevel) {

@@ -13,13 +13,17 @@ public class UserController {
         return CurrentUser;
     }
 
+    public static ArrayList<Account> getAccounts() {
+        return Accounts;
+    }
+
     public static void setCurrentUser(User u) {
         CurrentUser = u;
 
         LoadUserDataFromDB();
     }
 
-    public static void updatePersonalData(){
+    public static void updatePersonalData() {
         setCurrentUser(DBConnector.getUser(CurrentUser.Username));
     }
 
@@ -28,16 +32,16 @@ public class UserController {
             try {
                 Accounts = ConvertAccountsToArrayList(DBConnector.getAccounts(CurrentUser.ID));
                 Loans = ConvertLoansToArrayList(DBConnector.getLoans(CurrentUser.ID));
+                Transactions = ConvertTransactionsToArrayList(DBConnector.getTransactions(CurrentUser.ID));
 
-                for (int i = 0; i < Accounts.size(); i++) {
+                /*for (int i = 0; i < Accounts.size(); i++) {
                     ArrayList<Transaction> temp = ConvertTransactionsToArrayList(
                             DBConnector.getTransactions(Accounts.get(i).AccountID));
-
+                
                     for (Transaction t : temp) {
                         Transactions.add(t);
                     }
-                }
-
+                }*/
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -53,6 +57,9 @@ public class UserController {
 
         getCurrentUser().setLoans(Loans);
         getCurrentUser().setAccounts(Accounts);
+        getCurrentUser().setTransactions(Transactions);
+
+        System.out.println(Arrays.toString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {
@@ -89,7 +96,7 @@ public class UserController {
         return temp;
     }
 
-    private static ArrayList<Transaction> ConvertTransactionsToArrayList(ResultSet all) {
+    public static ArrayList<Transaction> ConvertTransactionsToArrayList(ResultSet all) {
         ArrayList<Transaction> temp = new ArrayList<Transaction>();
 
         try {
@@ -107,5 +114,9 @@ public class UserController {
 
     public static ArrayList<Loan> getLoans() {
         return Loans;
+    }
+
+    public static ArrayList<Transaction> getTransactions() {
+        return Transactions;
     }
 }
