@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import model.Account;
@@ -49,8 +50,11 @@ public class AccountsShow implements Initializable {
 					try {
 						parent = load.load();
 						AccountInformation control = load.getController();
-						control.getCardPlace().getChildren().clear();
-						control.getCardPlace().getChildren().add(card);
+						control.getCardNumber().setText(account.BIC);
+						control.getCvv2().setText(account.CVV2);
+						control.getExp().setText(account.ExDate.getYear() + "/" + account.ExDate.getMonthValue());
+						control.getIban().setText(account.IBAN);
+						
 						control.getCardNumberTXF().setText(account.BIC);
 						control.getCvv2TXF().setText(account.CVV2);
 						control.getCvvTXF().setText(account.CVV);

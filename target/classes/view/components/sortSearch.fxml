@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="62.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SortAndSearch">
+<AnchorPane prefHeight="62.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SortAndSearch">
    <children>
       <VBox alignment="CENTER" layoutX="517.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -30,7 +30,7 @@
                   </TextField>
                   <ImageView fx:id="searchBTN" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/search.png" />
+                        <Image url="@../icons/icons8_search_26px.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

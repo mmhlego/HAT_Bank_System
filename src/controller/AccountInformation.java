@@ -16,18 +16,6 @@ import javafx.scene.layout.AnchorPane;
 
 public class AccountInformation implements Initializable{
 
-    @FXML
-    private AnchorPane MainPanel;
-
-    @FXML
-    private JFXTextField cardNumberTXF;
-
-    @FXML
-    private JFXTextField cvvTXF;
-
-    @FXML
-    private JFXTextField expTXF;
-
     public AnchorPane getMainPanel() {
 		return MainPanel;
 	}
@@ -100,42 +88,50 @@ public class AccountInformation implements Initializable{
 		this.changeCvvBTN = changeCvvBTN;
 	}
 
-	public AnchorPane getCardPlace() {
-		return cardPlace;
-	}
+	 @FXML
+	    private AnchorPane MainPanel;
 
-	public void setCardPlace(AnchorPane cardPlace) {
-		this.cardPlace = cardPlace;
-	}
+	    @FXML
+	    private JFXTextField cardNumberTXF;
 
-	public ImageView getCardImage() {
-		return cardImage;
-	}
+	    @FXML
+	    private JFXTextField cvvTXF;
 
-	public void setCardImage(ImageView cardImage) {
-		this.cardImage = cardImage;
-	}
+	    @FXML
+	    private JFXTextField expTXF;
 
-	@FXML
-    private JFXTextField cvv2TXF;
+	    @FXML
+	    private JFXTextField cvv2TXF;
 
-    @FXML
-    private JFXButton withdrawBTN;
+	    @FXML
+	    private JFXButton withdrawBTN;
 
-    @FXML
-    private JFXButton depositBTn;
+	    @FXML
+	    private JFXButton depositBTn;
 
-    @FXML
-    private JFXButton historyBTN;
+	    @FXML
+	    private JFXButton historyBTN;
 
-    @FXML
-    private JFXButton changeCvvBTN;
+	    @FXML
+	    private JFXButton changeCvvBTN;
 
-    @FXML
-    private AnchorPane cardPlace;
+	    @FXML
+	    private ImageView backBtn;
 
-    @FXML
-    private ImageView cardImage;
+	    @FXML
+	    private Label cardNumber;
+
+	    @FXML
+	    private Label exp;
+
+	    @FXML
+	    private Label cvv2;
+
+	    @FXML
+	    private Label iban;
+	    
+	    @FXML
+	    private AnchorPane cardPlace;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -147,13 +143,16 @@ public class AccountInformation implements Initializable{
 		withdrawBTN.setOnAction(e->loadPage("withdrawPage"));
 		depositBTn.setOnAction(e->loadPage("depositPage"));
 		historyBTN.setOnAction(e->loadPage("Transactions"));
+		backBtn.setOnMouseClicked(e->{
+			((AnchorPane)MainPanel.getParent()).getChildren().remove(((AnchorPane)MainPanel.getParent()).getChildren().size()-1);
+		});
 	}
 	
 	private void loadPage(String fxml) {
 		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/"+fxml+".fxml"));
 		try {
 			MainPanel.getChildren().add(loader.load());
-			AnchorPane card=(AnchorPane) cardPlace.getChildren().get(0);
+			AnchorPane card=cardPlace;
 			switch (fxml) {
 			case "changeCvvPage":
 				CVVChange control1=loader.getController();
@@ -184,6 +183,54 @@ public class AccountInformation implements Initializable{
 			e.printStackTrace();
 		}
 
+	}
+
+	public ImageView getBackBtn() {
+		return backBtn;
+	}
+
+	public void setBackBtn(ImageView backBtn) {
+		this.backBtn = backBtn;
+	}
+
+	public Label getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(Label cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public Label getExp() {
+		return exp;
+	}
+
+	public void setExp(Label exp) {
+		this.exp = exp;
+	}
+
+	public Label getCvv2() {
+		return cvv2;
+	}
+
+	public void setCvv2(Label cvv2) {
+		this.cvv2 = cvv2;
+	}
+
+	public Label getIban() {
+		return iban;
+	}
+
+	public void setIban(Label iban) {
+		this.iban = iban;
+	}
+
+	public AnchorPane getCardPlace() {
+		return cardPlace;
+	}
+
+	public void setCardPlace(AnchorPane cardPlace) {
+		this.cardPlace = cardPlace;
 	}
 
 }

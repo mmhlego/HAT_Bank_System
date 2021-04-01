@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -49,11 +50,19 @@
                </children>
             </HBox>
             <JFXButton fx:id="changeCvvBTN" focusTraversable="false" layoutX="423.0" layoutY="178.0" prefHeight="26.0" prefWidth="243.0" ripplerFill="#007796" style="-fx-background-color: #4E61B1; -fx-background-radius: 10;" text="Change CVV" textFill="WHITE" />
+            <ImageView fx:id="backBtn" fitHeight="57.0" fitWidth="70.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/icons8_back_to_48px.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="cardPlace" layoutX="285.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: none;" AnchorPane.topAnchor="25.0">
+      <AnchorPane fx:id="cardPlace" layoutX="292.0" layoutY="40.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: none;" AnchorPane.topAnchor="25.0">
          <children>
-            <ImageView fx:id="cardImage" fitHeight="200.0" fitWidth="350.0" layoutX="39.0" layoutY="-15.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="200.0" fitWidth="350.0" layoutX="39.0" layoutY="-15.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@pictures/card1.png" />
                </image>
@@ -73,29 +82,34 @@
                   <Label layoutX="279.0" layoutY="19.0" text="Logo" AnchorPane.rightAnchor="15.0" />
                </children>
             </AnchorPane>
-            <Label alignment="CENTER" layoutX="15.0" layoutY="83.0" prefHeight="55.0" prefWidth="330.0" text="0000-0000-0000-0000">
+            <Label fx:id="cardNumber" alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="55.0" prefWidth="330.0" text="0000-0000-0000-0000">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="205.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0">
+            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #FFFFFF80; -fx-background-radius: 0 10 0 10;" AnchorPane.leftAnchor="0.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="104.0" text="Expiration Date" AnchorPane.leftAnchor="20.0">
+                  <Label fx:id="exp" layoutX="6.0" prefHeight="26.0" prefWidth="121.0" text="Expiration Date" AnchorPane.leftAnchor="6.0">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="299.0" layoutY="172.0" prefHeight="21.0" prefWidth="41.0" style="-fx-background-color: black;" AnchorPane.rightAnchor="10.0">
+            <AnchorPane layoutX="299.0" layoutY="172.0" prefHeight="21.0" prefWidth="63.0" style="-fx-background-color: #ffffff70; -fx-background-radius: 500;" AnchorPane.rightAnchor="10.0">
                <children>
-                  <Label text="CVV">
+                  <Label fx:id="cvv2" alignment="CENTER" prefHeight="21.0" prefWidth="63.0" text="CVV">
                      <font>
-                        <Font name="System Bold" size="15.0" />
+                        <Font size="15.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
+            <Label fx:id="iban" alignment="CENTER" layoutX="10.0" layoutY="65.0" prefHeight="35.0" prefWidth="330.0" text="0000-0000-0000-0000">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
