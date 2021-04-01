@@ -5,6 +5,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import com.jfoenix.controls.JFXPasswordField;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,7 +37,7 @@ public class DBConnector {
 
     public static boolean showLoading() {
         try {
-            FXMLLoader loader = new FXMLLoader(new File("view\\DatabaseLoadingOverlay.fxml").toURI().toURL());
+            FXMLLoader loader = new FXMLLoader(new File("src/view/DatabaseLoadingOverlay.fxml").toURI().toURL());
             AnchorPane root = loader.load();
 
             AnchorPane ap = ((AnchorPane) stage.getScene().getRoot());
@@ -128,7 +130,11 @@ public class DBConnector {
                 + u.LastName + "\' , Address=\'" + u.Address + "\' , Email=\'" + u.Email + "\' , PhoneNumber=\'"
                 + u.PhoneNumber + "\' WHERE ID=\'" + u.ID + "\'");
         ps.executeUpdate();
-        System.out.println("Updated");
+    }
+
+    public static void UpdatePassword(User u) throws Exception {
+        PreparedStatement ps = con.prepareStatement("UPDATE User Set Password=\'" + u.Password + "\' WHERE ID=\'" + u.ID + "\'");
+        ps.executeUpdate();
     }
 
     public static void UpdateAccount(Account a) throws Exception {
@@ -137,7 +143,29 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
-    public static boolean CheckCardInfo() {
+    public static boolean CheckCardInfo(String BIC, String CVV, String CVV2, int Year, int Month) {
+        try {
+            ResultSet r = runCommand("SELECT CVV , CVV2 , EXDate from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            String cvv = r.getString(1);
+            String cvv2 = r.getString(2);
+            int year = r.getDate(3).toLocalDate().getYear() % 100;
+            int month = r.getDate(3).toLocalDate().getMonthValue();
+            if (cvv.equals(CVV) && cvv2.equals(CVV2) && year == Year && month == Month) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean IsCardAlive(int Year, int Month) {
+        int monthnow = LocalDate.now().getMonthValue();
+        int yearnow = LocalDate.now().getYear();
+        if (Year >=yearnow && Month >=monthnow) {
+            return true;
+        }
         return false;
     }
 
@@ -151,6 +179,27 @@ public class DBConnector {
         } catch (Exception e) {
             e.printStackTrace();
         }        
+    }
+
+    public static boolean CheckCurrentData(String Username, String Password) {
+        try {
+            ResultSet r = runCommand("SELECT Password from User WHERE Username =\'" + Username + "\'");
+            r.next();
+            String currentPassword = r.getString(1);
+            if (encoder.encode(Password).equals(currentPassword)) {
+                return true;
+            }
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean IsPasswordMatches(JFXPasswordField first , JFXPasswordField Second){
+        if (first.getText().equals(Second.getText())) {
+            return true;
+        }
+        return false;
     }
 
     // =============================================================================================

@@ -71,11 +71,7 @@
             <Insets left="50.0" right="30.0" />
          </padding>
       </TextField>
-<<<<<<< HEAD
-      <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="474.0" layoutY="273.0" prefHeight="25.0" prefWidth="30.0" />
-=======
       <JFXDatePicker fx:id="birthPicker" focusTraversable="false" layoutX="507.0" layoutY="271.0" prefHeight="25.0" prefWidth="30.0" />
->>>>>>> fbe448638adec99781179424c11cbd92b2027ad5
       <TextField fx:id="phoneField" layoutX="100.0" layoutY="308.0" prefHeight="30.0" prefWidth="225.0" promptText="Phone Number" style="-fx-background-color: #EEF5F3; -fx-background-radius: 200 200 200 200;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font size="15.0" />

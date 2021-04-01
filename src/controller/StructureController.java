@@ -61,7 +61,7 @@ public class StructureController implements Initializable {
 		});
 
 		try {
-			FXMLLoader loader = new FXMLLoader(new File("view/mainPage.fxml").toURI().toURL());
+			FXMLLoader loader = new FXMLLoader(new File("src/view/mainPage.fxml").toURI().toURL());
 
 			Main.getChildren().add(loader.load());
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class StructureController implements Initializable {
 
 	public static void addButton(String fxml) {
 		try {
-			FXMLLoader loader = new FXMLLoader(new File("view/components/SidePanelButtons.fxml").toURI().toURL());
+			FXMLLoader loader = new FXMLLoader(new File("src/view/components/SidePanelButtons.fxml").toURI().toURL());
 
 			HBox button = loader.load();
 			((Label) button.getChildren().get(1)).setText(fxml);
@@ -80,7 +80,7 @@ public class StructureController implements Initializable {
 				int len = Main.getChildren().size();
 				Main.getChildren().remove(len - 1);
 				try {
-					FXMLLoader load = new FXMLLoader(new File("view/" + fxml + ".fxml").toURI().toURL());
+					FXMLLoader load = new FXMLLoader(new File("src/view/" + fxml + ".fxml").toURI().toURL());
 					Main.getChildren().add(load.load());
 				} catch (IOException e1) {
 					e1.printStackTrace();

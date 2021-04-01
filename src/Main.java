@@ -38,7 +38,7 @@ public class Main extends Application implements Runnable {
 
 			DBConnector.setStage(primaryStage);
 			DBConnector.setOffsetLeft(0.0);
-			DBConnector.showLoading();
+			// DBConnector.showLoading();
 			Thread thread = new Thread(this);
 			thread.start();
 

@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.util.Duration;
 import model.DBConnector;
+import model.Sender;
 import model.User;
 import model.UserController;
 import model.encoder;
@@ -76,6 +77,8 @@ public class LoginController implements Initializable, Runnable {
 						UserMainPage = MainLoader.load();
 						controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml"))
 								.getController();
+						User currentuser = UserController.getCurrentUser();
+						Sender.SendEmail(currentuser.Email, "Login Detected", Sender.Loginmail);
 					} catch (IOException ex) {
 						ex.printStackTrace();
 					}
@@ -148,7 +151,7 @@ public class LoginController implements Initializable, Runnable {
 			signButton.setVisible(false);
 			try {
 				pic.setImage(new Image(new FileInputStream(new File(
-						"view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
+						"src\\view\\pictures\\project-management-body-of-knowledge-project-manager-executive-manager-businessmanatdesk-thumbnail-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -160,7 +163,8 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Employee Login");
 			signButton.setVisible(false);
 			try {
-				pic.setImage(new Image(new FileInputStream(new File("view/pictures/1869679-removebg-preview.png"))));
+				pic.setImage(
+						new Image(new FileInputStream(new File("src/view/pictures/1869679-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -185,8 +189,8 @@ public class LoginController implements Initializable, Runnable {
 			title.setText("Client Login");
 			signButton.setVisible(true);
 			try {
-				pic.setImage(new Image(new FileInputStream(
-						new File("view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
+				pic.setImage(new Image(new FileInputStream(new File(
+						"src/view/pictures/client-icon-businessman-icon-vector-design-removebg-preview.png"))));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -281,7 +285,7 @@ public class LoginController implements Initializable, Runnable {
 					description.setVisible(false);
 					signButton.setVisible(false);
 					if (signButton.getText().equals("Sign In")) {
-						//	mainGroup.getChildren().add(signInGroup);
+						// mainGroup.getChildren().add(signInGroup);
 						signButton.setText("Sign Up");
 					} else {
 						signButton.setText("Sign In");

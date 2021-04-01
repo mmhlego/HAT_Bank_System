@@ -1,10 +1,12 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import model.DBConnector;
@@ -73,6 +75,15 @@ public class SettingController implements Initializable {
 
         }
         addressTXA.setText(currentUser.Address);
+
+        changePasswordTXf.setOnAction((e) ->{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/changePassword.fxml"));
+            try {
+                MainPanel.getChildren().add(loader.load());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     @FXML
