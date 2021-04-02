@@ -161,11 +161,44 @@ public class DBConnector {
         return false;
     }
 
+    public static boolean CheckTransferCardInfo(String BIC, String CVV2, int Year, int Month) {
+        try {
+            ResultSet r = runCommand("SELECT CVV2 , EXDate from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            String cvv2 = r.getString(1);
+            int year = r.getDate(2).toLocalDate().getYear() % 100;
+            int month = r.getDate(2).toLocalDate().getMonthValue();
+            if (cvv2.equals(CVV2) && year == Year && month == Month) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static boolean IsCardAlive(int Year, int Month) {
         int monthnow = LocalDate.now().getMonthValue();
-        int yearnow = LocalDate.now().getYear();
-        if (Year >= yearnow && Month >= monthnow) {
+        int yearnow = LocalDate.now().getYear() % 100;
+        if (Year > yearnow) {
             return true;
+        } else if (Year == yearnow && Month >= monthnow) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean IsDestinationCardAlive(String BIC) {
+        try {
+            ResultSet r = runCommand("Select ExDate from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            int year = r.getDate(1).toLocalDate().getYear() % 100;
+            int month = r.getDate(1).toLocalDate().getMonthValue();
+            if (IsCardAlive(year, month)) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -204,6 +237,33 @@ public class DBConnector {
         return false;
     }
 
+    public static String GetFullName(String BIC) {
+        try {
+            ResultSet r = runCommand(
+                    "SELECT FirstName,LastName FROM `User` WHERE ID=(SELECT OwnerID FROM Account WHERE BIC='" + BIC
+                            + "')");
+            r.next();
+            String FirstName = r.getString(1);
+            String LastName = r.getString(2);
+            return FirstName + " " + LastName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static boolean CheckCardOwner(String BIC , String Owner) {
+        try {
+            ResultSet r = runCommand("SELECT OwnerID from Account WHERE BIC='" + BIC + "')");
+            r.next();
+            String OwnerID = r.getString(1);
+            return OwnerID.equals(Owner);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     // =============================================================================================
     // Insert methods
 
@@ -229,7 +289,6 @@ public class DBConnector {
         ps.setString(13, Integer.toString(language));
 
         ps.executeUpdate();
-        System.out.println("Wrote");
     }
 
     public static void addAccount(String ownerID, String bic, String iban, String cvv, String cvv2, LocalDate exDate,
@@ -384,17 +443,22 @@ public class DBConnector {
         return count;
     }
 
-    public static ArrayList<User> getAllUsers() throws Exception {
-        ResultSet r = runCommand("SELECT * FROM User");
+    public static ArrayList<User> getAllUsers(int AccessLevel) {
         ArrayList<User> allUsers = new ArrayList<>();
-        while (r.next()) {
-            User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
-                    r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
-                    r.getString(11), r.getInt(12), r.getInt(13));
-            allUsers.add(user);
+        try {
+            ResultSet r = runCommand("SELECT * FROM User WHERE AccessLevel=" + AccessLevel);
+            while (r.next()) {
+                User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
+                        r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
+                        r.getString(11), r.getInt(12), r.getInt(13));
+                allUsers.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return allUsers;
     }
+
     /*
      * private static void connect() throws Exception {
      * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(

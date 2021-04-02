@@ -9,7 +9,7 @@ import javax.mail.internet.*;
 import controller.PasswordChangerController;
 
 public class Sender {
-    public static final int Signupmail = 0, Loginmail = 1,SMSMail=2;
+    public static final int Signupmail = 0, Loginmail = 1, SMSMail = 2;
     private static String HTML;
     public static String ip;
 
@@ -38,39 +38,37 @@ public class Sender {
         });
 
         Message message = new MimeMessage(session);
-     
+
         try {
             message.setFrom(new InternetAddress(myAccountEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
             message.setSubject(Title);
             message.reply(false);
 
-            switch(MailType){
-                case Signupmail:
-                    LoadSignUpMail();
-                    message.setContent(HTML, "text/html");
-                    break;
-                case Loginmail:
-                    LoadLoginMail();
-                    message.setContent(HTML, "text/html");
-                    break;
-                case SMSMail:
-                    LoadSMS();
-                    message.setText(HTML);
-                    break;
+            switch (MailType) {
+            case Signupmail:
+                LoadSignUpMail();
+                message.setContent(HTML, "text/html");
+                break;
+            case Loginmail:
+                LoadLoginMail();
+                message.setContent(HTML, "text/html");
+                break;
+            case SMSMail:
+                LoadSMS();
+                message.setText(HTML);
+                break;
             }
         } catch (Exception e) {
             e.printStackTrace();
             // Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Send mail
         Transport.send(message);
-        System.out.println("Message sent successfully");
     }
 
-    private static void LoadSMS(){
-        HTML="Your OTP Password is : \n"+PasswordChangerController.Code;
+    private static void LoadSMS() {
+        HTML = "Your OTP Password is : \n" + PasswordChangerController.Code;
     }
 
     public static void LoadSignUpMail() {

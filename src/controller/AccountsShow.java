@@ -9,8 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import model.Account;
+import model.DBConnector;
 import model.User;
 import model.UserController;
 
@@ -26,7 +29,6 @@ public class AccountsShow implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		User currentUser = UserController.getCurrentUser();
 		ArrayList<Account> accounts = currentUser.getAccounts();
-		System.out.println(accounts);
 
 		int i = 0;
 		for (Account account : accounts) {
@@ -49,6 +51,20 @@ public class AccountsShow implements Initializable {
 					try {
 						parent = load.load();
 						AccountInformation control = load.getController();
+						if (!DBConnector.IsCardAlive(account.ExDate.getYear(), account.ExDate.getMonthValue())) {
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Expired");
+							alert.setHeaderText("Your Card is Expired");
+							alert.show();
+							control.getDepositBTn().setDisable(true);
+							control.getWithdrawBTN().setDisable(true);
+							control.getHistoryBTN().setDisable(true);
+						}
+						if (account.Status==Account.SAVEDACCOUNT) {
+							control.getMode().setText("Saved Account");
+						}else {
+							control.getMode().setText("Ongoing Account");
+						}
 						control.getCardNumber().setText(account.BIC);
 						control.getCvv2().setText(account.CVV2);
 						control.getExp().setText(account.ExDate.getYear() + "/" + account.ExDate.getMonthValue());

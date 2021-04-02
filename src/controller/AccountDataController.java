@@ -22,7 +22,7 @@ public class AccountDataController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         panel.setOnMouseClicked(e -> {
-            System.out.println(1);
+
         });
     }
 }

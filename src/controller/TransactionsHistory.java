@@ -55,8 +55,6 @@ public class TransactionsHistory implements Initializable {
 	}
 
 	private void addAllTransactions() {
-		System.out.println(allTransactions.size());
-
 		if (allTransactions.size() == 0) {
 			noResults();
 		}
@@ -67,7 +65,6 @@ public class TransactionsHistory implements Initializable {
 			try {
 				addTransaction(i, allTransactions.get(i));
 			} catch (Exception e) {
-				System.out.println("error at " + i);
 				e.printStackTrace();
 			}
 		}
@@ -156,8 +153,6 @@ public class TransactionsHistory implements Initializable {
 		}
 
 		try {
-			System.out.println(statement);
-
 			allTransactions = UserController.ConvertTransactionsToArrayList(DBConnector.runCommand(statement));
 
 			addAllTransactions();

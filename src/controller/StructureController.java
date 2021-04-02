@@ -3,9 +3,7 @@ package controller;
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
-
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.*;
@@ -21,24 +19,19 @@ import model.User;
 import model.UserController;
 
 public class StructureController implements Initializable {
-
 	@FXML
 	private AnchorPane MainPanel;
-
 	@FXML
 	private VBox SidePanel;
-
 	@FXML
 	private HBox toggleSidepanel;
-
 	@FXML
 	private JFXButton exitBTN;
-
 	@FXML
 	private HBox exitBox;
-
 	@FXML
 	private ImageView image;
+
 	HBox box;
 	private static AnchorPane Main;
 	private static VBox side;
@@ -47,14 +40,8 @@ public class StructureController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		exitBox.setOnMouseClicked(e -> Platform.exit());
 		exitBTN.setOnAction(e -> Platform.exit());
-		/*	box=new HBox();
-			btns=new VBox();
-			box.getChildren().add(sidePanel);
-			box.getChildren().add(btns);
-			exSidePanel.getChildren().add(box);*/
 
 		Main = MainPanel;
-
 		side = SidePanel;
 		side.toBack();
 		exitBox.toBack();
@@ -62,23 +49,31 @@ public class StructureController implements Initializable {
 		sideTransition();
 		switch (UserController.getCurrentUser().AccessLevel) {
 		case User.CLIENT:
+			addButton("loansMainPage", "All Loans");
 			addButton("accountsPage", "My Accounts");
 			addButton("loanStatusPage", "My Loans");
 			addButton("TransactionStatus", "Transactions History");
 			addButton("Transactions", "Transfer");
 			addButton("depositPage", "Deposit");
 			addButton("withdrawPage", "Withdraw");
-			addButton("settings", "Settings");
 			break;
 		case User.EMPLOYEE:
+			addButton("accountsPage", "All Accounts");
+			addButton("loanStatusPage", "All Loans");
+			addButton("TransactionStatus", "All Transactions");
+			addButton("ClientsList", "All Clients");
+			break;
 		case User.MANAGER:
 			addButton("accountsPage", "All Accounts");
 			addButton("loanStatusPage", "All Loans");
 			addButton("TransactionStatus", "All Transactions");
-			addButton("settings", "Settings");
+			addButton("ClientsList", "All Clients");
+			addButton("EmployeeList", "All Employees");
 			break;
 		}
-		System.out.println((((ImageView) toggleSidepanel.getChildren().get(0)).getImage()));
+
+		addButton("settings", "Settings");
+
 		toggleSidepanel.setOnMouseClicked(e -> {
 			sideTransition();
 		});
@@ -95,7 +90,6 @@ public class StructureController implements Initializable {
 			((Label) toggleSidepanel.getChildren().get(1))
 					.setFont(Font.font(((Label) toggleSidepanel.getChildren().get(1)).getFont().getFamily(),
 							FontWeight.NORMAL, ((Label) toggleSidepanel.getChildren().get(1)).getFont().getSize()));
-
 		});
 
 		try {
@@ -113,8 +107,14 @@ public class StructureController implements Initializable {
 
 			HBox button = loader.load();
 			((Label) button.getChildren().get(1)).setText(name);
-			((ImageView) button.getChildren().get(0))
-					.setImage(new Image(new FileInputStream(new File("src/view/sideBarIcons/" + fxml + ".png"))));
+
+			try {
+				((ImageView) button.getChildren().get(0))
+						.setImage(new Image(new FileInputStream(new File("src/view/sideBarIcons/" + fxml + ".png"))));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			button.setCursor(Cursor.HAND);
 			button.setOnMouseEntered(e -> {
 				button.setStyle("-fx-background-color:#0D0F48;");
@@ -128,7 +128,6 @@ public class StructureController implements Initializable {
 				((Label) button.getChildren().get(1))
 						.setFont(Font.font(((Label) button.getChildren().get(1)).getFont().getFamily(),
 								FontWeight.NORMAL, ((Label) button.getChildren().get(1)).getFont().getSize()));
-
 			});
 
 			button.setOnMouseClicked(e -> {
@@ -143,10 +142,7 @@ public class StructureController implements Initializable {
 
 			});
 
-			//ImageView x = ((ImageView) button.getChildren().get(0)); ==================================side panel image ----*****
-
 			side.getChildren().add(button);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
