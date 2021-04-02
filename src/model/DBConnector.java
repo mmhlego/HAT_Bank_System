@@ -111,9 +111,9 @@ public class DBConnector {
         return false;
     }
 
-    public static boolean IsMoneyEnough(long Value, String card) {
+    public static boolean IsMoneyEnough(long Value, String BIC) {
         try {
-            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
+            ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + BIC + "\'");
             r.next();
             long currentvalue = r.getLong(1);
             if (Value <= currentvalue) {
@@ -215,8 +215,32 @@ public class DBConnector {
             r.next();
             long currentvalue = r.getLong(1);
             long finalvalue = currentvalue + value;
+
             con.prepareStatement("UPDATE Account Set Value=" + finalvalue + " WHERE BIC=\'" + card + "\'")
                     .executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateLoansInDB() {
+        try {
+            con.prepareStatement("UPDATE Loan SET Status=2 WHERE Payed>=TotalPay").executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addValueToLoan(long Value, String accountID) {
+        try {
+            ResultSet r = runCommand(
+                    "SELECT Payed from Loan WHERE AccountID=\'" + accountID + "\' AND Status=" + Loan.PAYING);
+            r.next();
+            long currentvalue = r.getLong(1);
+            long finalvalue = currentvalue + Value;
+
+            con.prepareStatement("UPDATE Loan Set Payed=" + finalvalue + " WHERE Status=\'" + Loan.PAYING
+                    + "\' AND AccountID=\'" + accountID + "\'").executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

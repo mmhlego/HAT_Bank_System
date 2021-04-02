@@ -50,7 +50,7 @@ public class StructureController implements Initializable {
 		switch (UserController.getCurrentUser().AccessLevel) {
 		case User.CLIENT:
 			addButton("accountsPage", "My Accounts");
-			addButton("loansMainPage", "All Loans");
+			addButton("loansMainPage", "My Loans");
 			addButton("TransactionStatus", "Transactions History");
 			addButton("Transactions", "Transfer");
 			addButton("depositPage", "Deposit");
