@@ -46,10 +46,6 @@ public class Main extends Application implements Runnable {
 
 	private void startProgram() {
 		try {
-			/*System.out.println(DBConnector.connect());
-			UserController.setCurrentUser(DBConnector.getUser("Client3"));
-			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/MainStructure.fxml"));*/
-
 			FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/firstPage.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);

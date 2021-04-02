@@ -37,8 +37,7 @@ public class MainPageController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		User currentUser = UserController.getCurrentUser();
-		// img set 
-		System.out.println(currentUser);
+
 		firstNameLBL.setText("First Name: " + currentUser.FirstName);
 		lastNameLBL.setText("Last Name: " + currentUser.LastName);
 		idLBL.setText("ID: " + currentUser.ID);

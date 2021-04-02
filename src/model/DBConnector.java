@@ -479,17 +479,6 @@ public class DBConnector {
         return allUsers;
     }
 
-    /*
-     * private static void connect() throws Exception {
-     * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(
-     * "jdbc:mysql://sql6.freemysqlhosting.net:3306/sql6398536", "sql6398536",
-     * "t8YnlV3Mzt");
-     * 
-     * Statement stmt = con.createStatement(); ResultSet rs =
-     * stmt.executeQuery("select * from Sample"); while (rs.next()) {
-     * System.out.println(rs.getString(1)); } }
-     */
-
     public static ResultSet getAllAccounts() throws Exception {
         return runCommand("Select * from Account");
     }
