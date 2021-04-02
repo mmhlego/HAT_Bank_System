@@ -71,7 +71,7 @@ public class PasswordChangerController implements Initializable {
 		});
 
 		requestBTN.setOnAction((e) -> {
-			CreatOTP();
+			PasswordChangerController.Code = CreatOTP();
 			try {
 				Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber,
 						Sender.SMSMail);
