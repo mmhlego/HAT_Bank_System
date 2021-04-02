@@ -5,28 +5,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
    <children>
-      <AnchorPane fx:id="rightPanel" layoutX="439.0" layoutY="100.0" prefHeight="475.0" prefWidth="462.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <AnchorPane fx:id="rightPanel" layoutX="50.0" layoutY="110.0" prefHeight="526.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 0 0 80 80;" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="111.0">
          <children>
-            <HBox alignment="CENTER" layoutX="335.0" layoutY="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="284.0" prefHeight="200.0" prefWidth="250.0" style="-fx-background-radius: 0 0 500 500; -fx-background-color: #0D0F48;" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 0 0 500 500;">
+                  <AnchorPane layoutX="51.0" prefWidth="150.0" style="-fx-background-radius: 80; -fx-background-color: #ffffff50;">
                      <children>
                         <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@pictures/employee.jpg" />
+                              <Image url="@icons/user.png" />
                            </image>
                         </ImageView>
                      </children>
-                  </HBox>
+                  </AnchorPane>
                </children>
-            </HBox>
-            <VBox fx:id="rightVbox" alignment="TOP_CENTER" layoutX="150.0" layoutY="278.0" prefHeight="285.0" prefWidth="820.0" spacing="30.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="278.0">
+            </AnchorPane>
+            <VBox fx:id="rightVbox" alignment="TOP_CENTER" layoutX="34.0" layoutY="237.0" prefHeight="274.0" prefWidth="750.0" spacing="25.0">
                <children>
                   <Label fx:id="idLBL" alignment="CENTER" text="ID" textFill="WHITE">
                      <font>
@@ -60,5 +59,7 @@
             </VBox>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="50.0" layoutY="51.0" prefHeight="60.0" prefWidth="284.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 80 80 0 0;" />
+      <AnchorPane layoutX="584.0" layoutY="51.0" prefHeight="60.0" prefWidth="284.5" style="-fx-background-color: #ffffff50; -fx-background-radius: 80 80 0 0;" AnchorPane.leftAnchor="585.0" />
    </children>
 </AnchorPane>

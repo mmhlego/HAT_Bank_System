@@ -152,10 +152,14 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Label fx:id="Recievernamelbl" alignment="CENTER" layoutX="312.0" layoutY="132.0" prefHeight="37.0" prefWidth="385.0" textFill="#00ff37">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <AnchorPane layoutX="237.0" layoutY="125.0" prefWidth="334.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 0 0 20 20;">
+         <children>
+            <Label fx:id="Recievernamelbl" alignment="CENTER" layoutY="-1.0" prefHeight="32.0" prefWidth="446.0" text="receiver username" textFill="#00ff37">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
