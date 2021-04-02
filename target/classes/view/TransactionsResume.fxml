@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
@@ -32,7 +31,7 @@
                <children>
                   <Group>
                      <children>
-                        <TextField fx:id="cardTXF" editable="false" prefHeight="57.0" prefWidth="755.0" promptText="Card No" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                        <TextField fx:id="cardTXF" editable="false" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                            <padding>
                               <Insets left="50.0" right="25.0" />
                            </padding>
@@ -53,7 +52,7 @@
                            <children>
                               <Group>
                                  <children>
-                                    <TextField fx:id="CVVTXF" prefHeight="57.0" prefWidth="700.0" promptText="CVV" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                                    <TextField fx:id="CVVTXF" prefHeight="57.0" prefWidth="700.0" promptText="OTP" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                                        <padding>
                                           <Insets left="50.0" right="25.0" />
                                        </padding>
@@ -63,7 +62,6 @@
                                     </TextField>
                                     <AnchorPane layoutX="699.0" prefHeight="57.0" prefWidth="57.0" style="-fx-background-color: #2E3281; -fx-background-radius: 50%;">
                                        <children>
-                                          <JFXSpinner fx:id="remainSpinner" layoutX="4.0" prefHeight="50.0" prefWidth="34.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                                           <Label fx:id="requestBTN" alignment="CENTER" layoutX="15.0" layoutY="20.0" text="Request" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                              <font>
                                                 <Font name="System Bold Italic" size="10.0" />
@@ -154,5 +152,10 @@
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="Recievernamelbl" alignment="CENTER" layoutX="312.0" layoutY="132.0" prefHeight="37.0" prefWidth="385.0" textFill="#00ff37">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
