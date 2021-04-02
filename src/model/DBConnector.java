@@ -324,31 +324,71 @@ public class DBConnector {
 
     public static void AddLoan(String OwnerID, String AccountID, long Value, int Percent, String GuarantorID,
             int Month) {
-        try{
+        try {
 
             PreparedStatement ps = con.prepareStatement(
-                "INSERT INTO `Loan`(`OwnerID`, `AccountID`, `Status`, `Value`, `Percentage`, `TotalPay`, `Payed`, `DueDate`, `GuarantorID`) VALUES (?,?,?,?,?,?,?,?,?)");
+                    "INSERT INTO `Loan`(`OwnerID`, `AccountID`, `Status`, `Value`, `Percentage`, `TotalPay`, `Payed`, `DueDate`, `GuarantorID`) VALUES (?,?,?,?,?,?,?,?,?)");
 
             ps.setString(1, OwnerID);
             ps.setString(2, AccountID);
-            ps.setInt(3,0);
+            ps.setInt(3, 0);
             ps.setLong(4, Value);
             ps.setInt(5, Percent);
 
-            long totalPay=Value*(100+Percent)/100;
+            long totalPay = Value * (100 + Percent) / 100;
             ps.setLong(6, totalPay);
-            ps.setLong(7,0);
+            ps.setLong(7, 0);
 
-            int month=LocalDate.now().getMonthValue()+Month;
-            int year=LocalDate.now().getYear()+month/12;
-            month%=12;
-            int day=LocalDate.now().getDayOfMonth();
-            ps.setDate(8, Date.valueOf(LocalDate.of( year,month,day )));
+            int month = LocalDate.now().getMonthValue() + Month;
+            int year = LocalDate.now().getYear() + month / 12;
+            month %= 12;
+            int day = LocalDate.now().getDayOfMonth();
+            ps.setDate(8, Date.valueOf(LocalDate.of(year, month, day)));
 
             ps.setString(9, GuarantorID);
 
             ps.executeUpdate();
-        }catch(Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean CheckNewAccountInfo(String Username, String Password, String NationalCode) {
+        try {
+            ResultSet r = runCommand("SELECT Password , `National Code` from User WHERE Username=\'" + Username + "\'");
+            r.next();
+            String password = r.getString(1);
+            String nationalCode = r.getString(2);
+            if (encoder.encode(Password).equals(password) && NationalCode.equals(nationalCode)) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static void CreateNewAccount(String OwnerID, String CVV, int Year, int Status) {
+        String BIC = SampleCreator.randomBic();
+        try {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO `Account`(`OwnerID`, `BIC`, `IBAN`, `CVV`, `CVV2`, `ExDate`, `Status`, `Value`, `AccountID`) VALUES (?,?,?,?,?,?,?,?,?)");
+            ps.setString(1, OwnerID);
+            ps.setString(2, BIC);
+            ps.setString(3, "IR000000000" + BIC);
+            ps.setString(4, CVV);
+            ps.setString(5, SampleCreator.randomStringOfNumbers(6));
+
+            int year = Year;
+            int month = LocalDate.now().getMonthValue();
+            int day = LocalDate.now().getDayOfMonth();
+
+            ps.setDate(6, Date.valueOf(LocalDate.of(year, month, day)));
+            ps.setInt(7, Status);
+            ps.setLong(8, 0);
+            ps.setString(9, Account.generateID());
+            ps.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

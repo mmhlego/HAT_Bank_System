@@ -23,7 +23,7 @@
          <children>
             <Group>
                <children>
-                  <TextField fx:id="firstNameTXF" prefHeight="59.0" prefWidth="820.0" promptText="Username" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                  <TextField fx:id="UsernameTXF" prefHeight="59.0" prefWidth="820.0" promptText="Username" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -40,7 +40,7 @@
             </Group>
             <Group>
                <children>
-                  <TextField fx:id="lastNameTXF" prefHeight="59.0" prefWidth="820.0" promptText="Password" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                  <TextField fx:id="PasswordTXF" prefHeight="59.0" prefWidth="820.0" promptText="Password" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -105,7 +105,7 @@
             </Group>
             <Group>
                <children>
-                  <TextField fx:id="ZipTXF" editable="false" prefHeight="59.0" prefWidth="820.0" promptText="Expire Date" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;" text="2020">
+                  <TextField fx:id="DateTXF" editable="false" prefHeight="59.0" prefWidth="820.0" promptText="Expire Date" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;" text="2020">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -69,6 +69,7 @@ public class TransactionCheck implements Initializable {
             } catch (Exception e1) {
                 alert("Check Your Internet Connection");
             }
+            alert("" + CreatOTP());
         });
 
         submit.setOnAction((e) -> {
