@@ -111,6 +111,20 @@ public class LoanStatusController implements Initializable {
 
 			if (currentUser.AccessLevel == User.MANAGER || currentUser.AccessLevel == User.EMPLOYEE) {
 				group.getChildren().get(6).setVisible(false);
+			}else {
+				JFXButton btn=(JFXButton) group.getChildren().get(6);
+				btn.setOnAction(e->{
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/InstallementPayment.fxml"));
+					try {
+						MainPanel.getChildren().add(loader.load());
+						InstallementPayment installementPayment = loader.getController();
+						installementPayment.getCardTXF().setText(loan.AccountID);
+////////////////////////////////////////////////////////////////////	installementPayment.getAmountTXF().setText(String.valueOf(loan.Value*(loan.Value*percent)/(loan.DueDate.getYear()*12+loan.DueDate.getMonthValue())));;
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
 			}
 
 			extra += 120;

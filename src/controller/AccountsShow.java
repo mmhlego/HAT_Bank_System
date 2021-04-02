@@ -121,7 +121,7 @@ public class AccountsShow implements Initializable {
 
 		FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/components/plus.fxml"));
 		try {
-			Parent plusCard=loader.load();
+			AnchorPane plusCard=loader.load();
 			plusCard.setLayoutX((25 + (i % 2) * 420));
 			plusCard.setLayoutY((25 + i / 2 * 225));
 			
@@ -134,7 +134,7 @@ public class AccountsShow implements Initializable {
 				}
 			});
 			
-			((ImageView)plusCard.getChildrenUnmodifiable().get(0)).setOnMouseClicked(e->{
+			((ImageView)plusCard.getChildren().get(0)).setOnMouseClicked(e->{
 				FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
 				try {
 					MainPanel.getChildren().add(loaders.load());
