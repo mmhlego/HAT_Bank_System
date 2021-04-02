@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
@@ -16,7 +15,7 @@ import model.*;
 
 public class Withdraw implements Initializable {
 
-	@FXML
+    @FXML
     private AnchorPane MainPanel;
 
     @FXML
@@ -42,7 +41,7 @@ public class Withdraw implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	addCards();
+        addCards();
         LimitandNext();
         submit.setOnAction((e) -> {
             if (!IsAllFieldsComplete()) {
@@ -110,7 +109,7 @@ public class Withdraw implements Initializable {
         YearTXF.setText("");
         MonthTXF.setText("");
     }
-    
+
     private void addCards() {
         ArrayList<Account> all = UserController.getAccounts();
 
@@ -127,16 +126,15 @@ public class Withdraw implements Initializable {
         MainPanel = mainPanel;
     }
 
-
     public ComboBox<String> getCardTXF() {
-		return cardTXF;
-	}
+        return cardTXF;
+    }
 
-	public void setCardTXF(ComboBox<String> cardTXF) {
-		this.cardTXF = cardTXF;
-	}
+    public void setCardTXF(ComboBox<String> cardTXF) {
+        this.cardTXF = cardTXF;
+    }
 
-	public TextField getAmountTXF() {
+    public TextField getAmountTXF() {
         return AmountTXF;
     }
 
