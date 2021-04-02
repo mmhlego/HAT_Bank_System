@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Withdraw">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Withdraw">
    <children>
       <AnchorPane layoutX="493.0" layoutY="26.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20px;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -30,14 +31,11 @@
                <children>
                   <Group>
                      <children>
-                        <TextField fx:id="cardTXF" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                        <ComboBox fx:id="cardTXF" editable="true" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" stylesheets="@../comboStyle2.css">
                            <padding>
-                              <Insets left="50.0" right="25.0" />
+                              <Insets left="40.0" right="25.0" />
                            </padding>
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </TextField>
+                        </ComboBox>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="8.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/card3.png" />

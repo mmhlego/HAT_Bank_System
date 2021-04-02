@@ -1,23 +1,26 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import model.*;
 
 public class Withdraw implements Initializable {
 
-    @FXML
+	@FXML
     private AnchorPane MainPanel;
 
     @FXML
-    private TextField cardTXF;
+    private ComboBox<String> cardTXF;
 
     @FXML
     private TextField AmountTXF;
@@ -39,25 +42,26 @@ public class Withdraw implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	addCards();
         LimitandNext();
         submit.setOnAction((e) -> {
             if (!IsAllFieldsComplete()) {
                 alert("Some Fields Are Empty !");
-            } else if (!DBConnector.containsBIC(cardTXF.getText())) {
+            } else if (!DBConnector.containsBIC(cardTXF.getValue())) {
                 alert("Card Is Inavalid !");
-            } else if (!DBConnector.CheckCardInfo(cardTXF.getText(), pinTXF.getText(), CVV2TXF.getText(),
+            } else if (!DBConnector.CheckCardInfo(cardTXF.getValue(), pinTXF.getText(), CVV2TXF.getText(),
                     Integer.parseInt(YearTXF.getText()), Integer.parseInt(MonthTXF.getText()))) {
                 alert("Wrong Credentials !");
             } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
                     Integer.parseInt(MonthTXF.getText()))) {
                 alert("Card Is Expired !");
-            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
+            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getValue())) {
                 alert("Money In Card Is Not Enough !");
-            } else if (!DBConnector.CheckCardOwner(cardTXF.getText(), UserController.getCurrentUser().ID)) {
+            } else if (!DBConnector.CheckCardOwner(cardTXF.getValue(), UserController.getCurrentUser().ID)) {
                 alert("You Don't Own This Card !");
             } else {
                 try {
-                    DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
+                    DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getValue());
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText("Transaction Was Successful !");
@@ -74,7 +78,6 @@ public class Withdraw implements Initializable {
     }
 
     private void LimitandNext() {
-        PassToNext.NextField(cardTXF, 16, true);
         PassToNext.NextField(pinTXF, 4, true);
         PassToNext.NextField(AmountTXF, 18, true);
         PassToNext.NextField(CVV2TXF, 6, true);
@@ -83,7 +86,7 @@ public class Withdraw implements Initializable {
     }
 
     private boolean IsAllFieldsComplete() {
-        if (cardTXF.getText().length() == 16 && !(AmountTXF.getText().equals("")) && pinTXF.getText().length() == 4
+        if (cardTXF.getValue().length() == 16 && !(AmountTXF.getText().equals("")) && pinTXF.getText().length() == 4
                 && CVV2TXF.getText().length() == 6 && YearTXF.getText().length() == 2
                 && MonthTXF.getText().length() == 2) {
             return true;
@@ -100,12 +103,20 @@ public class Withdraw implements Initializable {
     }
 
     private void ClearData() {
-        cardTXF.setText("");
+        cardTXF.setValue("");
         AmountTXF.setText("");
         pinTXF.setText("");
         CVV2TXF.setText("");
         YearTXF.setText("");
         MonthTXF.setText("");
+    }
+    
+    private void addCards() {
+        ArrayList<Account> all = UserController.getAccounts();
+
+        for (Account a : all) {
+            cardTXF.getItems().add(a.BIC);
+        }
     }
 
     public AnchorPane getMainPanel() {
@@ -116,15 +127,16 @@ public class Withdraw implements Initializable {
         MainPanel = mainPanel;
     }
 
-    public TextField getCardTXF() {
-        return cardTXF;
-    }
 
-    public void setCardTXF(TextField cardTXF) {
-        this.cardTXF = cardTXF;
-    }
+    public ComboBox<String> getCardTXF() {
+		return cardTXF;
+	}
 
-    public TextField getAmountTXF() {
+	public void setCardTXF(ComboBox<String> cardTXF) {
+		this.cardTXF = cardTXF;
+	}
+
+	public TextField getAmountTXF() {
         return AmountTXF;
     }
 

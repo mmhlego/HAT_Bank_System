@@ -166,24 +166,21 @@ public void setCardImage(ImageView cardImage) {
 				break;
 			case "withdrawPage":
 				Withdraw control2 = loader.getController();
-				control2.getCardTXF().setText(((Label) card.getChildren().get(2)).getText());
+				control2.getCardTXF().setValue(((Label) card.getChildren().get(2)).getText());
 				control2.getCVV2TXF()
 						.setText(((Label) ((AnchorPane) card.getChildren().get(4)).getChildren().get(0)).getText());
-				control2.getCardTXF().setEditable(false);
 				control2.getCVV2TXF().setEditable(false);
 				break;
 			case "depositPage":
 				deposit control3 = loader.getController();
-				control3.getCardTXF().setText(((Label) card.getChildren().get(2)).getText());
+				control3.getCardTXF().setValue(((Label) card.getChildren().get(2)).getText());
 				control3.getCVV2TXF()
 						.setText(((Label) ((AnchorPane) card.getChildren().get(4)).getChildren().get(0)).getText());
-				control3.getCardTXF().setEditable(false);
 				control3.getCVV2TXF().setEditable(false);
 				break;
 			case "Transactions":
 				Transaction control4 = loader.getController();
-				control4.getFromTXF().setText(((Label) card.getChildren().get(2)).getText());
-				control4.getFromTXF().setEditable(false);
+				control4.getFromTXF().setValue(((Label) card.getChildren().get(2)).getText());
 				break;
 			}
 		} catch (IOException e) {
