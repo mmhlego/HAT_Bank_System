@@ -383,14 +383,18 @@ public class DBConnector {
         return count;
     }
 
-    public static ArrayList<User> getAllUsers() throws Exception {
-        ResultSet r = runCommand("SELECT * FROM User");
+    public static ArrayList<User> getAllUsers(int AccessLevel) {
         ArrayList<User> allUsers = new ArrayList<>();
-        while (r.next()) {
-            User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
-                    r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
-                    r.getString(11), r.getInt(12), r.getInt(13));
-            allUsers.add(user);
+        try {
+            ResultSet r = runCommand("SELECT * FROM User WHERE AccessLevel=" + AccessLevel);
+            while (r.next()) {
+                User user = new User(r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
+                        r.getString(6), r.getString(7), r.getString(8), r.getDate(9).toLocalDate(), r.getString(10),
+                        r.getString(11), r.getInt(12), r.getInt(13));
+                allUsers.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return allUsers;
     }

@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="eachUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="720.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EachUser">
+<AnchorPane fx:id="eachUser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EachUser">
    <children>
-      <AnchorPane layoutX="-51.0" layoutY="-86.0" prefHeight="56.0" prefWidth="720.0" style="-fx-background-color: #aa0090; -fx-background-radius: 20 20 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="-51.0" layoutY="-86.0" prefHeight="56.0" prefWidth="720.0" style="-fx-background-color: #1f56ed; -fx-background-radius: 20 20 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="role" alignment="CENTER" layoutX="346.0" layoutY="15.0" text="Role" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="id" alignment="CENTER" layoutX="346.0" layoutY="15.0" text="ID" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="System Bold Italic" size="25.0" />
                </font>
@@ -22,53 +21,48 @@
       </AnchorPane>
       <VBox alignment="TOP_CENTER" layoutX="310.0" layoutY="55.0" prefHeight="150.0" prefWidth="720.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Label fx:id="firstName" alignment="CENTER" prefWidth="100.0" text="First Name" textFill="WHITE">
+                  <Label fx:id="firstName" alignment="CENTER" prefWidth="300.0" text="First Name" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lastName" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefWidth="100.0" text="Last Name" textFill="WHITE">
+                  <Label fx:id="lastName" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefWidth="300.0" text="Last Name" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Label fx:id="usename" alignment="CENTER" prefWidth="100.0" text="Username" textFill="WHITE">
+                  <Label fx:id="usename" alignment="CENTER" prefWidth="300.0" text="Username" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nationalCode" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefWidth="100.0" text="National Code" textFill="WHITE">
+                  <Label fx:id="nationalCode" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefWidth="300.0" text="National Code" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="65.0" prefHeight="100.0" prefWidth="200.0" spacing="200.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="65.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
                <children>
-                  <Label fx:id="phone" alignment="CENTER" prefWidth="100.0" text="Phone" textFill="WHITE">
+                  <Label fx:id="phone" alignment="CENTER" prefWidth="300.0" text="Phone" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="email" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefWidth="100.0" text="Email" textFill="WHITE">
+                  <Label fx:id="email" alignment="CENTER" layoutX="334.0" layoutY="35.0" prefHeight="22.0" prefWidth="300.0" text="Email" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="15.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <Label fx:id="id" alignment="CENTER" prefWidth="100.0" text="ID" textFill="WHITE">
-               <font>
-                  <Font name="System Italic" size="15.0" />
-               </font>
-            </Label>
          </children>
       </VBox>
    </children>
