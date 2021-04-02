@@ -60,7 +60,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXTextField fx:id="captchaTXF" focusColor="#4b61a1" prefHeight="40.0" prefWidth="350.0" promptText="Captcha" style="-fx-text-fill: #2799D1; -fx-prompt-text-fill: #B9B7BD;" unFocusColor="WHITE">
+                        <JFXTextField fx:id="captchaTXF" focusColor="#4b61a1" labelFloat="true" prefHeight="40.0" prefWidth="350.0" promptText="Captcha" style="-fx-text-fill: #2799D1; -fx-prompt-text-fill: #B9B7BD;" unFocusColor="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -93,7 +93,7 @@
             </AnchorPane>
             <HBox spacing="20.0">
                <children>
-                  <JFXTextField fx:id="codeTXF" focusColor="#4b61a1" prefHeight="40.0" prefWidth="350.0" promptText="Security Code" style="-fx-text-fill: #2799D1; -fx-prompt-text-fill: #B9B7BD;" unFocusColor="WHITE">
+                  <JFXTextField fx:id="codeTXF" focusColor="#4b61a1" labelFloat="true" prefHeight="40.0" prefWidth="350.0" promptText="Security Code" style="-fx-text-fill: #2799D1; -fx-prompt-text-fill: #B9B7BD;" unFocusColor="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
