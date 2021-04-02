@@ -284,6 +284,51 @@ public class DBConnector {
         return false;
     }
 
+    public static boolean CheckGuarantor(String ID, String Password) {
+        try {
+            ResultSet r = runCommand("SELECT Password from User WHERE ID=\'" + ID + "\'");
+            r.next();
+            String pass = r.getString(1);
+            if (encoder.encode(Password).equals(pass)) {
+                return true;
+            }
+        } catch (Exception e) {
+
+        }
+        return false;
+    }
+
+    public static void AddLoan(String OwnerID, String AccountID, long Value, int Percent, String GuarantorID,
+            int Month) {
+        try{
+
+            PreparedStatement ps = con.prepareStatement(
+                "INSERT INTO `Loan`(`OwnerID`, `AccountID`, `Status`, `Value`, `Percentage`, `TotalPay`, `Payed`, `DueDate`, `GuarantorID`) VALUES (?,?,?,?,?,?,?,?,?)");
+
+            ps.setString(1, OwnerID);
+            ps.setString(2, AccountID);
+            ps.setInt(3,0);
+            ps.setLong(4, Value);
+            ps.setInt(5, Percent);
+
+            long totalPay=Value*(100+Percent)/100;
+            ps.setLong(6, totalPay);
+            ps.setLong(7,0);
+
+            int month=LocalDate.now().getMonthValue()+Month;
+            int year=LocalDate.now().getYear()+month/12;
+            month%=12;
+            int day=LocalDate.now().getDayOfMonth();
+            ps.setDate(8, Date.valueOf(LocalDate.of( year,month,day )));
+
+            ps.setString(9, GuarantorID);
+
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     // =============================================================================================
     // Insert methods
 
