@@ -73,9 +73,15 @@ public class PasswordChangerController implements Initializable {
 		requestBTN.setOnAction((e) -> {
 			CreatOTP();
 			try {
-				Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber, Sender.SMSMail);
+				Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber,
+						Sender.SMSMail);
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText(null);
+				alert.setContentText("A Verification Code Was Sent To *******"
+						+ UserController.getCurrentUser().PhoneNumber.substring(7, 11));
+				alert.show();
 			} catch (Exception e1) {
-				e1.printStackTrace();
+				alert("Check Your Internet Connection");
 			}
 		});
 
