@@ -46,6 +46,10 @@ public class TransactionCheck implements Initializable {
     private Label Recievernamelbl;
 
     public static int Code;
+    public static String Sendercard;
+    public static String Recievercard;
+    public static String AmountMoney;
+    public static String RecieverName;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,8 +61,12 @@ public class TransactionCheck implements Initializable {
             try {
                 Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber,
                         Sender.SMSMail);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("A Verification Code Was Sent To *******" + UserController.getCurrentUser().PhoneNumber.substring(7, 11));
+                alert.show();
             } catch (Exception e1) {
-                e1.printStackTrace();
+                alert("Check Your Internet Connection");
             }
         });
 
@@ -77,11 +85,17 @@ public class TransactionCheck implements Initializable {
                 alert("Money In Card Is Not Enough !");
             } else {
                 try {
+                    Sendercard = Transaction.SendCard;
+                    Recievercard = Transaction.RecieveCard;
+                    AmountMoney = Transaction.Amount;
+                    RecieverName = DBConnector.GetFullName(Transaction.RecieveCard);
                     DBConnector.changeValue(-Long.parseLong(Transaction.Amount), cardTXF.getText());
                     DBConnector.changeValue(Long.parseLong(Transaction.Amount), Transaction.RecieveCard);
+                    Sender.SendEmail(UserController.getCurrentUser().Email, "Successful Transaction ! ",
+                            Sender.RecieptMail);
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText(null);
-                    alert.setContentText("Transaction Was Successful !");
+                    alert.setContentText("Transaction Was Successful ! Reciept Sent To Your Email.");
                     alert.show();
                     ClearData();
                     UserController.updatePersonalData();
@@ -146,4 +160,5 @@ public class TransactionCheck implements Initializable {
             return false;
         }
     }
+
 }

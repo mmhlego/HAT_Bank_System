@@ -53,6 +53,8 @@ public class Withdraw implements Initializable {
                 alert("Card Is Expired !");
             } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
                 alert("Money In Card Is Not Enough !");
+            } else if (!DBConnector.CheckCardOwner(cardTXF.getText(), UserController.getCurrentUser().ID)) {
+                alert("You Don't Own This Card !");
             } else {
                 try {
                     DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());

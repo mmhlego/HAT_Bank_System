@@ -12,9 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point3D;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import model.*;
+import java.security.*;
 
 public class CVVChange implements Initializable {
 
@@ -50,10 +54,13 @@ public class CVVChange implements Initializable {
 
 	@FXML
 	private JFXButton saveBTN;
+
+	public static int Code;
 	AnchorPane cap;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		LimitandNext();
 		captchaMaker();
 		recaptcha.setOnMouseClicked(e -> {
 			rotation();
@@ -76,6 +83,96 @@ public class CVVChange implements Initializable {
 			});
 			thread.start();
 		});
+
+		requestBTN.setOnAction((e) -> {
+			CreatOTP();
+			try {
+				Sender.SendEmail("mmhlegoautosmssender@gmail.com", UserController.getCurrentUser().PhoneNumber,
+						Sender.SMSMail);
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText(null);
+				alert.setContentText("A Verification Code Was Sent To *******"
+						+ UserController.getCurrentUser().PhoneNumber.substring(7, 11));
+				alert.show();
+			} catch (Exception e1) {
+				alert("Check Your Internet Connection");
+			}
+		});
+
+		saveBTN.setOnAction((e) -> {
+			if (!DBConnector.CheckCurrentCVV(currentCvvTXF.getText(), cardNumberTXF.getText())) {
+				alert("Wrong CVV !");
+			} else if (newCvvTXF.getText().equals("") || RNewCvvTXF.getText().equals("")) {
+				alert("CVV Field Is Empty !");
+			} else if (!newCvvTXF.getText().equals(RNewCvvTXF.getText())) {
+				alert("CVVs Don't Match !");
+			} else if (!Captcha.captchaResult.equals(captchaTXF.getText())) {
+				alert("Captcha Is Wrong !");
+				captchaMaker();
+			} else if (!codeTXF.getText().equals(String.format("%s", Code))) {
+				alert("Wrong OTP");
+			} else if (!DBConnector.IsDestinationCardAlive(cardNumberTXF.getText())) {
+				alert("Card Is Expired !");
+			}
+			 else {
+				try {
+					DBConnector.UpdateCVV(cardNumberTXF.getText(), newCvvTXF.getText());
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setHeaderText(null);
+					alert.setContentText("CVV Changed Successfully !");
+					alert.show();
+					ClearData();
+					UserController.updatePersonalData();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/accountsPage.fxml"));
+					try {
+						MainPanel.getChildren().add(loader.load());
+					} catch (IOException e1) {
+						Alert alert1 = new Alert(AlertType.ERROR);
+						alert1.setHeaderText(null);
+						alert1.setContentText("Check Your Internet Connection !");
+						alert1.show();
+					}
+				} catch (Exception e1) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setHeaderText(null);
+					alert.setContentText("Check Your Internet Connection !");
+					alert.show();
+				}
+			}
+		});
+	}
+
+	private void LimitandNext() {
+		PassToNext.NextField(currentCvvTXF, 4, true);
+		PassToNext.NextField(newCvvTXF, 4, true);
+		PassToNext.NextField(RNewCvvTXF, 4, true);
+		PassToNext.NextField(codeTXF, 6, true);
+	}
+
+	private static int CreatOTP() {
+		SecureRandom r = new SecureRandom();
+		Code = r.nextInt(100000) + r.nextInt(100000);
+		if (Code >= 100000 && Code <= 999999) {
+			return Code;
+		} else {
+			return CreatOTP();
+		}
+	}
+
+	private void ClearData() {
+		cardNumberTXF.setText("");
+		currentCvvTXF.setText("");
+		newCvvTXF.setText("");
+		RNewCvvTXF.setText("");
+		captchaTXF.setText("");
+		codeTXF.setText("");
+	}
+
+	private void alert(String Content) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setHeaderText(null);
+		alert.setContentText(Content);
+		alert.show();
 	}
 
 	private void captchaMaker() {

@@ -138,6 +138,12 @@ public class DBConnector {
         ps.executeUpdate();
     }
 
+    public static void UpdateCVV(String BIC , String NewCVV) throws Exception{
+        PreparedStatement ps = con
+                .prepareStatement("UPDATE Account Set CVV=\'" + NewCVV + "\' WHERE BIC=\'" + BIC + "\'");
+        ps.executeUpdate();
+    }
+
     public static void UpdateAccount(Account a) throws Exception {
         PreparedStatement ps = con.prepareStatement("UPDATE Account Set CVV=\'" + a.CVV + "\' , Value=" + a.Value
                 + " WHERE AccountID=\'" + a.AccountID + "\'");
@@ -252,9 +258,9 @@ public class DBConnector {
         return "";
     }
 
-    public static boolean CheckCardOwner(String BIC , String Owner) {
+    public static boolean CheckCardOwner(String BIC, String Owner) {
         try {
-            ResultSet r = runCommand("SELECT OwnerID from Account WHERE BIC='" + BIC + "')");
+            ResultSet r = runCommand("SELECT OwnerID from Account WHERE BIC='" + BIC + "'");
             r.next();
             String OwnerID = r.getString(1);
             return OwnerID.equals(Owner);
@@ -263,6 +269,20 @@ public class DBConnector {
         }
         return false;
     }
+
+    public static boolean CheckCurrentCVV(String CVV ,String BIC) {
+        try {
+            ResultSet r = runCommand("Select CVV from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            String cvv = r.getString(1);
+            if (cvv.equals(CVV)) {
+                return true;
+            }
+        } catch (Exception e) {
+
+        }
+        return false;
+    }    
 
     // =============================================================================================
     // Insert methods

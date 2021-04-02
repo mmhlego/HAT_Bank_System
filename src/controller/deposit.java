@@ -9,8 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import model.DBConnector;
-import model.PassToNext;
+import model.*;
 
 public class deposit implements Initializable {
 
@@ -52,6 +51,8 @@ public class deposit implements Initializable {
             } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
                     Integer.parseInt(MonthTXF.getText()))) {
                 alert("Card Is Expired !");
+            } else if (!DBConnector.CheckCardOwner(cardTXF.getText(), UserController.getCurrentUser().ID)) {
+                alert("You Don't Own This Card !");
             } else {
                 try {
                     DBConnector.changeValue(Long.parseLong(AmountTXF.getText()), cardTXF.getText());
