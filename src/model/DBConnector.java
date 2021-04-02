@@ -229,7 +229,6 @@ public class DBConnector {
         ps.setString(13, Integer.toString(language));
 
         ps.executeUpdate();
-        System.out.println("Wrote");
     }
 
     public static void addAccount(String ownerID, String bic, String iban, String cvv, String cvv2, LocalDate exDate,
@@ -395,6 +394,7 @@ public class DBConnector {
         }
         return allUsers;
     }
+
     /*
      * private static void connect() throws Exception {
      * Class.forName("com.mysql.jdbc.Driver"); con = DriverManager.getConnection(

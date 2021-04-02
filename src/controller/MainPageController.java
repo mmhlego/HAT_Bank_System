@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import model.User;
 import model.UserController;
 
-public class MainPageController implements Initializable{
+public class MainPageController implements Initializable {
 
     @FXML
     private AnchorPane MainPanel;
@@ -52,17 +52,15 @@ public class MainPageController implements Initializable{
     @FXML
     private VBox bottomVbox;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		User currentUser=UserController.getCurrentUser();
-		// img set 
-		System.out.println(currentUser);
-		firstNameLBL.setText(currentUser.FirstName);
-		lastNameLBL.setText(currentUser.LastName);
-		idLBL.setText(currentUser.ID);
-		usenameLBL.setText(currentUser.Username);
-		phoneLBL.setText(currentUser.PhoneNumber);
-		
-	}
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        User currentUser = UserController.getCurrentUser();
+        firstNameLBL.setText(currentUser.FirstName);
+        lastNameLBL.setText(currentUser.LastName);
+        idLBL.setText(currentUser.ID);
+        usenameLBL.setText(currentUser.Username);
+        phoneLBL.setText(currentUser.PhoneNumber);
+
+    }
 
 }

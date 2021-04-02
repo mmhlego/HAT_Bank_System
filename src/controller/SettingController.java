@@ -8,6 +8,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import model.DBConnector;
 import model.User;
@@ -72,9 +74,26 @@ public class SettingController implements Initializable {
         case 2:
             roleTXF.setText("Manager");
             break;
-
         }
         addressTXA.setText(currentUser.Address);
+
+        languageToggle.setOnMouseClicked(e -> {
+            languageToggle.setSelected(false);
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("");
+            a.setHeaderText("Coming Soon!!");
+            a.setContentText("Feature coming soon!!");
+            a.show();
+        });
+
+        themeToggle.setOnMouseClicked(e -> {
+            themeToggle.setSelected(true);
+            Alert a = new Alert(AlertType.INFORMATION);
+            a.setTitle("");
+            a.setHeaderText("Coming Soon!!");
+            a.setContentText("Feature coming soon!!");
+            a.show();
+        });
 
         changePasswordTXf.setOnAction((e) -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/changePassword.fxml"));

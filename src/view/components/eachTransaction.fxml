@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pendingAnchor" prefHeight="120.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.eachTransition">
+<AnchorPane fx:id="pendingAnchor" prefHeight="120.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.eachTransition">
    <children>
       <HBox layoutX="40.0" layoutY="10.0" prefHeight="120.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -72,7 +72,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label fx:id="id" alignment="CENTER" layoutX="-46.0" layoutY="47.0" prefWidth="120.0" rotate="270.0" text="ID" textFill="WHITE">
+      <Label fx:id="id" alignment="CENTER" layoutX="-46.0" layoutY="46.0" prefHeight="28.0" prefWidth="120.0" rotate="270.0" style="-fx-background-radius: 20px 20px 0 0; -fx-background-color: #1f56ed;" text="ID" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

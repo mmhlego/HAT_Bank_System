@@ -78,7 +78,7 @@ public class StructureController implements Initializable {
 			addButton("settings", "Settings");
 			break;
 		}
-		System.out.println((((ImageView) toggleSidepanel.getChildren().get(0)).getImage()));
+
 		toggleSidepanel.setOnMouseClicked(e -> {
 			sideTransition();
 		});

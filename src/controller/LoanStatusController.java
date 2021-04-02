@@ -68,7 +68,6 @@ public class LoanStatusController implements Initializable {
 			try {
 				addLoan(i, allLoans.get(i));
 			} catch (Exception e) {
-				System.out.println("error at " + i);
 				e.printStackTrace();
 			}
 		}

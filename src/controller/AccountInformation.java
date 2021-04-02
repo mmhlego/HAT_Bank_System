@@ -128,7 +128,7 @@ public class AccountInformation implements Initializable {
 		changeCvvBTN.setOnAction(e -> loadPage("changeCvvPage"));
 		withdrawBTN.setOnAction(e -> loadPage("withdrawPage"));
 		depositBTn.setOnAction(e -> loadPage("depositPage"));
-		historyBTN.setOnAction(e -> loadPage("Transactions"));
+		historyBTN.setOnAction(e -> loadPage("TransactionStatus"));
 		backBtn.setOnMouseClicked(e -> {
 			((AnchorPane) MainPanel.getParent()).getChildren()
 					.remove(((AnchorPane) MainPanel.getParent()).getChildren().size() - 1);

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cardCreator">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cardCreator">
    <children>
       <AnchorPane layoutX="125.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: none;">
          <children>
@@ -27,17 +27,21 @@
                         <Font name="System Bold Italic" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="279.0" layoutY="19.0" text="Logo" AnchorPane.rightAnchor="15.0" />
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="286.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/Team%20Logo%20high%20resolution.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
-            <Label fx:id="cardNumber" alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="55.0" prefWidth="330.0" text="0000-0000-0000-0000">
+            <Label fx:id="cardNumber" alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="55.0" prefWidth="330.0" text="0000-0000-0000-0000" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="132.0" style="-fx-background-color: #FFFFFF80; -fx-background-radius: 0 10 0 10;" AnchorPane.leftAnchor="0.0">
+            <AnchorPane layoutX="4.0" layoutY="169.0" prefHeight="26.0" prefWidth="105.0" style="-fx-background-color: #FFFFFF80; -fx-background-radius: 0 10 0 10;" AnchorPane.leftAnchor="0.0">
                <children>
-                  <Label fx:id="exp" layoutX="6.0" prefHeight="26.0" prefWidth="121.0" text="Expiration Date" AnchorPane.leftAnchor="6.0">
+                  <Label fx:id="exp" layoutX="6.0" prefHeight="26.0" prefWidth="106.0" text="Expiration Date" AnchorPane.leftAnchor="6.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -53,7 +57,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Label fx:id="iban" alignment="CENTER" layoutX="10.0" layoutY="65.0" prefHeight="35.0" prefWidth="330.0" text="0000-0000-0000-0000">
+            <Label fx:id="iban" alignment="CENTER" layoutX="10.0" layoutY="65.0" prefHeight="35.0" prefWidth="330.0" text="0000-0000-0000-0000" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

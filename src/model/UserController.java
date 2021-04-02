@@ -58,8 +58,6 @@ public class UserController {
         getCurrentUser().setLoans(Loans);
         getCurrentUser().setAccounts(Accounts);
         getCurrentUser().setTransactions(Transactions);
-
-        System.out.println(Arrays.toString(Transactions.toArray()));
     }
 
     private static ArrayList<Account> ConvertAccountsToArrayList(ResultSet all) {

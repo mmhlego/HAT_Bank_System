@@ -3,11 +3,9 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -18,41 +16,42 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
-public class CVVChange implements Initializable{
+public class CVVChange implements Initializable {
 
-    @FXML
-    private AnchorPane MainPanel;
+	@FXML
+	private AnchorPane MainPanel;
 
-    @FXML
-    private JFXTextField cardNumberTXF;
+	@FXML
+	private JFXTextField cardNumberTXF;
 
-    @FXML
-    private JFXPasswordField currentCvvTXF;
+	@FXML
+	private JFXPasswordField currentCvvTXF;
 
-    @FXML
-    private JFXPasswordField newCvvTXF;
+	@FXML
+	private JFXPasswordField newCvvTXF;
 
-    @FXML
-    private JFXPasswordField RNewCvvTXF;
+	@FXML
+	private JFXPasswordField RNewCvvTXF;
 
-    @FXML
-    private JFXTextField captchaTXF;
+	@FXML
+	private JFXTextField captchaTXF;
 
-    @FXML
-    private AnchorPane captchaArea;
+	@FXML
+	private AnchorPane captchaArea;
 
-    @FXML
-    private ImageView recaptcha;
+	@FXML
+	private ImageView recaptcha;
 
-    @FXML
-    private JFXTextField codeTXF;
+	@FXML
+	private JFXTextField codeTXF;
 
-    @FXML
-    private JFXButton requestBTN;
+	@FXML
+	private JFXButton requestBTN;
 
-    @FXML
-    private JFXButton saveBTN;
-    AnchorPane cap;
+	@FXML
+	private JFXButton saveBTN;
+	AnchorPane cap;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		captchaMaker();

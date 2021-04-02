@@ -26,7 +26,6 @@ public class AccountsShow implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		User currentUser = UserController.getCurrentUser();
 		ArrayList<Account> accounts = currentUser.getAccounts();
-		System.out.println(accounts);
 
 		int i = 0;
 		for (Account account : accounts) {
