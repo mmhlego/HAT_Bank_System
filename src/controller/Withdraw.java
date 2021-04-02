@@ -45,32 +45,39 @@ public class Withdraw implements Initializable {
                 alert("Some Fields Are Empty !");
             } else if (!DBConnector.containsBIC(cardTXF.getText())) {
                 alert("Card Is Inavalid !");
-            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
-                alert("Money In Card Is Not Enough !");
             } else if (!DBConnector.CheckCardInfo(cardTXF.getText(), pinTXF.getText(), CVV2TXF.getText(),
                     Integer.parseInt(YearTXF.getText()), Integer.parseInt(MonthTXF.getText()))) {
                 alert("Wrong Credentials !");
             } else if (!DBConnector.IsCardAlive(Integer.parseInt(YearTXF.getText()),
                     Integer.parseInt(MonthTXF.getText()))) {
                 alert("Card Is Expired !");
+            } else if (!DBConnector.IsMoneyEnough(Long.parseLong(AmountTXF.getText()), cardTXF.getText())) {
+                alert("Money In Card Is Not Enough !");
             } else {
-                DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Transaction Was Successful !");
-                alert.show();
-                ClearData();
+                try {
+                    DBConnector.changeValue(-Long.parseLong(AmountTXF.getText()), cardTXF.getText());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Transaction Was Successful !");
+                    alert.show();
+                    ClearData();
+                } catch (Exception exp) {
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Check Your Internet Connection !");
+                    alert.show();
+                }
             }
         });
     }
 
     private void LimitandNext() {
-        PassToNext.NextField(cardTXF, 16);
-        PassToNext.NextField(pinTXF, 4);
-        PassToNext.NextField(AmountTXF, 18);
-        PassToNext.NextField(CVV2TXF, 6);
-        PassToNext.NextField(YearTXF, 2);
-        PassToNext.NextField(MonthTXF, 2);
+        PassToNext.NextField(cardTXF, 16, true);
+        PassToNext.NextField(pinTXF, 4, true);
+        PassToNext.NextField(AmountTXF, 18, true);
+        PassToNext.NextField(CVV2TXF, 6, true);
+        PassToNext.NextField(YearTXF, 2, true);
+        PassToNext.NextField(MonthTXF, 2, true);
     }
 
     private boolean IsAllFieldsComplete() {

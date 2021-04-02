@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 public class PassToNext {
 
-    public static void NextField(TextField tf, int maxLength) {
+    public static void NextField(TextField tf, int maxLength, boolean Prevent) {
         tf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(final ObservableValue<? extends String> ov, final String oldValue,
@@ -20,7 +20,9 @@ public class PassToNext {
                 if (tf.getText().length() == maxLength) {
                     Next();
                 }
-                PreventWord(tf);
+                if (Prevent) {
+                    PreventWord(tf);
+                }
             }
         });
     }
@@ -36,9 +38,9 @@ public class PassToNext {
     }
 
     private static void PreventWord(TextField tf) {
-                    String txt=tf.getText();
-        if (txt.length()>0 && !(txt.charAt(txt.length()-1)>=48 && txt.charAt(txt.length()-1)<=57) ) {
-            tf.setText(txt.substring(0,txt.length()-1));
+        String txt = tf.getText();
+        if (txt.length() > 0 && !(txt.charAt(txt.length() - 1) >= 48 && txt.charAt(txt.length() - 1) <= 57)) {
+            tf.setText(txt.substring(0, txt.length() - 1));
         }
     }
 }
