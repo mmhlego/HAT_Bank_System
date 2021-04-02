@@ -11,6 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import model.Account;
 import model.DBConnector;
@@ -118,6 +119,35 @@ public class AccountsShow implements Initializable {
 			i++;
 		}
 
+		FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/components/plus.fxml"));
+		try {
+			Parent plusCard=loader.load();
+			plusCard.setLayoutX((25 + (i % 2) * 420));
+			plusCard.setLayoutY((25 + i / 2 * 225));
+			
+			plusCard.setOnMouseClicked(e->{
+				FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
+				try {
+					MainPanel.getChildren().add(loaders.load());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			});
+			
+			((ImageView)plusCard.getChildrenUnmodifiable().get(0)).setOnMouseClicked(e->{
+				FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
+				try {
+					MainPanel.getChildren().add(loaders.load());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			});
+			cardAnchor.getChildren().add(plusCard);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		if (i == 0) {
 			noResults();
 		}
