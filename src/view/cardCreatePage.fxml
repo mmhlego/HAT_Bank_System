@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" focusTraversable="true" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateCard">
+<AnchorPane fx:id="MainPanel" focusTraversable="true" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateCard">
    <children>
       <Label alignment="CENTER" layoutX="412.0" layoutY="22.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" text="Create Account" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -31,9 +31,9 @@
                         <Insets left="50.0" right="25.0" />
                      </padding>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/light-name.png" />
+                        <Image url="@icons/whiteName.png" />
                      </image>
                   </ImageView>
                </children>
@@ -48,9 +48,9 @@
                         <Insets left="50.0" right="25.0" />
                      </padding>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/light-name.png" />
+                        <Image url="@icons/whiteName.png" />
                      </image>
                   </ImageView>
                </children>
@@ -65,16 +65,16 @@
                         <Insets left="50.0" right="25.0" />
                      </padding>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="5.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/light-id.png" />
+                        <Image url="@icons/whiteId.png" />
                      </image>
                   </ImageView>
                </children>
             </Group>
             <Group>
                <children>
-                  <TextField fx:id="pinTXF" prefHeight="59.0" prefWidth="820.0" promptText="PIN" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+                  <TextField fx:id="pinTXF" prefHeight="59.0" prefWidth="820.0" promptText="CVV" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -82,9 +82,9 @@
                         <Insets left="50.0" right="25.0" />
                      </padding>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="6.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/light-pass.png" />
+                        <Image url="@icons/whitePass.png" />
                      </image>
                   </ImageView>
                </children>
@@ -96,9 +96,9 @@
                         <Insets left="42.0" right="25.0" />
                      </padding>
                   </ComboBox>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/light-user.png" />
+                        <Image url="@icons/whiteUser.png" />
                      </image>
                   </ImageView>
                </children>
@@ -113,9 +113,9 @@
                         <Insets left="50.0" right="25.0" />
                      </padding>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/expire%20date.png" />
+                        <Image url="@icons/whiteEx.png" />
                      </image>
                   </ImageView>
                </children>
