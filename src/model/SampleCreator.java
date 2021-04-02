@@ -71,7 +71,7 @@ public class SampleCreator {
                 + alleys[r.nextInt(2)] + ", Pelak" + Integer.toString(r.nextInt(60));
     }
 
-    private static String randomStringOfNumbers(int n) {
+    public static String randomStringOfNumbers(int n) {
         Random r = new Random(System.currentTimeMillis());
         try {
             Thread.sleep(10);
@@ -87,7 +87,7 @@ public class SampleCreator {
         return ans;
     }
 
-    private static String randomBic() {
+    public static String randomBic() {
         String bic;
         do {
             bic = randomStringOfNumbers(16);
