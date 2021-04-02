@@ -6,11 +6,17 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXDatePicker;
 import javafx.beans.value.*;
 import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.DBConnector;
 import model.Sender;
 import model.User;
+import model.UserController;
 import model.encoder;
 
 public class Register implements Initializable {
@@ -91,11 +97,33 @@ public class Register implements Initializable {
                 } else {
                     DBConnector.connect();
                     DBConnector.addUser(firstNameField.getText(), lastNameField.getText(), usernameField.getText(),
-                            encoder.encode(passwordField.getText()), 
-                            emailField.getText(), phoneField.getText(), 0,
+                            encoder.encode(passwordField.getText()), emailField.getText(), phoneField.getText(), 0,
                             addressField.getText(), User.generateID(User.CLIENT), codeField.getText(),
                             birthPicker.getValue(), 0, 0);
-                            Sender.SendEmail(emailField.getText(), "Registration Was Successful !", Sender.Signupmail);
+
+                    UserController.setCurrentUser(DBConnector.getUser(usernameField.getText()));
+
+                    try {
+                        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/MainStructure.fxml"));
+                        Parent UserMainPage = loader.load();
+
+                        ((Stage) title.getScene().getWindow()).close();
+
+                        Stage stage = new Stage(StageStyle.TRANSPARENT);
+                        Scene scene = new Scene(UserMainPage);
+                        scene.setFill(Color.TRANSPARENT);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (Exception er) {
+                        er.printStackTrace();
+                    }
+
+                    String pass = UserController.getCurrentUser().Password;
+
+                    UserController.getCurrentUser().Password = passwordField.getText();
+                    Sender.SendEmail(emailField.getText(), "Registration Was Successful !", Sender.Signupmail);
+
+                    UserController.getCurrentUser().Password = pass;
                 }
             } catch (Exception e1) {
                 e1.printStackTrace();

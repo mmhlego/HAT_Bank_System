@@ -119,7 +119,7 @@ public class LoginController implements Initializable, Runnable {
 					controller = new FXMLLoader(this.getClass().getResource("../view/mainPage.fxml")).getController();
 
 					User currentuser = UserController.getCurrentUser();
-					//Sender.SendEmail(currentuser.Email, "Login Detected", Sender.Loginmail);
+					Sender.SendEmail(currentuser.Email, "Login Detected", Sender.Loginmail);
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
