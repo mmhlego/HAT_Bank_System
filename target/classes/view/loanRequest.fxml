@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loanRequest">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.loanRequest">
    <children>
       <Label alignment="CENTER" layoutX="446.0" layoutY="33.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" text="Loan Request" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <font>
@@ -19,14 +19,11 @@
       </Label>
       <VBox layoutX="427.0" layoutY="187.0" prefHeight="328.0" prefWidth="409.0" spacing="10.0" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="175.0">
          <children>
-            <TextField fx:id="cardNumber" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
+            <ComboBox fx:id="cardNumberCombo" editable="true" prefHeight="57.0" prefWidth="755.0" promptText="Card Number" stylesheets="@../comboStyle2.css">
                <padding>
-                  <Insets left="50.0" right="25.0" />
+                  <Insets left="40.0" right="25.0" />
                </padding>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </TextField>
+            </ComboBox>
             <TextField fx:id="cvv" layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="755.0" promptText="CVV" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;">
                <padding>
                   <Insets left="50.0" right="25.0" />
@@ -71,7 +68,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <JFXButton fx:id="requestBTN" prefHeight="55.0" prefWidth="113.0" ripplerFill="RED" style="-fx-background-color: #4E61B1; -fx-background-radius: 20;" text="Request" textFill="WHITE">
+            <JFXButton fx:id="requestBTN" prefHeight="55.0" prefWidth="113.0" ripplerFill="RED" style="-fx-background-color: #4E61B1; -fx-background-radius: 40;" text="Request" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -83,7 +80,7 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="amount" layoutX="475.0" layoutY="175.0" prefHeight="57.0" prefWidth="395.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
+      <TextField fx:id="amountTXF" layoutX="475.0" layoutY="175.0" prefHeight="57.0" prefWidth="395.0" promptText="Amount" style="-fx-background-color: #2E3281; -fx-background-radius: 200; -fx-text-fill: white;" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="175.0">
          <padding>
             <Insets left="50.0" right="25.0" />
          </padding>
@@ -91,22 +88,22 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="mode" editable="true" layoutX="475.0" layoutY="242.0" prefHeight="57.0" prefWidth="396.0" promptText="Mode" stylesheets="@../comboStyle2.css" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="240.0">
+      <ComboBox fx:id="mode" editable="true" layoutX="475.0" layoutY="241.0" prefHeight="57.0" prefWidth="396.0" promptText="Mode" stylesheets="@../comboStyle2.css" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="241.0">
          <padding>
-            <Insets left="45.0" right="25.0" />
+            <Insets left="40.0" right="25.0" />
          </padding>
       </ComboBox>
-      <Label fx:id="maxValue" alignment="CENTER" layoutX="475.0" layoutY="311.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Max Value" textFill="#b2b2b2" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="308.0">
+      <Label fx:id="maxValueLabel" alignment="CENTER" layoutX="474.8" layoutY="309.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Max Value" textFill="#b2b2b2" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="309.0">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="status" alignment="CENTER" layoutX="475.0" layoutY="374.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Account Status" textFill="#b2b2b2" AnchorPane.topAnchor="376.0">
+      <Label fx:id="status" alignment="CENTER" layoutX="475.0" layoutY="377.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Account Status" textFill="#b2b2b2" AnchorPane.topAnchor="377.0">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="installment" alignment="CENTER" layoutX="475.0" layoutY="434.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Amount Per Installment" textFill="#b2b2b2" AnchorPane.topAnchor="442.0">
+      <Label fx:id="installment" alignment="CENTER" layoutX="475.0" layoutY="445.0" prefHeight="57.0" prefWidth="395.0" style="-fx-background-color: #2E3281; -fx-background-radius: 200;" text="Amount Per Installment" textFill="#b2b2b2" AnchorPane.topAnchor="445.0">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
