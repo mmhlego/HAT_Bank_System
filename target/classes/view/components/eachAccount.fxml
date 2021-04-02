@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="accountAnchor" prefHeight="120.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.eachAccount">
+<AnchorPane fx:id="accountAnchor" prefHeight="120.0" prefWidth="820.0" style="-fx-background-color: #2E3281; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.eachAccount">
    <children>
-      <HBox alignment="CENTER" layoutX="40.0" layoutY="10.0" prefHeight="120.0" prefWidth="770.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="40.0" layoutY="10.0" prefHeight="120.0" prefWidth="770.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="120.0" prefWidth="100.0" spacing="25.0">
                <children>
@@ -25,7 +25,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="120.0" prefWidth="165.0" spacing="25.0">
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="120.0" prefWidth="135.0" spacing="25.0">
                <children>
                   <Label fx:id="accountId" alignment="CENTER" text="AccountID" textFill="WHITE">
                      <font>
@@ -39,7 +39,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="175.0" layoutY="10.0" prefHeight="120.0" prefWidth="100.0" spacing="25.0">
+            <VBox alignment="CENTER" layoutX="175.0" layoutY="10.0" prefHeight="120.0" prefWidth="80.0" spacing="25.0">
                <children>
                   <Label alignment="CENTER" text="BIC" textFill="WHITE">
                      <font>
@@ -56,7 +56,7 @@
                   <Insets />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" layoutX="340.0" layoutY="10.0" prefHeight="120.0" prefWidth="165.0" spacing="25.0">
+            <VBox alignment="CENTER" layoutX="340.0" layoutY="10.0" prefHeight="120.0" prefWidth="275.0" spacing="25.0">
                <children>
                   <Label fx:id="bic" alignment="CENTER" text="BIC" textFill="WHITE">
                      <font>
@@ -84,7 +84,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox alignment="CENTER" layoutX="375.0" layoutY="10.0" prefHeight="120.0" prefWidth="165.0" spacing="25.0">
+            <VBox alignment="CENTER" layoutX="375.0" layoutY="10.0" prefHeight="120.0" prefWidth="125.0" spacing="25.0">
                <children>
                   <Label fx:id="amount1" alignment="CENTER" text="CVV2" textFill="WHITE">
                      <font>
