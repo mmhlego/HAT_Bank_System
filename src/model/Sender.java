@@ -7,8 +7,8 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import controller.*;
-
-import controller.PasswordChangerController;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.*;
 
 public class Sender {
     public static final int Signupmail = 0, Loginmail = 1, SMSMail = 2 , RecieptMail = 3;
@@ -16,11 +16,6 @@ public class Sender {
     public static String ip;
 
     public static void SendEmail(String recepient, String Title, int MailType) throws Exception {
-        /*if (MailType == Signupmail) {
-            LoadSignUpMail();
-        } else if (MailType == Loginmail) {
-            LoadLoginMail();
-        }*/
 
         Properties properties = new Properties();
 
@@ -66,8 +61,10 @@ public class Sender {
                 break;
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            // Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("Error");
+            alert.setContentText("Check Your Internet Connection !");
+            alert.show();
         }
 
         Transport.send(message);

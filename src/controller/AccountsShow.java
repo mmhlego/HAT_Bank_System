@@ -146,19 +146,6 @@ public class AccountsShow implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		if (i == 0) {
-			noResults();
-		}
 	}
 
-	private void noResults() {
-		try {
-			cardAnchor.getChildren().add(
-					(AnchorPane) FXMLLoader.load(this.getClass().getResource("../view/components/emptyField.fxml")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }

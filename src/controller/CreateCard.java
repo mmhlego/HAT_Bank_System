@@ -46,6 +46,7 @@ public class CreateCard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         LimitandNext();
+        DateTXF.setText(String.valueOf(LocalDate.now().getYear()));
         ObservableList<String> list = FXCollections.observableArrayList("Saving Account", "OnGoing Account");
         typeCombo.setItems(list);
 
@@ -105,7 +106,7 @@ public class CreateCard implements Initializable {
         if (!UsernameTXF.getText().equals("") && !PasswordTXF.getText().equals("")
                 && nationalCodeTXF.getText().length() == 10 && pinTXF.getText().length() == 4
                 && !typeCombo.getValue().equals(null)) {
-            return true;
+                    return true;
         } else {
             return false;
         }

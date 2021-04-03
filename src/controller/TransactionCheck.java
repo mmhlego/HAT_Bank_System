@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.security.*;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -69,7 +70,6 @@ public class TransactionCheck implements Initializable {
             } catch (Exception e1) {
                 alert("Check Your Internet Connection");
             }
-            alert("" + CreatOTP());
         });
 
         submit.setOnAction((e) -> {
@@ -93,8 +93,16 @@ public class TransactionCheck implements Initializable {
                     RecieverName = DBConnector.GetFullName(Transaction.RecieveCard);
                     DBConnector.changeValue(-Long.parseLong(Transaction.Amount), cardTXF.getText());
                     DBConnector.changeValue(Long.parseLong(Transaction.Amount), Transaction.RecieveCard);
+                    DBConnector.addTransaction(DBConnector.GetAccountID(Transaction.SendCard),
+                            DBConnector.GetAccountID(Transaction.RecieveCard), Long.parseLong(Transaction.Amount),
+                            LocalDate.now(), model.Transaction.generateID());
                     Sender.SendEmail(UserController.getCurrentUser().Email, "Successful Transaction ! ",
                             Sender.RecieptMail);
+                    try {
+                        Thread.sleep(5000);
+                    } catch (Exception ex) {
+
+                    }
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setHeaderText(null);
                     alert.setContentText("Transaction Was Successful ! Reciept Sent To Your Email.");
