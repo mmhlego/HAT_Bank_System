@@ -209,6 +209,17 @@ public class DBConnector {
         return false;
     }
 
+    public static String GetAccountID(String BIC) {
+        try {
+            ResultSet r = runCommand("Select AccountID from Account WHERE BIC=\'" + BIC + "\'");
+            r.next();
+            return r.getString(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
     public static void changeValue(long value, String card) {
         try {
             ResultSet r = runCommand("SELECT Value from Account WHERE BIC=\'" + card + "\'");
@@ -292,6 +303,18 @@ public class DBConnector {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static String GetCardOwner(String BIC) {
+        try {
+            ResultSet r = runCommand("SELECT OwnerID from Account WHERE BIC='" + BIC + "'");
+            r.next();
+            String OwnerID = r.getString(1);
+            return OwnerID;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     public static boolean CheckCurrentCVV(String CVV, String BIC) {

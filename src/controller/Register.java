@@ -66,6 +66,7 @@ public class Register implements Initializable {
         focus(usernameField);
         focus(passwordField);
         focus(phoneField);
+        focus(emailField);
         addressField.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue,
