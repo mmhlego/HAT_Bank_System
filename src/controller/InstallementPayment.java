@@ -11,9 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import model.Account;
-import model.DBConnector;
-import model.UserController;
+import model.*;
 
 public class InstallementPayment implements Initializable {
 
@@ -43,6 +41,7 @@ public class InstallementPayment implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		LimitandNext();
 		submit.setOnAction(e -> {
 			checkData();
 		});
@@ -69,6 +68,11 @@ public class InstallementPayment implements Initializable {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setHeaderText(null);
+				a.setTitle("Success");
+				a.setContentText("Your Installment Has Been Payed Successfully");
+				a.show();
 				UserController.updatePersonalData();
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loansMainPage.fxml"));
@@ -87,6 +91,13 @@ public class InstallementPayment implements Initializable {
 		a.show();
 	}
 
+	private void LimitandNext() {
+		PassToNext.NextField(cardTXF, 16, true);
+		PassToNext.NextField(cvvTXF, 4, true);
+		PassToNext.NextField(CVV2TXF, 6, true);
+		PassToNext.NextField(YearTXF, 2, true);
+		PassToNext.NextField(MonthTXF, 2, true);
+	}
 	private String getBic(String accountID) {
 		ArrayList<Account> all = UserController.getAccounts();
 
