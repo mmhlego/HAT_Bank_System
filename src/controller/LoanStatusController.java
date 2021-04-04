@@ -99,7 +99,7 @@ public class LoanStatusController implements Initializable {
 		loansBoard.getChildren().add(pane);
 
 		if (loan.Status == Loan.PAYING) {
-			double percent = (double) loan.Payed / (double) loan.TotalPay;
+			double percent =  loan.Payed / (double) loan.TotalPay;
 
 			((Label) group.getChildren().get(5)).setText(Long.toString(loan.Payed) + currency);
 			((JFXProgressBar) pane.getChildren().get(2)).setProgress(percent);
@@ -143,7 +143,7 @@ public class LoanStatusController implements Initializable {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					addAllLoans();
+					sort();
 				});
 
 				((JFXButton) pane.getChildren().get(3)).setVisible(true);
@@ -154,7 +154,7 @@ public class LoanStatusController implements Initializable {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					addAllLoans();
+					sort();
 				});
 			}
 
