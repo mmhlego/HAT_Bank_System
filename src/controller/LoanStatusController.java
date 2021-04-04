@@ -99,7 +99,7 @@ public class LoanStatusController implements Initializable {
 		loansBoard.getChildren().add(pane);
 
 		if (loan.Status == Loan.PAYING) {
-			double percent =  loan.Payed / (double) loan.TotalPay;
+			double percent = loan.Payed / (double) loan.TotalPay;
 
 			((Label) group.getChildren().get(5)).setText(Long.toString(loan.Payed) + currency);
 			((JFXProgressBar) pane.getChildren().get(2)).setProgress(percent);
@@ -123,7 +123,7 @@ public class LoanStatusController implements Initializable {
 						int[] months = { 9, 12, 24, 36, 48, 60 };
 
 						installementPayment.getAmountTXF()
-								.setText(String.valueOf(loan.TotalPay / 100 * (months[loan.Percntage / 5 - 1])));
+								.setText(String.valueOf(loan.TotalPay / (months[loan.Percntage / 5 - 1])));
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
