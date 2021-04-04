@@ -106,7 +106,7 @@ public class CreateCard implements Initializable {
         if (!UsernameTXF.getText().equals("") && !PasswordTXF.getText().equals("")
                 && nationalCodeTXF.getText().length() == 10 && pinTXF.getText().length() == 4
                 && !typeCombo.getValue().equals(null)) {
-                    return true;
+            return true;
         } else {
             return false;
         }
