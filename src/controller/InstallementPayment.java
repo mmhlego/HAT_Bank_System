@@ -63,9 +63,14 @@ public class InstallementPayment implements Initializable {
 				DBConnector.changeValue(-Value, BIC);
 				DBConnector.changeValue(Value, "1111111111111111");
 				DBConnector.addValueToLoan(Value, cardTXF.getText());
-				DBConnector.updateLoansInDB();
 				try {
 					Thread.sleep(5000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				DBConnector.updateLoansInDB();
+				try {
+					Thread.sleep(2000);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" focusTraversable="true" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateCard">
+<AnchorPane fx:id="MainPanel" focusTraversable="true" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateCard">
    <children>
       <Label alignment="CENTER" layoutX="412.0" layoutY="22.0" prefHeight="100.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 20;" text="Create Account" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
          <font>

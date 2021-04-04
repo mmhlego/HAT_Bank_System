@@ -236,7 +236,7 @@ public class DBConnector {
 
     public static void updateLoansInDB() {
         try {
-            con.prepareStatement("UPDATE Loan SET Status=2 WHERE Payed>=TotalPay").executeUpdate();
+            con.prepareStatement("UPDATE Loan SET Status=3 WHERE Payed>=TotalPay").executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
