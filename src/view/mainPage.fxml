@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
+<AnchorPane fx:id="MainPanel" prefHeight="700.0" prefWidth="920.0" style="-fx-background-color: #0D0F48; -fx-background-radius: 20px;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPageController">
    <children>
       <AnchorPane fx:id="rightPanel" layoutX="50.0" layoutY="110.0" prefHeight="526.0" prefWidth="820.0" style="-fx-background-color: #ffffff50; -fx-background-radius: 0 0 80 80;" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="111.0">
          <children>
@@ -16,11 +16,15 @@
                <children>
                   <AnchorPane layoutX="51.0" prefWidth="150.0" style="-fx-background-radius: 80; -fx-background-color: #ffffff50;">
                      <children>
-                        <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/user.png" />
-                           </image>
-                        </ImageView>
+                        <VBox alignment="CENTER" minHeight="150.0" minWidth="150.0" prefHeight="150.0" prefWidth="150.0">
+                           <children>
+                              <ImageView fx:id="img" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@icons/user.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
                </children>

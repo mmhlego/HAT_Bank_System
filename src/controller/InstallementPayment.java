@@ -62,7 +62,6 @@ public class InstallementPayment implements Initializable {
 				DBConnector.changeValue(-Value, BIC);
 				DBConnector.changeValue(Value, "1111111111111111");
 				DBConnector.addValueToLoan(Value, cardTXF.getText());
-				DBConnector.updateLoansInDB();
 				try {
 					Thread.sleep(5000);
 				} catch (Exception e) {
@@ -73,6 +72,13 @@ public class InstallementPayment implements Initializable {
 				a.setTitle("Success");
 				a.setContentText("Your Installment Has Been Payed Successfully");
 				a.show();
+				DBConnector.updateLoansInDB();
+
+				try {
+					Thread.sleep(2000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				UserController.updatePersonalData();
 
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/loansMainPage.fxml"));
@@ -98,6 +104,7 @@ public class InstallementPayment implements Initializable {
 		PassToNext.NextField(YearTXF, 2, true);
 		PassToNext.NextField(MonthTXF, 2, true);
 	}
+
 	private String getBic(String accountID) {
 		ArrayList<Account> all = UserController.getAccounts();
 
