@@ -118,34 +118,37 @@ public class AccountsShow implements Initializable {
 
 			i++;
 		}
-
-		FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/components/plus.fxml"));
-		try {
-			AnchorPane plusCard=loader.load();
-			plusCard.setLayoutX((25 + (i % 2) * 420));
-			plusCard.setLayoutY((25 + i / 2 * 225));
-			
-			plusCard.setOnMouseClicked(e->{
-				FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
-				try {
-					MainPanel.getChildren().add(loaders.load());
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			});
-			
-			((ImageView)plusCard.getChildren().get(0)).setOnMouseClicked(e->{
-				FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
-				try {
-					MainPanel.getChildren().add(loaders.load());
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			});
-			cardAnchor.getChildren().add(plusCard);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (currentUser.AccessLevel==User.CLIENT) {
+			FXMLLoader loader=new FXMLLoader(this.getClass().getResource("../view/components/plus.fxml"));
+			try {
+				AnchorPane plusCard=loader.load();
+				plusCard.setLayoutX((25 + (i % 2) * 420));
+				plusCard.setLayoutY((25 + i / 2 * 225));
+				
+				plusCard.setOnMouseClicked(e->{
+					FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
+					try {
+						MainPanel.getChildren().add(loaders.load());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				});
+				((ImageView)plusCard.getChildren().get(0)).setOnMouseClicked(e->{
+					FXMLLoader loaders = new FXMLLoader(getClass().getResource("../view/cardCreatePage.fxml"));
+					try {
+						MainPanel.getChildren().add(loaders.load());
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				});
+				cardAnchor.getChildren().add(plusCard);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		
+			
+			
 	}
 
 }
